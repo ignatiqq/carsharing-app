@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/carsharing-app/static/css/main.ada0fa47.css",
+    "main.js": "/carsharing-app/static/js/main.2f552216.js",
+    "static/media/marker.svg": "/carsharing-app/static/media/marker.dd9d4bed9761cae3a42f0aa73aeceec2.svg",
+    "index.html": "/carsharing-app/index.html",
+    "static/media/menu_btn.svg": "/carsharing-app/static/media/menu_btn.cec3097cb50ce51002907a4b4860564b.svg",
+    "main.ada0fa47.css.map": "/carsharing-app/static/css/main.ada0fa47.css.map",
+    "main.2f552216.js.map": "/carsharing-app/static/js/main.2f552216.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ada0fa47.css",
+    "static/js/main.2f552216.js"
+  ]
+}
