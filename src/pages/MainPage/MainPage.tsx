@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Sidebar } from "components"
 
+import marker from "assets/images/marker.svg";
+
 const MainPage: React.FC = () => {
   return (
     <div className="w-full h-screen flex">
@@ -8,7 +10,10 @@ const MainPage: React.FC = () => {
       <div className="basis-1/2 min-h-[90%] my-auto mx-12 flex justify-between flex-col">
         <div className="flex justify-between items-center">
           <div className="font-bold text-primary-green text-3xl">Need For Drive</div>
-          <div>Ульяновск</div>
+          <div className='flex'>
+            <img src={marker} alt="marker" />
+            <span className='ml-2 text-dark-gray text-sm'>Ульяновск</span>
+          </div>
         </div>
         <div>
           <div>
