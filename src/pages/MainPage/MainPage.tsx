@@ -41,7 +41,7 @@ const MainPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="basis-1/2">Slider</div>
+      <div className="basis-1/2"></div>
     </div>
   );
 }
