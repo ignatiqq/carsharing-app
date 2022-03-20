@@ -1,0 +1,64 @@
+%default-button {
+  color: #eee;
+  height: 100%;
+  top: 0;
+  background: #fff;
+  margin: 0;
+  background: none;
+  padding: 0px 30px 0px 30px;
+
+  &:hover {
+    background-color: rgba(14, 194, 97, 0.2);
+  }
+}
+
+.swiper-button {
+  &-next {
+    @extend %default-button;
+    right: 0;
+
+    &:after {
+      content: url('../../../assets/images/btnNext.svg');
+    }
+  }
+
+  &-prev {
+    @extend %default-button;
+    left: 0;
+
+    &:after {
+      content: url('../../../assets/images/btnPrev.svg');
+    }
+  }
+
+  &-disabled {
+    opacity: 1 !important;
+    background: none;
+  }
+}
+
+.swiper-pagination-bullet {
+  background: #eeeeee;
+
+  &-active {
+    background: #0ec261;
+  }
+}
+
+// .swiper-button-prev {
+//   @extend %default-button;
+//   left: 0;
+// }
+
+// .swiper-button-next {
+//   @extend %default-button;
+//   right: 0;
+// }
+
+// .swiper-button-disabled {
+//   background: none;
+// }
+
+// .swiper-pagination-bullet-active {
+//   background: #0ec261;
+// }
