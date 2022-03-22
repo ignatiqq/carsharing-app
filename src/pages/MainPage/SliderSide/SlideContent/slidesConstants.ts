@@ -1,4 +1,4 @@
-import { ISlide } from "./types";
+import { ISlide } from "../types";
 
 import sliderImage1 from "assets/images/sliderImage1.png";
 import sliderImage2 from "assets/images/sliderImage2.png";

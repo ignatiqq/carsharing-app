@@ -1,33 +1,29 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 import { ReactComponent as MenuBtn } from "assets/images/menuBtn.svg";
-import Button from 'components/Button/Button';
-import SidebarNav from './SidebarNav';
+import { Button, LanguageSelector } from 'components';
+import SidebarNav from '../SidebarNavigation/SidebarNav';
 
-import { setSidebarOpen } from 'store/commonSettings/actions';
-import { getSidebarOpen } from 'store/commonSettings/selectors';
+import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
-
-  const dispatch = useAppDispatch();
-  const sidebarOpen = useAppSelector(getSidebarOpen);
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const keyHandler = (e: KeyboardEvent) => {
       if(sidebarOpen && e.key === "Escape"){
-        dispatch(setSidebarOpen(false))
+        setSidebarOpen(false)
       }
     }
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
-  })
+  }, [])
 
   useEffect(() => {
     const clickHandler = (e: MouseEvent) => {
       if((e.target as HTMLElement).tagName === "A" || ((e.target as HTMLElement).parentNode as HTMLElement).tagName === "A") {
-        dispatch(setSidebarOpen(false))
+        setSidebarOpen(false)
       }
     }
     document.addEventListener("click", clickHandler);
@@ -36,25 +32,24 @@ const Sidebar = () => {
 
   const sidebarOpenHanlder = () => {
       if(!sidebarOpen) {
-        dispatch(setSidebarOpen(true));
+        setSidebarOpen(true);
       } else {
-        dispatch(setSidebarOpen(false));
+        setSidebarOpen(false);
       }
   }
 
   return (
     <aside>
-      <SidebarNav sidebarOpen={sidebarOpen} />
-     {sidebarOpen && <div className="absolute top-0 left-0 w-full h-full z-20 transition bg-[rgba(17,21,24,.80)]"></div>}
-      <div className={`sm:bg-[#111518] h-full absolute sm:relative flex justify-center min-w-[65px]`}>
-          <div className="flex flex-col justify-between items-center min-h-[90%] max-h-[90%] my-auto">
-            <Button onClick={sidebarOpenHanlder} className='z-30 hidden sm:block'>
-              <MenuBtn className="stroke-white" />
+    <SidebarNav sidebarOpen={sidebarOpen} />
+     {sidebarOpen && <div className={styles.overlay}></div>}
+      <div className={styles.sidebar}>
+          <div className={styles.wrapper}>
+            <Button onClick={sidebarOpenHanlder} className={styles.buttonMenu}>
+              <MenuBtn className={classNames(styles.menuLight, {
+                [styles.menuDark]: !sidebarOpen
+              })} />
             </Button>
-            <Button
-              className="text-primary-green hidden lg:block hover:border border-white rounded-full w-[40px] h-[40px] transition">
-              Eng
-            </Button>
+            <LanguageSelector />
           </div>
       </div>
     </aside>

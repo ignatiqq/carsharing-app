@@ -1,11 +1,15 @@
-import React from 'react';
-import { Button } from "components";
-import { MainPage } from "pages";
+import React from "react";
+
+import { Sidebar, Button } from "components"
+import AppRoutes from "Router/AppRoutes";
+
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <div className="App">
-      <MainPage />
+    <div className={styles.app}>
+      <Sidebar />     
+      <AppRoutes />
     </div>
   );
 }

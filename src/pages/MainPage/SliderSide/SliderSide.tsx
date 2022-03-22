@@ -1,23 +1,25 @@
 import React from 'react';
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import SlideContent from "./components/SlideContent";
-import { slides } from './slidesConstants';
+import SlideContent from "./SlideContent/SlideContent";
+import { slides } from './SlideContent/slidesConstants';
 import "./sliderCustomStyles.scss";
+import styles from './SliderSide.module.css';
  
 const SliderSide: React.FC = () => {
   return (
-    <div className="basis-1/2 overflow-hidden hidden lg:block">
+    <div className={styles.wrapper}>
         <Swiper
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]}
           className='h-full'
           spaceBetween={50}
           slidesPerView={1}
           navigation
+          autoplay
           pagination={{ clickable: true }}
           >
             {

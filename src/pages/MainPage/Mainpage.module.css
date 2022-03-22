@@ -1,0 +1,11 @@
+.section {
+  display: flex;
+  width: 100%;
+  max-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    width: calc(100% - 65px);
+  }
+}

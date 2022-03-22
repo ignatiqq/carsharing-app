@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Sidebar } from "components"
 import { InfoSide, SliderSide } from ".";
+import style from "./Mainpage.module.css";
 
 const MainPage: React.FC = () => {
   return (
-    <section className="w-full h-screen flex">
-      <Sidebar />
+    <section className={style.section}>
       <InfoSide />
       <SliderSide />
     </section>

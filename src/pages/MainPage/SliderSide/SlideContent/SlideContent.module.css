@@ -1,0 +1,40 @@
+.wrapper {
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 48px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 550px;
+  margin: 0 20px;
+}
+
+@media (min-width: 1536px) {
+  .content {
+    margin: 0 auto;
+  }
+}
+
+.title {
+  color: #fff;
+  font-size: 40px;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.subtitle {
+  color: var(--gray-light);
+  font-weight: light;
+  font-size: 24px;
+  line-height: 22px;
+  line-height: 100%;
+  margin: 20px 0px;
+  font-weight: 300;
+}
+
+.button {
+  padding: 10px 30px;
+}
