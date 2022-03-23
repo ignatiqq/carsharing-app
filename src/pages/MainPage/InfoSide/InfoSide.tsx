@@ -5,9 +5,12 @@ import Footer from "./Footer/Footer";
 
 import marker from "assets/images/marker.svg";
 import styles from "./InfoSide.module.css";
+import { useTranslation } from 'react-i18next';
 
 
 const InfoSide: React.FC = () => {
+
+  const { t } = useTranslation();
 
   return (
     <div className={styles.wrapper}>
@@ -24,13 +27,13 @@ const InfoSide: React.FC = () => {
         <div>
           <div className={styles.infoTextWrapper}>
             <div className={styles.infoTitleWrapper}>
-              <h1 className={styles.infoTitleText}>Каршеринг</h1>
+              <h1 className={styles.infoTitleText}>{t("Carsharing")}</h1>
               <h2 className={styles.infoTitleCompany}>
                 Need for drive
               </h2>
             </div>
             <p className={styles.infoParagraph}>
-              Поминутная аренда авто твоего города
+              {t("Per-minute car rental in your city")}
             </p>
           </div>
         </div>
@@ -38,7 +41,7 @@ const InfoSide: React.FC = () => {
           className={styles.bookButton}
           apperance="primary"
           >
-          Забронировать
+          {t("Reserve")}
         </Button>
       </div>
       <Footer />

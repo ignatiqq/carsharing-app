@@ -1,3 +1,7 @@
+.wrapper {
+  position: relative;
+}
+
 .button {
   width: 50px;
   height: 50px;
@@ -10,4 +14,45 @@
 
 .button:hover {
   border: 1px solid #fff;
+}
+
+.popup {
+  position: absolute;
+  left: 10px;
+  bottom: 60px;
+  min-width: 300px;
+  border: 2px solid var(--primary-green);
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.popupOpened {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.languageBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  background: #000;
+  transition: all 0.3s ease;
+  border-radius: 0px;
+}
+
+.activeLanguageBtn {
+  background: var(--primary-green);
+}
+
+.languageBtn:hover {
+  background: var(--primary-green);
+}
+
+.imageFlag {
+  max-width: 30px;
+  width: 100%;
 }

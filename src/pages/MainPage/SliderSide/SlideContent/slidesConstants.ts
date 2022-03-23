@@ -9,40 +9,40 @@ import sliderImage4 from "assets/images/sliderImage4.png";
 export const slides: Array<ISlide> = [
     {
       image: sliderImage1,
-      title: "Бесплатная парковка",
-      subtitle: "Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах.",
+      title: "Free parking",
+      subtitle: "Leave your car in paid city parking lots and permitted places without violating traffic rules, as well as at airports.",
       button: {
-        text: "Подробнее",
+        text: "Details",
         gradientFrom: "#13493F",
         gradientTo: "#0C7B1B"
       }
     },
     {
       image: sliderImage2,
-      title: "Страховка",
-      subtitle: "Полная страховка страховка автомобиля ",
+      title: "Insurance",
+      subtitle: "Full car insurance",
       button: {
-        text: "Подробнее",
+        text: "Details",
         gradientFrom: "#132949",
         gradientTo: "#0C7B67"
       }
     },
     {
       image: sliderImage3,
-      title: "Бензин",
-      subtitle: "Полный бак на любой заправке города за наш счёт",
+      title: "Petrol",
+      subtitle: "A full tank at any gas station in the city at our expense",
       button: {
-        text: "Подробнее",
+        text: "Details",
         gradientFrom: "#493013",
         gradientTo: "#7B0C3B"
       }
     },
     {
       image: sliderImage4,
-      title: "Обслуживание",
-      subtitle: "Автомобиль проходит еженедельное ТО",
+      title: "Service",
+      subtitle: "The car goes through a weekly maintenance",
       button: {
-        text: "Подробнее",
+        text: "Details",
         gradientFrom: "#281349",
         gradientTo: "#720C7B"
       }

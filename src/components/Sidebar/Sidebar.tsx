@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { ReactComponent as MenuBtn } from "assets/images/menuBtn.svg";
 import { Button, LanguageSelector } from 'components';
 import SidebarNav from '../SidebarNavigation/SidebarNav';
+import { languages } from 'components/LanguageSelector/languages';
 
 import styles from "./Sidebar.module.css";
 
@@ -39,7 +40,7 @@ const Sidebar = () => {
                 [styles.menuDark]: !sidebarOpen
               })} />
             </Button>
-            <LanguageSelector className={classNames(styles.language, {
+            <LanguageSelector languages={languages} className={classNames(styles.language, {
               [styles.hidden]: !sidebarOpen,
               [styles.displayed]: sidebarOpen
             }
