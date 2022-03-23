@@ -20,16 +20,6 @@ const Sidebar = () => {
     return () => document.removeEventListener('keydown', keyHandler);
   }, [])
 
-  useEffect(() => {
-    const clickHandler = (e: MouseEvent) => {
-      if((e.target as HTMLElement).tagName === "A" || ((e.target as HTMLElement).parentNode as HTMLElement).tagName === "A") {
-        setSidebarOpen(false)
-      }
-    }
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  }, [])
-
   const sidebarOpenHanlder = () => {
       if(!sidebarOpen) {
         setSidebarOpen(true);
@@ -40,8 +30,8 @@ const Sidebar = () => {
 
   return (
     <aside>
-    <SidebarNav sidebarOpen={sidebarOpen} />
-     {sidebarOpen && <div className={styles.overlay}></div>}
+    <SidebarNav setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
+     {sidebarOpen && <div className={styles.overlay} />}
       <div className={styles.sidebar}>
           <div className={styles.wrapper}>
             <Button onClick={sidebarOpenHanlder} className={styles.buttonMenu}>
@@ -49,7 +39,11 @@ const Sidebar = () => {
                 [styles.menuDark]: !sidebarOpen
               })} />
             </Button>
-            <LanguageSelector />
+            <LanguageSelector className={classNames(styles.language, {
+              [styles.hidden]: !sidebarOpen,
+              [styles.displayed]: sidebarOpen
+            }
+            )} />
           </div>
       </div>
     </aside>

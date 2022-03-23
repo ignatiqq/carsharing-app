@@ -4,7 +4,7 @@
   height: 100%;
   z-index: 30;
   background: #111518;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .opened {
@@ -67,6 +67,7 @@
 
 .socialsLink {
   fill: white;
+  margin-right: 24px;
 }
 
 .socialsLink:hover {

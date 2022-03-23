@@ -6,14 +6,15 @@ import classNames from 'classnames';
 import { ReactComponent as TelegramIcon } from "assets/images/TelegramIcon.svg";
 import { ReactComponent as InstagramIcon } from "assets/images/InstagramIcon.svg";
 import { ReactComponent as FacebookIcon } from "assets/images/FacebookIcon.svg";
-
+import { pagesLink } from './links';
 import styles from "./SidebarNav.module.css";
 
 interface ISidebarNav {
-  sidebarOpen: boolean
+  sidebarOpen: boolean,
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen}) => {
+const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen, setSidebarOpen}) => {
   return (
     <div
       className={classNames(styles.wrapper, {
@@ -22,34 +23,18 @@ const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen}) => {
       })}>
       <nav className={styles.nav}>
         <ul className={styles.ul}>
-          <li className={styles.linksMargin}>
-            <Link
-              className={styles.link}
-              to="/">
-              Парковка
-            </Link>
-          </li>
-          <li className={styles.linksMargin}>
-            <Link
-              className={styles.link}
-              to="/">
-              Страховка
-            </Link>
-          </li>
-          <li className={styles.linksMargin}>
-            <Link
-              className={styles.link}
-              to="/">
-              Бензин
-            </Link>
-          </li>
-          <li className={styles.linksMargin}>
-            <Link
-              className={styles.link}
-              to="/">
-              Обслуживание
-            </Link>
-          </li>
+          {
+            pagesLink && pagesLink.map(item => (
+            <li key={item.id} className={styles.linksMargin}>
+              <Link
+                onClick={() => setSidebarOpen(false)}
+                className={styles.link}
+                to={item.path}>
+                {item.name}
+              </Link>
+            )</li>
+            ))
+          }
         </ul>
         <ul className={styles.socialsUl}>
           <li>
@@ -59,7 +44,7 @@ const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen}) => {
           </li>
           <li>
             <Link to="/">
-              <InstagramIcon style={{margin: "0px 24px"}} className={styles.socialsLink} />
+              <InstagramIcon className={styles.socialsLink} />
             </Link>
           </li>
           <li>

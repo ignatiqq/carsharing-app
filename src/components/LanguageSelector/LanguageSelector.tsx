@@ -1,11 +1,16 @@
 import React from 'react';
 
+import classNames from 'classnames';
 import { Button } from "components";
 import styles from "./LanguageSelector.module.css";
 
-const LanguageSelector = () => {
+interface ILanguageSelector {
+  className?: string
+}
+
+const LanguageSelector: React.FC<ILanguageSelector> = ({className}) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={classNames(styles.wrapper, className)}>
         <Button
             className={styles.button}>
             Eng
