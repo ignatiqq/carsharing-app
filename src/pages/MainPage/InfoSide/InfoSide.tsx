@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Button } from "components";
+import { Button, CitySelector } from "components";
 import Footer from "./Footer/Footer";
 
-import marker from "assets/images/marker.svg";
 import styles from "./InfoSide.module.css";
 import { useTranslation } from 'react-i18next';
 
@@ -18,8 +17,7 @@ const InfoSide: React.FC = () => {
         <div className={styles.headerWrapper}>
           <div className={styles.headerText}>Need For Drive</div>
           <div className={styles.cityBlockWrapper}>
-            <img src={marker} alt="marker" />
-            <span className={styles.cityBlockText}>Ульяновск</span>
+          <CitySelector />
           </div>
         </div>
       </div>
