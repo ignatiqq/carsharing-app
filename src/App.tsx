@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Sidebar } from "components"
-import AppRoutes from "Router/AppRoutes";
+import AppRoutes from "routes/AppRoutes";
 
 import styles from "./App.module.css";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, CitySelector } from "components";
+import { Button, Header } from "components";
 import Footer from "./Footer/Footer";
 
 import styles from "./InfoSide.module.css";
@@ -13,14 +13,7 @@ const InfoSide: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <div className={styles.headerWrapper}>
-          <div className={styles.headerText}>Need For Drive</div>
-          <div className={styles.cityBlockWrapper}>
-          <CitySelector />
-          </div>
-        </div>
-      </div>
+      <Header />
       <div>
         <div>
           <div className={styles.infoTextWrapper}>

@@ -1,0 +1,35 @@
+.span {
+  color: var(--gray-dark);
+  font-weight: bold;
+}
+
+.link {
+  color: var(--gray-dark);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: var(--primary-green);
+}
+
+.current {
+  color: var(--primary-green);
+}
+
+.passed {
+  color: var(--primary-black);
+}
+
+.ul {
+  display: flex;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  margin: 0px 20px;
+}
