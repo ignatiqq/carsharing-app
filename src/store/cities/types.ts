@@ -1,4 +1,4 @@
-export interface ICommonSettings {
+export interface ICities {
     city: ICityData
 }
 

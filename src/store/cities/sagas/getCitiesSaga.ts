@@ -1,10 +1,8 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import type { AxiosResponse } from "axios";
 
-import { GET_ALL_CITIES } from "./constants";
-import { setAllCitiesLoading, setAllCities, setAllCitiesLoadingError } from "../../actions";
+import { setAllCitiesLoading, setAllCities, setAllCitiesLoadingError, getAllCities } from "../actions";
 import {TableCity} from "api/services";
-import store from "store/store";
 
 
 export function *getCities() {
@@ -26,5 +24,5 @@ export function *getCities() {
 }
 
 export function *getCitiesWatcher() {
-    yield takeLatest(GET_ALL_CITIES, getCities)
+    yield takeLatest(getAllCities, getCities)
 }

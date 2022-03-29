@@ -1,7 +1,7 @@
-import { ICommonSettings } from "store/commonSettings/types";
+import { ICities } from "store/cities/types";
 
 export interface IGetCitiesResponse {
-    data: Array<ICommonSettings>,
+    data: Array<ICities>,
     count: number,
     fields: {
         name: string,

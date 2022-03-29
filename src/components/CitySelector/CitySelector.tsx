@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useAppSelector, useAppDispatch } from 'store/hooks';
 
-import { getAllCities } from 'store/commonSettings/sagas/citiesSagas/actions';
-import { setCurrentCity } from 'store/commonSettings/actions';
-import type { ICurrentCity } from "store/commonSettings/types";
+import { getAllCities, setCurrentCity } from 'store/cities/actions';
+import type { ICurrentCity } from "store/cities/types";
 import marker from "assets/images/marker.svg";
 import styles from "./CitySelector.module.css";
 import { Button, Loader } from 'components';
@@ -14,9 +13,9 @@ const CitySelector = () => {
 
   const dispatch = useAppDispatch();
 
-  const { cities, currentCity } = useAppSelector(({commonSettings}) => ({
-    cities: commonSettings.city.all.data,
-    currentCity: commonSettings.city.current
+  const { cities, currentCity } = useAppSelector(({cities}) => ({
+    cities: cities.city.all.data,
+    currentCity: cities.city.current
   }))
 
   const dropdown = useRef<HTMLDivElement | null>(null);
