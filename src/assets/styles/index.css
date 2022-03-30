@@ -75,3 +75,7 @@ input::placeholder,
 button {
   font-family: 'Roboto';
 }
+
+hr {
+  border: 1px solid #eeeeee;
+}

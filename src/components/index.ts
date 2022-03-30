@@ -10,3 +10,4 @@ export { default as  Select} from "./Select/Select";
 export { default as LanguageSelector } from "./LanguageSelector/LanguageSelector";
 export { default as CitySelector } from "./CitySelector/CitySelector";
 
+export { default as OrderInfo } from "./OrderInfo/OrderInfo";

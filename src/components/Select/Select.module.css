@@ -4,10 +4,21 @@
   align-items: flex-start;
   width: 100%;
   position: relative;
+  max-width: 300px;
 }
 
 .wrapper {
-  max-width: 300px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.inputLabel {
+  min-width: 120px;
+  color: var(--primary-black);
+  text-align: right;
+  margin-right: 10px;
 }
 
 .input {

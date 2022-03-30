@@ -1,40 +1,29 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import type { IOption, ISelect } from "./types";
 import styles from "./Select.module.css";
-
-interface IOption {
-  label: string,
-  value: string
-}
-
-interface ISelect {
-  options: Array<IOption>,
-  searchPlaceholder: string,
-  label: string,
-  selected: IOption,
-  onClick: (item: IOption) => void,
-  customLabel?: string,
-  customValue?: string
-}
 
 const Select: React.FC<ISelect> = (
   {
     options,
-    searchPlaceholder,
+    searchPlaceholder = "Start typing anything",
     label, 
     selected, 
     onClick,
-    customLabel,
-    customValue
+    customLabel = "label",
+    customValue = "value"
   }
   ) => {
 
-  const [optionLabel, setOptionLabel] = useState<string>("label");
-  const [optionValue, setOptionValue] = useState<string>("value");
+  const [optionLabel, setOptionLabel] = useState<string>(customLabel);
+  const [optionValue, setOptionValue] = useState<string>(customValue);
   const [optionsToShow, setOptionsToShow] = useState<Array<IOption> | null>(null); 
   const [optionSearch, setOptionSearch] = useState<string>("");
   const [selectDropdownOpened, setSelectDropdownOpened] = useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if(options) {
@@ -43,8 +32,10 @@ const Select: React.FC<ISelect> = (
   }, [options])
 
   useEffect(() => {
-    const filterBySearch = (item: IOption) => item[optionLabel as keyof IOption].toLowerCase().includes(optionSearch.toLowerCase());
-    setOptionsToShow(options.filter(filterBySearch))
+    if(options) {
+      const filterBySearch = (item: IOption) => item[optionLabel as keyof IOption].toLowerCase().includes(optionSearch.toLowerCase());
+      setOptionsToShow(options.filter(filterBySearch))
+    }
   }, [optionSearch])
 
   useEffect(() => {
@@ -68,17 +59,17 @@ const Select: React.FC<ISelect> = (
     setSelectDropdownOpened(false);
     setOptionSearch("");
   }
-
+  
   return (
     <div className={styles.wrapper}>
-      <label htmlFor='search-input'>{label}</label>
+      <label className={styles.inputLabel} htmlFor='search-input'>{t(label)}</label>
       <div className={styles.selectWrapper}>
         <input
           name="search-input" 
           type="search" 
-          value={selectDropdownOpened ? optionSearch : selected[optionLabel as keyof IOption]} 
+          value={selectDropdownOpened ? optionSearch : selected && selected[optionLabel as keyof IOption]} 
           onChange={searchOptionHandler} 
-          placeholder={searchPlaceholder}
+          placeholder={t(searchPlaceholder)}
           className={styles.input}
           onFocus={openSelectDropdownHandler}
           onBlur={closeSelectDropdownHandler}

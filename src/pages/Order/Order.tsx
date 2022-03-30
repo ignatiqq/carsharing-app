@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 
-import { Header, Breadcrumps } from 'components';
+import { Header, Breadcrumps, OrderInfo } from 'components';
 import styles from "./Order.module.css";
 import type { IRoute } from 'components/Breadcrumps/types';
 
@@ -33,16 +34,21 @@ const Order = () => {
   const { pathname } = useLocation()
 
   return (
-      <section className={styles.container}>
-        <Header />
-        <Breadcrumps 
-            routes={routes}
-            currentRoutePathname={pathname}
-            stepsPassed={0}
-        />
-        <Outlet />
-      </section>
-  )
+    <section className={styles.section}>
+      <Header />
+      <hr></hr>
+      <div className={styles.container}>
+        <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={0} />
+      </div>
+      <hr></hr>
+      <div className={classNames(styles.contentWrapper, styles.container)}>
+        <div className={styles.container}>
+          <Outlet />
+        </div>
+        <OrderInfo />
+      </div>
+    </section>
+  );
 }
 
 export default Order;

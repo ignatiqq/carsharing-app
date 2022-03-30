@@ -13,8 +13,8 @@ const CitySelector = () => {
 
   const dispatch = useAppDispatch();
 
-  const { cities, currentCity } = useAppSelector(({cities}) => ({
-    cities: cities.city.all.data,
+  const { allCities, currentCity } = useAppSelector(({cities}) => ({
+    allCities: cities.city.all.data,
     currentCity: cities.city.current
   }))
 
@@ -38,16 +38,16 @@ const CitySelector = () => {
   }, [])
 
   useEffect(() => {
-    if(cities && cities.length > 0 && !currentCity) {
+    if(allCities && allCities.length > 0 && !currentCity) {
       const cityFormLocalStorage = localStorage.getItem("city");
       if(cityFormLocalStorage) {
-        const city = cities.filter(item => item.id === cityFormLocalStorage)[0];
+        const city = allCities.filter(item => item.id === cityFormLocalStorage)[0];
         dispatch(setCurrentCity(city))
       } else {
-        dispatch(setCurrentCity(cities[0]))
+        dispatch(setCurrentCity(allCities[0]))
       }
     }
-  }, [cities])
+  }, [allCities])
 
   const opendropdownHandler = () => {
     setDropdownOpened((prev) => !prev)
@@ -71,8 +71,8 @@ const CitySelector = () => {
           [styles.dropdownOpen]: dropdownOpened
         })}>
           {
-            cities && cities.length > 0 && 
-              cities.map((item) => (
+            allCities && allCities.length > 0 && 
+              allCities.map((item) => (
                 <div key={item.id}>
                   <Button onClick={() => setCurrentCityHandler(item)} className={styles.dropdownButton}>
                     {item.name}
