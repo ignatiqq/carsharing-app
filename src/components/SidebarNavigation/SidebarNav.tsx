@@ -45,16 +45,6 @@ const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen, setSidebarOpen}) => {
               <TelegramIcon className={styles.socialsLink} />
             </Link>
           </li>
-          <li>
-            <Link to="/">
-              <InstagramIcon className={styles.socialsLink} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <FacebookIcon className={styles.socialsLink} />
-            </Link>
-          </li>
         </ul>
       </nav>
     </div>
