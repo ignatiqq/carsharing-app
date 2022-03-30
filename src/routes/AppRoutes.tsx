@@ -12,6 +12,10 @@ const AppRoutes = () => useRoutes([
             {
                 path: "/order/location",
                 element: <Location />
+            },
+            {
+                path: "/order/model",
+                element: <div>Model</div>
             }
         ]
     }

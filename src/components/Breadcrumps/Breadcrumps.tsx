@@ -54,7 +54,7 @@ const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, ste
               :
               <Link className={classNames(styles.link, {
                 [styles.current]: item.pathname === selectedRoute,
-                [styles.passed]: item.index > stepsPassed
+                [styles.passed]: item.index < stepsPassed
               })} 
               to={item.pathname}>
                 {t(item.name)}

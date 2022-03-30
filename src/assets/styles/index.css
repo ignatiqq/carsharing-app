@@ -29,6 +29,16 @@
   --gray-light: #eeeeee;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -58,4 +68,10 @@ ol {
 
 a {
   text-decoration: none;
+}
+
+input,
+input::placeholder,
+button {
+  font-family: 'Roboto';
 }
