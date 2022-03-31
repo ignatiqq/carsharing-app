@@ -1,4 +1,4 @@
-import { ICities } from "store/cities/types";
+import { ICities } from "store/location/cities/types";
 
 export interface IGetCitiesResponse {
     data: Array<ICities>,

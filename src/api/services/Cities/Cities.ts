@@ -1,6 +1,6 @@
 import { api } from "api/config";
 
-class TableCity {
+class CitiesService {
 
     getCities() {
         return api.get("/db/city")
@@ -8,4 +8,4 @@ class TableCity {
 
 }
 
-export default new TableCity();
+export default new CitiesService();

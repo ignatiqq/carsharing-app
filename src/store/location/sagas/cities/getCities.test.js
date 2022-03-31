@@ -1,7 +1,7 @@
-import { getCities } from "./getCitiesSaga";
+import { getCities } from "./getCities";
 import { TableCity } from "api/services";
 import { runSaga } from "redux-saga";
-import { SET_ALL_CITIES, SET_ALL_CITIES_LOADING, SET_ALL_CITIES_LOADING_ERROR } from "../constants";
+import { SET_ALL_CITIES, SET_ALL_CITIES_LOADING, SET_ALL_CITIES_LOADING_ERROR } from "../../cities/constants";
  
 describe('citiesSagas', () => {
 

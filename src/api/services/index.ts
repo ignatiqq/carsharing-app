@@ -1,5 +1,7 @@
-import TableCity from "./TableCity/TableCity";
+import CitiesService from "./Cities/Cities";
+import PointsService from "./Points/Points";
 
 export {
-    TableCity
+    CitiesService,
+    PointsService
 }

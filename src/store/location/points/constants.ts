@@ -1,0 +1,3 @@
+export const SET_POINTS = "SET_POINTS";
+export const GET_POINTS = "GET_POINTS";
+export const SET_POINTS_REQUEST_ERROR = "SET_POINTS_REQUEST_ERROR";

@@ -11,3 +11,5 @@ export { default as LanguageSelector } from "./LanguageSelector/LanguageSelector
 export { default as CitySelector } from "./CitySelector/CitySelector";
 
 export { default as OrderInfo } from "./OrderInfo/OrderInfo";
+
+export { default as Map } from "./Map/Map";

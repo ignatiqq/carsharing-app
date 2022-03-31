@@ -1,56 +1,67 @@
 import React from 'react';
 
-import type { IOption } from 'components/Select/types';
-import { Header, Select } from "components";
+import { Select, Map } from "components";
 import styles from "./Location.module.css";
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
+import { useDispatch } from 'react-redux';
+import { getPoints } from "store/location/points/actions";
 
 const Location = () => {
   
   const { t } = useTranslation();
 
-  const { allCities, currentCity } = useAppSelector(({cities}) => ({
-    allCities: cities.city.all.data,
-    currentCity: cities.city.current
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(getPoints())
+  }, [])
+
+  const { allCities, currentCity } = useAppSelector(({location}) => ({
+    allCities: location.city.all.data,
+    currentCity: location.city.current
   }))
 
   return (
     <section className={styles.wrapper}>
-        <Select 
-          label={t("City")}
+      <div className={styles.selectsWrapper}>
+        <Select
+          label={t('City')}
           selected={currentCity as any}
           options={allCities as any}
           customLabel="name"
-          customValue='id'
-          onClick={item => console.log(item)}
+          customValue="id"
+          onClick={(item) => console.log(item)}
         />
-        <Select 
-          label={t("Point of issue")}
+        <Select
+          label={t('Point of issue')}
           selected={{
-            label: "Ершова, 52",
-            value: "hello world"
+            label: 'Ершова, 52',
+            value: 'hello world',
           }}
           onClick={(item) => console.log(item)}
-          options={
-            [
-              {
-                label: "Ульяновск",
-                value: "Uljanovsk"
-              },
-              {
-                label: "Уфа",
-                value: "Ufa"
-              },
-              {
-                label: "Ершова, 52",
-                value: "hello world"
-              }
-            ]
-          }
+          options={[
+            {
+              label: 'Ульяновск',
+              value: 'Uljanovsk',
+            },
+            {
+              label: 'Уфа',
+              value: 'Ufa',
+            },
+            {
+              label: 'Ершова, 52',
+              value: 'hello world',
+            },
+          ]}
         />
+      </div>
+      <div>
+        <div className={styles.mapChoose}>Выбрать на карте:</div>
+        <Map />
+      </div>
     </section>
-  )
+  );
 }
 
 export default Location
