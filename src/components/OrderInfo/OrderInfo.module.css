@@ -1,3 +1,56 @@
 .wrapper {
-  min-width: 300px;
+  min-width: 350px;
+  border-left: 2px solid #eeeeee;
+  padding: 30px 0px 0px 30px;
+}
+
+.optionsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-end;
+  margin-bottom: 30px;
+}
+
+.title {
+  color: var(--primary-black);
+  font-size: 18px;
+  font-weight: 800;
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.optionName {
+  width: 40%;
+  color: var(--primary-black);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.optionSeparator {
+  color: var(--gray-dark);
+  font-weight: 300;
+  font-size: 14px;
+  width: 20%;
+  text-align: center;
+}
+
+.optionValue {
+  text-align: right;
+  width: 40%;
+  color: var(--gray-dark);
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.price { 
+  font-weight: 800;
+}
+
+.priceWrapper {
+  margin-bottom: 30px;
+}
+
+.nextBtn {
+  width: 100%;
+  padding: 13px 0px;
 }

@@ -1,6 +1,12 @@
 .container {
   max-width: 1600px;
-  margin: 0 auto;
+  margin: 0px auto;
+  width: 100%;
+}
+
+.breadcrumpsContainer {
+  max-width: 1600px;
+  margin: 10px auto;
   width: 100%;
 }
 

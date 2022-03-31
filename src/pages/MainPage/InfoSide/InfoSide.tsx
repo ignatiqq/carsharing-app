@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button, Header } from "components";
 import Footer from "./Footer/Footer";
@@ -28,12 +29,14 @@ const InfoSide: React.FC = () => {
             </p>
           </div>
         </div>
-        <Button
-          className={styles.bookButton}
-          apperance="primary"
-          >
-          {t("Reserve")}
-        </Button>
+        <Link to="/order/location">
+          <Button
+            className={styles.bookButton}
+            apperance="primary"
+            >
+            {t("Reserve")}
+          </Button>
+        </Link>
       </div>
       <Footer />
     </div>

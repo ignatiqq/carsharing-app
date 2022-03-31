@@ -10,22 +10,25 @@ const OrderInfo = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div>{t("Your order")}</div>
-            <div>
-                <div>
+            <div className={styles.title}>{t("Your order")}:</div>
+            <div className={styles.optionsWrapper}>
+                <div className={styles.optionName}>
                     {t("Point of issue")}
                 </div>
-                <div>
-
+                <div className={styles.optionSeparator}>
+                    .....................
                 </div>
-                <div>
+                <div className={styles.optionValue}>
                     Ульяновск Нариманова 42
                 </div>
             </div>
-            <div>
-                Цена от до
+            <div className={styles.priceWrapper}>
+                <span className={styles.price}>{t("Price")}</span> от 8000 до 12000 &#8381;
             </div>
-            <Button apperance='primary'>
+            <Button 
+                className={styles.nextBtn}
+                apperance='primary'
+            >
                 Выбрать модель
             </Button>
         </div>

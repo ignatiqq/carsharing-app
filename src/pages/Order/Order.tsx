@@ -37,7 +37,7 @@ const Order = () => {
     <section className={styles.section}>
       <Header />
       <hr></hr>
-      <div className={styles.container}>
+      <div className={styles.breadcrumpsContainer}>
         <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={0} />
       </div>
       <hr></hr>
