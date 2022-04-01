@@ -68,7 +68,7 @@ const Select: React.FC<ISelect> = (
         <input
           name="search-input" 
           type="search" 
-          value={selectDropdownOpened ? optionSearch : selected && selected[optionLabel as keyof IOption]} 
+          value={selectDropdownOpened ? optionSearch : selected ? selected[optionLabel as keyof IOption] : optionSearch} 
           onChange={searchOptionHandler} 
           placeholder={t(searchPlaceholder)}
           className={styles.input}
