@@ -14,7 +14,7 @@ i18n
       escapeValue: false, 
     },
     backend: {
-        loadPath: '/carsharing-app/locales/{{lng}}/{{ns}}.json'
+        loadPath: `${process.env.NODE_ENV === "production" ? process.env.REACT_APP_API_DEPLOY_URL : ""}/carsharing-app/locales/{{lng}}/{{ns}}.json`
     }
   });
 
