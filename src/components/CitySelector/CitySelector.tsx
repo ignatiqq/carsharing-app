@@ -14,8 +14,8 @@ const CitySelector = () => {
   const dispatch = useAppDispatch();
 
   const { allCities, currentCity } = useAppSelector(({location}) => ({
-    allCities: location.city.all.data,
-    currentCity: location.city.current
+    allCities: location.cities.all.data,
+    currentCity: location.cities.current
   }))
 
   const dropdown = useRef<HTMLDivElement | null>(null);

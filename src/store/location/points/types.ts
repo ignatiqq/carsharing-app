@@ -1,11 +1,11 @@
 export interface IPoints {
-    point: IAllPoints
+    points: IAllPoints
 }
 
 export type ICurrentPoint = {
     id: string,
     name: string,
-    adress?: string,
+    address?: string,
     cityId: {
         name: string,
         id: string

@@ -17,9 +17,10 @@ const Location = () => {
     dispatch(getPoints())
   }, [])
 
-  const { allCities, currentCity } = useAppSelector(({location}) => ({
-    allCities: location.city.all.data,
-    currentCity: location.city.current
+  const { allCities, allPoints, currentCity } = useAppSelector(({location}) => ({
+    allCities: location.cities.all.data,
+    allPoints: location.points.data,
+    currentCity: location.cities.current
   }))
 
   return (
@@ -58,7 +59,9 @@ const Location = () => {
       </div>
       <div>
         <div className={styles.mapChoose}>Выбрать на карте:</div>
-        <Map />
+        <Map 
+          points={allPoints}
+        />
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 export interface ICities {
-    city: ICityData
+    cities: ICityData
 }
 
 export type ICurrentCity = {

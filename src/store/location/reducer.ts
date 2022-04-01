@@ -8,7 +8,7 @@ import { createReducer } from '@reduxjs/toolkit'
 interface ILocationReducer extends ICities, IPoints {}
 
 const initialState: ILocationReducer = {
-    city: {
+    cities: {
         current: null,
         all: {
             data: null,
@@ -16,7 +16,7 @@ const initialState: ILocationReducer = {
             error: null
         },
     },
-    point: {
+    points: {
       data: null,
       error: null
     }
@@ -26,20 +26,20 @@ const initialState: ILocationReducer = {
 const location = createReducer(initialState, (builder) => {
   builder
     .addCase(setAllCities, (state, action) => {
-      state.city.all = {
+      state.cities.all = {
           data: action.payload as Array<ICurrentCity>,
           isLoading: false,
           error: null
       }
     })
     .addCase(setCurrentCity, (state, action) => {
-      state.city.current = action.payload
+      state.cities.current = action.payload
     })
     .addCase(setAllCitiesLoading, (state, action) => {
-      state.city.all.isLoading = action.payload
+      state.cities.all.isLoading = action.payload
     })
     .addCase(setAllCitiesLoadingError, (state,action) => {
-        state.city.all = {
+        state.cities.all = {
             data: null,
             isLoading: false,
             error: action.payload
@@ -47,13 +47,13 @@ const location = createReducer(initialState, (builder) => {
         }
     })
     .addCase(setPoints, (state, action) => {
-      state.point = {
+      state.points = {
         data: action.payload,
         error: null
       }
     })
     .addCase(setPointsRequestError, (state,action) => {
-      state.point = {
+      state.points = {
         data: null,
         error: action.payload
       }
