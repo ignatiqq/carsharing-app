@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { IOption, ISelect } from "./types";
 import styles from "./Select.module.css";
 
+
 const Select: React.FC<ISelect> = (
   {
     options,
@@ -19,7 +20,7 @@ const Select: React.FC<ISelect> = (
 
   const [optionLabel, setOptionLabel] = useState<string>(customLabel);
   const [optionValue, setOptionValue] = useState<string>(customValue);
-  const [optionsToShow, setOptionsToShow] = useState<Array<IOption> | null>(null); 
+  const [optionsToShow, setOptionsToShow] = useState<any>(null); 
   const [optionSearch, setOptionSearch] = useState<string>("");
   const [selectDropdownOpened, setSelectDropdownOpened] = useState<boolean>(false);
 
@@ -79,10 +80,10 @@ const Select: React.FC<ISelect> = (
         })}>
           {
             optionsToShow && optionsToShow.length > 0 ?
-            optionsToShow.map(item => (
+            optionsToShow.map((item: IOption) => (  
               <button 
                 className={classNames(styles.option, {
-                  [styles.optionActive]: item[optionValue as keyof IOption] === selected[optionValue as keyof IOption]
+                  [styles.optionActive]: item[optionValue as keyof IOption] === selected && selected[optionValue as keyof IOption]
                 })} 
                 onClick={() => onClick(item)}
                 key={item[optionValue as keyof IOption]} 

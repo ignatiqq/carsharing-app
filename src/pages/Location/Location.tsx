@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
 import { useDispatch } from 'react-redux';
 import { getPoints } from "store/location/points/actions";
+import { ICurrentCity } from 'store/location/cities/types';
 
 const Location = () => {
   
@@ -28,7 +29,7 @@ const Location = () => {
       <div className={styles.selectsWrapper}>
         <Select
           label={t('City')}
-          selected={currentCity as any}
+          selected={currentCity}
           options={allCities as any}
           customLabel="name"
           customValue="id"
@@ -36,25 +37,11 @@ const Location = () => {
         />
         <Select
           label={t('Point of issue')}
-          selected={{
-            label: 'Ершова, 52',
-            value: 'hello world',
-          }}
+          customLabel="address"
+          customValue="id"
+          options={allPoints as any}
+          selected={null}
           onClick={(item) => console.log(item)}
-          options={[
-            {
-              label: 'Ульяновск',
-              value: 'Uljanovsk',
-            },
-            {
-              label: 'Уфа',
-              value: 'Ufa',
-            },
-            {
-              label: 'Ершова, 52',
-              value: 'hello world',
-            },
-          ]}
         />
       </div>
       <div>

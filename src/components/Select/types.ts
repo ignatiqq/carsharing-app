@@ -7,7 +7,7 @@ export interface ISelect {
     options: Array<IOption>,
     searchPlaceholder?: string,
     label: string,
-    selected: IOption,
+    selected: any,
     onClick: (item: IOption) => void,
     customLabel?: string,
     customValue?: string
