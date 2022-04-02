@@ -1,5 +1,5 @@
 import type { ICities, ICurrentCity } from "./cities/types";
-import type { IPoints, ICurrentPoint } from "./points/types";
+import type { IPoints } from "./points/types";
 import { setAllCities, setCurrentCity, setAllCitiesLoading, setAllCitiesLoadingError } from "./cities/actions";
 import { setPoints, setPointsRequestError } from "./points/actions";
 

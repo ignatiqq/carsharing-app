@@ -9,22 +9,28 @@ import type { ICurrentPoint } from "store/location/points/types"
 interface IMap {
     points: Array<ICurrentPoint> | null,
     currentCity?: ICurrentCity,
-    currentPoint?: ICurrentPoint
+    currentPoint?: ICurrentPoint,
+    pointClickHandler: (item: IPointData) => void
 }
 
-interface IPointsData {
+interface IPointData {
     location: Array<number>,
     address: string
 }
 
-const Map: React.FC<IMap> = ({ points, currentCity, currentPoint }) => {
+interface IResponsePlacemarkData {
+    location: YMapsApi,
+    address: string,
+    city: string
+}
+
+const Map: React.FC<IMap> = ({ points, currentCity, currentPoint, pointClickHandler }) => {
     const [ymap, setYMap] = useState<YMapsApi | null>(null);
-    const [pointsData, setPointsData] = useState<IPointsData[] | null>(null);
+    const [pointsData, setPointsData] = useState<IPointData[]>([]);
     const [locationCoordinates, setLocationCoordinates] = useState<Array<number> | null>(null);
 
     useEffect(() => {
         if(points && ymap) {
-            const allRequests: Array<YMapsApi> = [];
             points.map((item) => {
                 if(item.cityId && item.address) {
                     getGeocodeByName({
@@ -32,8 +38,8 @@ const Map: React.FC<IMap> = ({ points, currentCity, currentPoint }) => {
                         address: item.address,
                         ymap: ymap
                     })
-                    .then(res => allRequests.push({request: res, address: item.address}))
-                    .then(() => setPlacemarksToState(allRequests))
+                    .then(res => ({location: res, address: item.address, city: item.cityId.id}))
+                    .then(item => setPlacemarksToState(item as IResponsePlacemarkData))
                 }
             })
         }
@@ -48,16 +54,14 @@ const Map: React.FC<IMap> = ({ points, currentCity, currentPoint }) => {
         }
     }, [ymap, currentCity, currentPoint])
 
-    const setLocationCoordinatesHandler = (item: IPointsData) => {
-        setLocationCoordinates(item.location)
+    const setLocationCoordinatesHandler = (item: IPointData) => {
+        setLocationCoordinates(item.location);
+        pointClickHandler(item)
     }
 
-    const setPlacemarksToState = (allRequests: Array<YMapsApi>) => {
-        Promise.allSettled(allRequests)
-                .then(res => {
-                    const placemarks = res.map((item) => item.status === "fulfilled" && {location: getYmapCoordinates(item.value.request), address: item.value.address}) as Array<IPointsData>;
-                    setPointsData(placemarks)
-                })
+    const setPlacemarksToState = (request: IResponsePlacemarkData) => {
+        const placemarks = {...request, location: getYmapCoordinates(request.location)};
+        setPointsData(prev => [...prev, placemarks])
     }
 
     return (
@@ -75,7 +79,7 @@ const Map: React.FC<IMap> = ({ points, currentCity, currentPoint }) => {
                 onLoad={(ymaps) => setYMap(ymaps)}
             >
                 {
-                    pointsData &&
+                    pointsData && pointsData.length > 0 &&
                     pointsData.map((item) => (
                         <Placemark
                             options={{ preset: 'islands#circleIcon', iconColor: '#0EC261' }}

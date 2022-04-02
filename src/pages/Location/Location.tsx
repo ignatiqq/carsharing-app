@@ -1,12 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useAppSelector } from 'store/hooks';
 
 import { Select, Map } from "components";
 import styles from "./Location.module.css";
-import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'store/hooks';
-import { useDispatch } from 'react-redux';
 import { getPoints } from "store/location/points/actions";
-import { ICurrentCity } from 'store/location/cities/types';
+import { setCurrentCity } from 'store/location/cities/actions';
 
 const Location = () => {
   
@@ -23,6 +23,14 @@ const Location = () => {
     allPoints: location.points.data,
     currentCity: location.cities.current
   }))
+
+  const setCurrentCityHandler = () => {
+
+  }
+
+  const setCurrentPointHandler = () => {
+    
+  }
 
   return (
     <section className={styles.wrapper}>
@@ -48,6 +56,7 @@ const Location = () => {
         <div className={styles.mapChoose}>Выбрать на карте:</div>
         <Map 
           points={allPoints}
+          pointClickHandler={(item) => console.log(item)}
         />
       </div>
     </section>
