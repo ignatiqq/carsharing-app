@@ -24,14 +24,6 @@ const Location = () => {
     currentCity: location.cities.current
   }))
 
-  const setCurrentCityHandler = () => {
-
-  }
-
-  const setCurrentPointHandler = () => {
-    
-  }
-
   return (
     <section className={styles.wrapper}>
       <div className={styles.selectsWrapper}>
