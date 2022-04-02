@@ -2,6 +2,7 @@
   max-width: 1600px;
   margin: 0px auto;
   width: 100%;
+  padding: 0px 15px;
 }
 
 .breadcrumpsContainer {
@@ -16,4 +17,10 @@
 
 .contentWrapper {
   display: flex;
+}
+
+@media screen and (max-width: 1090px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
 }

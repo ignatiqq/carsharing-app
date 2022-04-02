@@ -10,7 +10,8 @@ interface IMap {
     points: Array<ICurrentPoint> | null,
     currentCity?: ICurrentCity,
     currentPoint?: ICurrentPoint,
-    pointClickHandler: (item: IPointData) => void
+    pointClickHandler: (item: IPointData) => void,
+    className: string
 }
 
 interface IPointData {
@@ -24,7 +25,14 @@ interface IResponsePlacemarkData {
     city: string
 }
 
-const Map: React.FC<IMap> = ({ points, currentCity, currentPoint, pointClickHandler }) => {
+const Map: React.FC<IMap> = (
+    { 
+        points, 
+        currentCity, 
+        currentPoint, 
+        pointClickHandler, 
+        className 
+    }) => {
     const [ymap, setYMap] = useState<YMapsApi | null>(null);
     const [pointsData, setPointsData] = useState<IPointData[]>([]);
     const [locationCoordinates, setLocationCoordinates] = useState<Array<number> | null>(null);
@@ -71,11 +79,9 @@ const Map: React.FC<IMap> = ({ points, currentCity, currentPoint, pointClickHand
             apikey: `${process.env.REACT_APP_MAPS_API_KEY}`,
         }}>
             <YMap
-                height={'350px'}
-                width={'70%'}
+                className={className}
                 state={{center: locationCoordinates || [54.31228, 48.395406], zoom: 13 }}
                 modules={['geocode']}
-                defaultState={{ center: [55.75, 37.57], zoom: 9 }}
                 onLoad={(ymaps) => setYMap(ymaps)}
             >
                 {

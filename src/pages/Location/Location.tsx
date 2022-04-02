@@ -49,6 +49,7 @@ const Location = () => {
         <Map 
           points={allPoints}
           pointClickHandler={(item) => console.log(item)}
+          className={styles.mapStyles}
         />
       </div>
     </section>

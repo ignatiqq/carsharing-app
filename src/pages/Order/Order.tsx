@@ -14,7 +14,7 @@ const Order = () => {
     <section className={styles.section}>
       <Header />
       <hr></hr>
-      <div className={styles.breadcrumpsContainer}>
+      <div className={classNames(styles.breadcrumpsContainer, styles.container)}>
         <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={0} />
       </div>
       <hr></hr>

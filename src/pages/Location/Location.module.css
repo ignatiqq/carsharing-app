@@ -9,3 +9,14 @@
 .mapChoose {
   margin-bottom: 20px;
 }
+
+.mapStyles {
+  width: 80%;
+  height: 350px;
+}
+
+@media screen and (max-width: 1090px) {
+  .mapStyles {
+    width: 100%;
+  }
+}

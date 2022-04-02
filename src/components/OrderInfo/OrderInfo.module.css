@@ -54,3 +54,11 @@
   width: 100%;
   padding: 13px 0px;
 }
+
+@media screen and (max-width: 1090px) {
+  .wrapper {
+    border-top: 2px solid #eeeeee;
+    border-left: none;
+    padding: 30px 0px 20px 0px;
+  }
+}
