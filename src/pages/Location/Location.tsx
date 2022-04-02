@@ -7,6 +7,8 @@ import { Select, Map } from "components";
 import styles from "./Location.module.css";
 import { getPoints } from "store/location/points/actions";
 import { setCurrentCity } from 'store/location/cities/actions';
+import { ICurrentCity } from 'store/location/cities/types';
+import { getPointsByCityId } from 'utils/pointsHelper';
 
 const Location = () => {
   
@@ -22,7 +24,11 @@ const Location = () => {
     allCities: location.cities.all.data,
     allPoints: location.points.data,
     currentCity: location.cities.current
-  }))
+  })) 
+
+  const selectCityHandler = (item: ICurrentCity) => {
+    dispatch(setCurrentCity(item))
+  } 
 
   return (
     <section className={styles.wrapper}>
@@ -33,20 +39,21 @@ const Location = () => {
           options={allCities as any}
           customLabel="name"
           customValue="id"
-          onClick={(item) => console.log(item)}
+          clickHandler={selectCityHandler}
         />
         <Select
           label={t('Point of issue')}
           customLabel="address"
           customValue="id"
-          options={allPoints as any}
+          options={allPoints && currentCity && getPointsByCityId(allPoints, currentCity.id) as any}
           selected={null}
-          onClick={(item) => console.log(item)}
+          clickHandler={(item) => console.log(item)}
         />
       </div>
       <div>
         <div className={styles.mapChoose}>Выбрать на карте:</div>
         <Map 
+          currentCity={currentCity}
           points={allPoints}
           pointClickHandler={(item) => console.log(item)}
           className={styles.mapStyles}

@@ -8,7 +8,7 @@ import type { ICurrentPoint } from "store/location/points/types"
 
 interface IMap {
     points: Array<ICurrentPoint> | null,
-    currentCity?: ICurrentCity,
+    currentCity?: ICurrentCity | null,
     currentPoint?: ICurrentPoint,
     pointClickHandler: (item: IPointData) => void,
     className: string
@@ -56,7 +56,7 @@ const Map: React.FC<IMap> = (
     useEffect(() => {
         if(ymap && (currentCity || currentPoint)) {
             (async function() {
-                const res = await ymap.geocode(`${currentCity}, ${currentPoint}`)
+                const res = await ymap.geocode(`${currentCity && currentCity.name}, ${currentPoint && currentPoint.address}`)
                 setLocationCoordinates(getYmapCoordinates(res))
             })()
         }
