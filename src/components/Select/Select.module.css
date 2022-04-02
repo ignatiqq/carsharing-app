@@ -39,7 +39,7 @@
   -webkit-appearance: none;
   width: 8px;
   height: 8px;
-  background: url('../../assets/images/CloseIcon.svg');
+  background: url('../../assets/icons/CloseIcon.svg');
   margin-right: 6px;
   margin-bottom: 2px;
   cursor: pointer;

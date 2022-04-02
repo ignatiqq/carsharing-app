@@ -35,7 +35,7 @@
 }
 
 .buttonMenu {
-  z-index: 30;
+  z-index: 9999;
 }
 
 @media (min-width: 640px) {

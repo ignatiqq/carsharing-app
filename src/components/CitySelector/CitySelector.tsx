@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from 'store/hooks';
 
 import { getAllCities, setCurrentCity } from 'store/location/cities/actions';
 import type { ICurrentCity } from "store/location/cities/types";
-import marker from "assets/images/marker.svg";
+import marker from "assets/icons/marker.svg";
 import styles from "./CitySelector.module.css";
 import { Button, Loader } from 'components';
 

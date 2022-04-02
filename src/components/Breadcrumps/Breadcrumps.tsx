@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import type { IUseBreadcumps, IRoute } from "./types";
 import styles from "./Breadcumps.module.css";
-import { ReactComponent as Arrow } from "assets/images/Arrow.svg";
+import { ReactComponent as Arrow } from "assets/icons/Arrow.svg";
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 

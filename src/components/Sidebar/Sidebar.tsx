@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { ReactComponent as MenuBtn } from "assets/images/menuBtn.svg";
+import { ReactComponent as MenuBtn } from "assets/icons/menuBtn.svg";
+import { ReactComponent as XIcon } from "assets/icons/XIcon.svg";
 import { Button, LanguageSelector } from 'components';
 import SidebarNav from '../SidebarNavigation/SidebarNav';
 import { languages } from 'components/LanguageSelector/languages';
@@ -36,9 +37,15 @@ const Sidebar = () => {
       <div className={styles.sidebar}>
           <div className={styles.wrapper}>
             <Button onClick={sidebarOpenHanlder} className={styles.buttonMenu}>
-              <MenuBtn className={classNames(styles.menuLight, {
-                [styles.menuDark]: !sidebarOpen
-              })} />
+              {
+                sidebarOpen 
+                ?
+                <XIcon />
+                :
+                <MenuBtn className={classNames(styles.menuLight, {
+                  [styles.menuDark]: !sidebarOpen
+                })} />
+              }
             </Button>
             <LanguageSelector languages={languages} className={classNames(styles.language, {
               [styles.hidden]: !sidebarOpen,

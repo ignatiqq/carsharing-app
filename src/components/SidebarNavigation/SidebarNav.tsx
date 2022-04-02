@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 import classNames from 'classnames';
 
-import { ReactComponent as TelegramIcon } from "assets/images/TelegramIcon.svg";
-import { ReactComponent as InstagramIcon } from "assets/images/InstagramIcon.svg";
-import { ReactComponent as FacebookIcon } from "assets/images/FacebookIcon.svg";
+import { ReactComponent as TelegramIcon } from "assets/icons/TelegramIcon.svg";
 import { pagesLink } from './links';
 import styles from "./SidebarNav.module.css";
 import { useTranslation } from 'react-i18next';
