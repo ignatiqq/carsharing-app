@@ -55,7 +55,10 @@ const Map: React.FC<IMap> = (
 
     useEffect(() => {
         if(ymap && currentCity) {
-            const getAvaliablePoint = currentPoint ? currentPoint.address : points && points.length ? getPointsByCityId(points, currentCity.id)[0].address : ""
+            const getAvaliablePoint = currentPoint ? currentPoint.address
+            : points && points.length ? 
+            getPointsByCityId(points, currentCity.id)[0] && getPointsByCityId(points, currentCity.id)[0].address 
+            : "";
             getAndSetCurrentCoordinates(`${currentCity && currentCity.name}, ${getAvaliablePoint}`);
         }
     }, [ymap, currentCity, currentPoint])

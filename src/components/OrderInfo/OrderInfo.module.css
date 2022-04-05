@@ -55,6 +55,13 @@
   padding: 13px 0px;
 }
 
+.orderInfoItemWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 @media screen and (max-width: 1090px) {
   .wrapper {
     border-top: 2px solid #eeeeee;

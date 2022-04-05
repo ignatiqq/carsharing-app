@@ -5,6 +5,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
 
+import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
 import type { IOrder } from 'store/order/types';
 import styles from "./OrderInfo.module.css";
 import classNames from 'classnames';
@@ -18,6 +19,14 @@ const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
                 name: "Choose model"
             }
         }
+
+        case "/order/model": {
+            return {
+                nextPagePathname: "/order/additionality",
+                disabled: true,
+                name: "Additionality"
+            }
+        }
     }
 }
 
@@ -29,6 +38,7 @@ interface IButtonOptions {
 
 const OrderInfo = () => {
     const [buttonOptions, setButtonOptions] = useState<IButtonOptions | null | undefined>(null);
+    const [orderInfo, setOrderInfo] = useState<Array<IOrderInfoData> | null>(null);
 
     const {t} = useTranslation();
     const location = useLocation();
@@ -38,36 +48,46 @@ const OrderInfo = () => {
     }))
 
     useEffect(() => {
-        setButtonOptions(getCurrentButtonOptions(location.pathname, order))
+        setButtonOptions(getCurrentButtonOptions(location.pathname, order));
+        setOrderInfo(getOrderInfoData(order));
     }, [location.pathname, order])
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>{t("Your order")}:</div>
             <div className={styles.optionsWrapper}>
-                <div className={styles.optionName}>
-                    {t("Point of issue")}
-                </div>
-                <div className={styles.optionSeparator}>
-                    .....................
-                </div>
-                <div className={styles.optionValue}>
-                    Ульяновск Нариманова 42
-                </div>
+                {
+                    orderInfo && orderInfo.length > 0 ?
+                    orderInfo.map(item => (
+                        <div className={styles.orderInfoItemWrapper} key={item.label}>
+                            <div className={styles.optionName}>
+                                {t(item.label)}
+                            </div>
+                            <div className={styles.optionSeparator}>
+                                ........................
+                            </div>
+                            <div className={styles.optionValue}>
+                                {item.value}
+                            </div>
+                        </div>
+                    ))
+                    :
+                    <div>Здесь будут ваши данные о заказе</div>
+                }
             </div>
             <div className={styles.priceWrapper}>
                 <span className={styles.price}>{t("Price")}</span> от 8000 до 12000 &#8381;
             </div>
+            <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
                 <Button 
                     disabled={buttonOptions?.disabled}
                     className={classNames(styles.nextBtn, {
                     })}
                     apperance='primary'
                 >
-                    <Link style={{color: "#FFFFFF"}} to={buttonOptions ? buttonOptions.nextPagePathname : location.pathname}>
                         {buttonOptions && t(buttonOptions.name)}
-                    </Link>
                 </Button>
+            </Link>
         </div>
     )
 }
