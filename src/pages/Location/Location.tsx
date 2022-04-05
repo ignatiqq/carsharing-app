@@ -25,7 +25,7 @@ const Location = () => {
     allCities: location.cities.all.data,
     allPoints: location.points.data,
     currentCity: location.cities.current,
-    currentPoint: order.cityId
+    currentPoint: order.pointId
   })) 
 
   useEffect(() => {
@@ -39,6 +39,13 @@ const Location = () => {
       dispatch(orderSetPointId(null));
     }
   }, [currentCity])
+
+  useEffect(() => {
+    if(currentPoint) {
+      setSelectedPoint({id: currentPoint.id, address: currentPoint.value} as ICurrentPoint);
+      dispatch(orderSetPointId(currentPoint))
+    }
+  }, [currentPoint])
 
   const selectCityHandler = (item: ICurrentCity) => {
     dispatch(setCurrentCity(item));
