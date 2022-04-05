@@ -19,7 +19,7 @@
 }
 
 .btnDisabled {
-  background: var(--gray-lught);
+  background: var(--gray-light);
   pointer-events: none;
 }
 

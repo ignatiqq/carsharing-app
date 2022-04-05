@@ -5,8 +5,8 @@ export interface IPoints {
 export type ICurrentPoint = {
     id: string,
     name: string,
-    address?: string,
-    cityId: {
+    address: string,
+    cityId?: {
         name: string,
         id: string
     }

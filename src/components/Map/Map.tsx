@@ -3,26 +3,26 @@ import { YMaps, Map as YMap, Placemark } from 'react-yandex-maps';
 import type { YMapsApi } from "react-yandex-maps";
 
 import { getYmapCoordinates, getGeocodeByName } from "utils/yMapHelper";
+import { getPointsByCityId } from 'utils/pointsHelper';
 import type { ICurrentCity } from "store/location/cities/types";
 import type { ICurrentPoint } from "store/location/points/types"
 
 interface IMap {
     points: Array<ICurrentPoint> | null,
     currentCity?: ICurrentCity | null,
-    currentPoint?: ICurrentPoint,
-    pointClickHandler: (item: IPointData) => void,
+    currentPoint?: ICurrentPoint | null,
+    pointClickHandler: (item: ICurrentPoint) => void,
     className: string
 }
 
-interface IPointData {
+export interface IPointData {
     location: Array<number>,
-    address: string
-}
-
-interface IResponsePlacemarkData {
-    location: YMapsApi,
     address: string,
     city: string
+}
+
+interface IResponsePlacemarkData extends ICurrentPoint {
+    location: Array<number>
 }
 
 const Map: React.FC<IMap> = (
@@ -34,7 +34,7 @@ const Map: React.FC<IMap> = (
         className 
     }) => {
     const [ymap, setYMap] = useState<YMapsApi | null>(null);
-    const [pointsData, setPointsData] = useState<IPointData[]>([]);
+    const [pointsData, setPointsData] = useState<IResponsePlacemarkData[]>([]);
     const [locationCoordinates, setLocationCoordinates] = useState<Array<number> | null>(null);
 
     useEffect(() => {
@@ -46,7 +46,7 @@ const Map: React.FC<IMap> = (
                         address: item.address,
                         ymap: ymap
                     })
-                    .then(res => ({location: res, address: item.address, city: item.cityId.id}))
+                    .then(res => ({location: res, address: item.address, cityId: item.cityId, name: item.name, id: item.id}))
                     .then(item => setPlacemarksToState(item as IResponsePlacemarkData))
                 }
             })
@@ -54,22 +54,26 @@ const Map: React.FC<IMap> = (
     }, [points, ymap])
 
     useEffect(() => {
-        if(ymap && (currentCity || currentPoint)) {
-            (async function() {
-                const res = await ymap.geocode(`${currentCity && currentCity.name}, ${currentPoint && currentPoint.address}`)
-                setLocationCoordinates(getYmapCoordinates(res))
-            })()
+        if(ymap && currentCity) {
+            const getAvaliablePoint = currentPoint ? currentPoint.address : points && points.length ? getPointsByCityId(points, currentCity.id)[0].address : ""
+            getAndSetCurrentCoordinates(`${currentCity && currentCity.name}, ${getAvaliablePoint}`);
         }
     }, [ymap, currentCity, currentPoint])
 
-    const setLocationCoordinatesHandler = (item: IPointData) => {
+
+    const setLocationCoordinatesHandler = (item: IResponsePlacemarkData) => {
         setLocationCoordinates(item.location);
-        pointClickHandler(item)
+        pointClickHandler({address: item.address, cityId: item.cityId, name: item.name, id: item.id});
+    }
+
+    const getAndSetCurrentCoordinates = async (address: string) => {
+        const res = await ymap!.geocode(address);
+        setLocationCoordinates(getYmapCoordinates(res));
     }
 
     const setPlacemarksToState = (request: IResponsePlacemarkData) => {
         const placemarks = {...request, location: getYmapCoordinates(request.location)};
-        setPointsData(prev => [...prev, placemarks])
+        setPointsData(prev => [...prev, placemarks]);
     }
 
     return (
@@ -80,7 +84,7 @@ const Map: React.FC<IMap> = (
         }}>
             <YMap
                 className={className}
-                state={{center: locationCoordinates || [54.31228, 48.395406], zoom: 13 }}
+                state={{center: locationCoordinates || [54.31228, 48.395406], zoom: 15 }}
                 modules={['geocode']}
                 onLoad={(ymaps) => setYMap(ymaps)}
             >

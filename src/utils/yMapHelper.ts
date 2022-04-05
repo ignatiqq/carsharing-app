@@ -11,5 +11,5 @@ interface IGetGeocodeByNameArguments {
 }
 
 export async function getGeocodeByName ({city, address, ymap}: IGetGeocodeByNameArguments) {
-    return ymap.geocode(city, address)
+    return ymap.geocode(`${city}, ${address}`)
 }

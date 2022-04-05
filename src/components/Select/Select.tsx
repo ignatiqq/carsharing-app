@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import type { IOption, ISelect } from "./types";
 import styles from "./Select.module.css";
-import { ICurrentCity } from 'store/location/cities/types';
 
 
 const Select: React.FC<ISelect> = (
@@ -62,7 +61,7 @@ const Select: React.FC<ISelect> = (
     setOptionSearch("");
   }
 
-  const selectCutyHandler = (item: ICurrentCity) => {
+  const selectCutyHandler = (item: IOption) => {
     clickHandler(item)
     setOptionSearch("");
     setSelectDropdownOpened(false);
@@ -87,16 +86,16 @@ const Select: React.FC<ISelect> = (
         })}>
           {
             optionsToShow && optionsToShow.length > 0 ?
-            optionsToShow.map((item: ICurrentCity) => (  
+            optionsToShow.map((item: IOption) => (  
               <button 
                 className={classNames(styles.option, {
-                  [styles.optionActive]: item[optionValue as keyof ICurrentCity] === selected && selected[optionValue as keyof ICurrentCity]
+                  [styles.optionActive]: item[optionValue as keyof IOption] === selected && selected[optionValue as keyof IOption]
                 })} 
                 onMouseDown={() => selectCutyHandler(item)}
-                key={item[optionValue as keyof ICurrentCity]} 
-                value={item[optionValue as keyof ICurrentCity]}
+                key={item[optionValue as keyof IOption]} 
+                value={item[optionValue as keyof IOption]}
               >
-                {item[optionLabel as keyof ICurrentCity]}
+                {item[optionLabel as keyof IOption]}
               </button>
             ))
             :

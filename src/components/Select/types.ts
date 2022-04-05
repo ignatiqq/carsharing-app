@@ -10,7 +10,7 @@ export interface ISelect {
     searchPlaceholder?: string,
     label: string,
     selected: any,
-    clickHandler: (item: ICurrentCity) => void,
+    clickHandler: (item: any) => void,
     customLabel?: string,
     customValue?: string
 }
