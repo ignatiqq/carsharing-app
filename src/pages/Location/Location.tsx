@@ -14,9 +14,6 @@ import { getPointsByCityId } from 'utils/pointsHelper';
 
 const Location = () => {
   
-  const [selectedCity, setSelectedCity] = useState<ICurrentCity | null>(null);
-  const [selectedPoint, setSelectedPoint] = useState<ICurrentPoint | null>(null);
-
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -33,26 +30,19 @@ const Location = () => {
   }, [])
 
   useEffect(() => {
-    if(currentCity) {
-      setSelectedCity(currentCity);
-      setSelectedPoint(null);
-      dispatch(orderSetPointId(null));
+    if(currentCity && allPoints && currentPoint) {
+      const pointsForCity = getPointsByCityId(allPoints, currentCity.id);
+      if(pointsForCity.filter(item => item.id === currentPoint.id).length <= 0) {
+        dispatch(orderSetPointId(null));
+      }
     }
   }, [currentCity])
-
-  useEffect(() => {
-    if(currentPoint) {
-      setSelectedPoint({id: currentPoint.id, address: currentPoint.value} as ICurrentPoint);
-      dispatch(orderSetPointId(currentPoint))
-    }
-  }, [currentPoint])
 
   const selectCityHandler = (item: ICurrentCity) => {
     dispatch(setCurrentCity(item));
   } 
 
   const selectPointHandler = (item: ICurrentPoint) => {
-    setSelectedPoint(item);
     dispatch(orderSetPointId({id: item.id, value: item.address}))
   }
 
@@ -61,8 +51,8 @@ const Location = () => {
       <div className={styles.selectsWrapper}>
         <Select
           label={t('City')}
-          selected={selectedCity}
-          options={allCities as any}
+          selected={currentCity}
+          options={allCities}
           customLabel="name"
           customValue="id"
           clickHandler={selectCityHandler}
@@ -71,16 +61,16 @@ const Location = () => {
           label={t('Point of issue')}
           customLabel="address"
           customValue="id"
-          options={allPoints && currentCity && getPointsByCityId(allPoints, currentCity.id) as any}
-          selected={selectedPoint}
+          options={allPoints && currentCity && getPointsByCityId(allPoints, currentCity.id)}
+          selected={currentPoint ? {...currentPoint, address: currentPoint?.value} : null}
           clickHandler={selectPointHandler}
         />
       </div>
       <div>
         <div className={styles.mapChoose}>Выбрать на карте:</div>
         <Map 
-          currentCity={selectedCity}
-          currentPoint={selectedPoint}
+          currentCity={currentCity}
+          currentPoint={currentPoint ? {...currentPoint, address: currentPoint!.value, id: currentPoint!.id} : null}
           points={allPoints}
           pointClickHandler={selectPointHandler}
           className={styles.mapStyles}

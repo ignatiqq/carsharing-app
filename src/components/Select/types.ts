@@ -1,12 +1,10 @@
-import { ICurrentCity } from "store/location/cities/types"
-
 export interface IOption {
     label: string,
     value: string
   }
   
 export interface ISelect {
-    options: Array<IOption>,
+    options: Array<any> | null,
     searchPlaceholder?: string,
     label: string,
     selected: any,
