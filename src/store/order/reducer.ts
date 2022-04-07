@@ -1,10 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
 import type { IOrder } from "./types";
 
-import { orderSetCityId, orderSetPointId } from "./actions";
+import { orderSetCityId, orderSetPointId, setOrderData } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
+import { orderInfo } from "constants/localStorageKeys";
 
-const initialState: IOrder = {
+const orderFormLocalStorage =  JSON.parse(localStorage.getItem(orderInfo) as string);
+
+const initialState: IOrder = orderFormLocalStorage ? orderFormLocalStorage : {
   orderStatusId: null,
   cityId: null,
   pointId: null,
@@ -21,6 +24,9 @@ const initialState: IOrder = {
 
 const order = createReducer(initialState, (builder) => {
     builder
+        .addCase(setOrderData, (state, action) => {
+            state = action.payload
+        })
         .addCase(orderSetCityId, (state, action) => {
             state.cityId = action.payload
         })

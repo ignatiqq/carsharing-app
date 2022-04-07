@@ -7,6 +7,7 @@ import type { ICurrentCity } from "store/location/cities/types";
 import marker from "assets/icons/marker.svg";
 import styles from "./CitySelector.module.css";
 import { Button, Loader } from 'components';
+import { orderInfo } from 'constants/localStorageKeys';
 
 const CitySelector = () => {
   const [dropdownOpened, setDropdownOpened] = useState(false);
@@ -40,10 +41,12 @@ const CitySelector = () => {
   useEffect(() => {
     if(allCities && allCities.length > 0 && !currentCity) {
       const cityFormLocalStorage = localStorage.getItem("city");
+      const orderDataFromLocalStorage = localStorage.getItem(orderInfo);
+      const parsedOrderDataFromLocalStorage = orderDataFromLocalStorage && JSON.parse(orderDataFromLocalStorage as string);
       if(cityFormLocalStorage) {
         const city = allCities.filter(item => item.id === cityFormLocalStorage)[0];
         dispatch(setCurrentCity(city))
-      } else {
+      } else if(!parsedOrderDataFromLocalStorage.cityId) {
         dispatch(setCurrentCity(allCities[0]))
       }
     }
