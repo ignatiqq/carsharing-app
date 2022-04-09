@@ -66,9 +66,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
           languages.map((item) => (
             <Button
               onClick={() => changeLanguageHandler(item)}
-              className={classNames(styles.languageBtn, {
-                [styles.activeLanguageBtn]: selectedLanguage === item.label
-              })}
+              className={classNames(styles.languageBtn)}
               key={item.id}>
               <span>{item.label}</span>
               {
@@ -82,7 +80,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       </div>
       <div onClick={openPopupHandler} className={classNames(styles.wrapper)}>
         <Button className={styles.button}>
-          {selectedLanguage && selectedLanguage}
+          {selectedLanguage ? selectedLanguage: i18n.resolvedLanguage.toUpperCase()}
         </Button>
       </div>
     </div>

@@ -7,7 +7,6 @@ import type { IComponent } from "./withCitySelectorLogic";
 import withCitySelectorLogic from './withCitySelectorLogic';
 
 const CitySelector = ({currentCity}: IComponent) => {
-  console.log(currentCity)
 
   return (
       <div className={styles.currentCity}>
