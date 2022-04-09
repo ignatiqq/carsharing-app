@@ -1,7 +1,7 @@
 export interface IOrder {
-    orderStatusId: IOderObject | null,
-    cityId: IOderObject | null,
-    pointId: IOderObject | null,
+    orderStatusId: IOrderObject | null,
+    cityId: IOrderObject | null,
+    pointId: IOrderObject | null,
     carId: object | null,
     color: string | null,
     dateFrom: number | null,
@@ -13,7 +13,7 @@ export interface IOrder {
     isRightWheel: boolean
 }
 
-export interface IOderObject {
+export interface IOrderObject {
     id: string,
     value: string
 }

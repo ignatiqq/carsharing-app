@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { Header, Breadcrumps, OrderInfo } from 'components';
 import { routes } from 'routes/order';
 import styles from "./Order.module.css";
+import { useAppSelector } from 'store/hooks';
+import { orderInfo } from 'constants/localStorageKeys';
+import isEqual from 'lodash.isequal';
 
 
 const Order = () => {
 
   const { pathname } = useLocation();
+
+  const { order } = useAppSelector(({order}) => ({
+    order: order
+  }))
+
+  useEffect(() => {
+    localStorage.setItem(orderInfo, JSON.stringify(order));
+  }, [order])
 
   return (
     <section className={styles.section}>
