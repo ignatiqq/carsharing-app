@@ -17,7 +17,7 @@ const withCitySelectorLogic = (Component: React.FC<IComponent>) => () => {
     const { currentCity, allCities } = useAppSelector(({location, order}) => ({
         currentCity: location.cities.current,
         allCities: location.cities.all,
-        currentOrderCity: order.cityId
+        currentOrderCity: order.data.cityId
     }))
 
     useEffect(() => {

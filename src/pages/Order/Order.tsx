@@ -19,7 +19,7 @@ const Order = () => {
   }))
 
   useEffect(() => {
-    localStorage.setItem(orderInfo, JSON.stringify(order));
+    localStorage.setItem(orderInfo, JSON.stringify(order.data));
   }, [order])
 
   return (

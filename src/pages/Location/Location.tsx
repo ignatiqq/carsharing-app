@@ -22,7 +22,7 @@ const Location = () => {
     allCities: location.cities.all.data,
     allPoints: location.points.data,
     currentCity: location.cities.current,
-    currentPoint: order.pointId,
+    currentPoint: order.data.pointId,
     order: order
   })) 
 

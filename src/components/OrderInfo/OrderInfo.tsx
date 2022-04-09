@@ -15,7 +15,7 @@ const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
         case "/order/location": {
             return {
                 nextPagePathname: "/order/model",
-                disabled: !order.cityId || !order.pointId,
+                disabled: !order.data.cityId || !order.data.pointId,
                 name: "Choose model"
             }
         }
@@ -49,7 +49,7 @@ const OrderInfo = () => {
 
     useEffect(() => {
         setButtonOptions(getCurrentButtonOptions(location.pathname, order));
-        setOrderInfo(getOrderInfoData(order));
+        setOrderInfo(getOrderInfoData(order.data));
     }, [location.pathname, order])
 
     return (

@@ -1,11 +1,11 @@
-import { IOrder } from "store/order/types";
+import type { IOrderData } from "store/order/types";
 
 export interface IOrderInfoData {
     label: string,
     value: string | number | boolean
 }
 
-export const getOrderInfoData = (order: IOrder): Array<IOrderInfoData> => {
+export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
     const { 
         pointId,
         cityId,

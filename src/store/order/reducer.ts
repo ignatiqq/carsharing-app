@@ -7,19 +7,21 @@ import { orderInfo } from "constants/localStorageKeys";
 
 const orderFormLocalStorage =  JSON.parse(localStorage.getItem(orderInfo) as string);
 
-const initialState: IOrder = orderFormLocalStorage ? orderFormLocalStorage : {
-  orderStatusId: null,
-  cityId: null,
-  pointId: null,
-  carId: null,
-  color: null,
-  dateFrom: null,
-  dateTo: null,
-  rateId: null,
-  price: 0,
-  isFullTank: false,
-  isNeedChildChair: false,
-  isRightWheel: false,
+const initialState: IOrder = {
+    data: orderFormLocalStorage ? orderFormLocalStorage : {
+        orderStatusId: null,
+        cityId: null,
+        pointId: null,
+        carId: null,
+        color: null,
+        dateFrom: null,
+        dateTo: null,
+        rateId: null,
+        isFullTank: false,
+        isNeedChildChair: false,
+        isRightWheel: false,
+    },
+    price: 0
 };
 
 const order = createReducer(initialState, (builder) => {
@@ -28,13 +30,13 @@ const order = createReducer(initialState, (builder) => {
             state = action.payload
         })
         .addCase(orderSetCityId, (state, action) => {
-            state.cityId = action.payload
+            state.data.cityId = action.payload
         })
         .addCase(orderSetPointId, (state, action) => {
-            state.pointId = action.payload
+            state.data.pointId = action.payload
         })
         .addCase(setCurrentCity, (state, action) => {
-            state.cityId = {
+            state.data.cityId = {
                 id: action.payload.id,
                 value: action.payload.name
             }
