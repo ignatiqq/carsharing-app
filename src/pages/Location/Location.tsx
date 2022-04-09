@@ -18,31 +18,25 @@ const Location = () => {
 
   const dispatch = useDispatch();
 
-  const { allCities, allPoints, currentCity, currentPoint } = useAppSelector(({location, order}) => ({
+  const { allCities, allPoints, currentCity, currentPoint, order } = useAppSelector(({location, order}) => ({
     allCities: location.cities.all.data,
     allPoints: location.points.data,
     currentCity: location.cities.current,
-    currentPoint: order.pointId
+    currentPoint: order.pointId,
+    order: order
   })) 
 
   useEffect(() => {
     dispatch(getPoints())
   }, [])
 
-  useEffect(() => {
-    if(currentCity && allPoints && currentPoint) {
-      const pointsForCity = getPointsByCityId(allPoints, currentCity.id);
-      if(pointsForCity.filter(item => item.id === currentPoint.id).length <= 0) {
-        dispatch(orderSetPointId(null));
-      }
-    }
-  }, [currentCity])
-
   const selectCityHandler = (item: ICurrentCity) => {
     dispatch(setCurrentCity(item));
+    dispatch(orderSetPointId(null))
   } 
 
   const selectPointHandler = (item: ICurrentPoint) => {
+    dispatch(setCurrentCity(item.cityId))
     dispatch(orderSetPointId({id: item.id, value: item.address}))
   }
 
@@ -62,15 +56,15 @@ const Location = () => {
           customLabel="address"
           customValue="id"
           options={allPoints && currentCity && getPointsByCityId(allPoints, currentCity.id)}
-          selected={currentPoint ? {...currentPoint, address: currentPoint?.value} : null}
-          clickHandler={selectPointHandler}
+          selected={currentPoint ? {...currentPoint, id: currentPoint?.id, address: currentPoint?.value} : null}
+          clickHandler={(selectPointHandler)}
         />
       </div>
       <div>
         <div className={styles.mapChoose}>Выбрать на карте:</div>
         <Map 
           currentCity={currentCity}
-          currentPoint={currentPoint ? {...currentPoint, address: currentPoint!.value, id: currentPoint!.id} : null}
+          currentPoint={currentPoint && currentPoint as any}
           points={allPoints}
           pointClickHandler={selectPointHandler}
           className={styles.mapStyles}

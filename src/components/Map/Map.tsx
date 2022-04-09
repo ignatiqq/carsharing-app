@@ -10,7 +10,7 @@ import type { ICurrentPoint } from "store/location/points/types"
 interface IMap {
     points: Array<ICurrentPoint> | null,
     currentCity?: ICurrentCity | null,
-    currentPoint?: ICurrentPoint | null,
+    currentPoint?: {id: string, value: string} | null,
     pointClickHandler: (item: ICurrentPoint) => void,
     className: string
 }
@@ -55,11 +55,7 @@ const Map: React.FC<IMap> = (
 
     useEffect(() => {
         if(ymap && currentCity) {
-            const getAvaliablePoint = currentPoint ? currentPoint.address
-            : points && points.length ? 
-            getPointsByCityId(points, currentCity.id)[0] && getPointsByCityId(points, currentCity.id)[0].address 
-            : "";
-            getAndSetCurrentCoordinates(`${currentCity && currentCity.name}, ${getAvaliablePoint}`);
+            getAndSetCurrentCoordinates(`${currentCity && currentCity.name}, ${currentPoint && currentPoint.value ? currentPoint.value : ""}`);
         }
     }, [ymap, currentCity, currentPoint])
 

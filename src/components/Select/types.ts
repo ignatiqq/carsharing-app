@@ -4,11 +4,11 @@ export interface IOption {
   }
   
 export interface ISelect {
-    options: Array<any> | null,
+    options: Array <IOption | any> | null,
     searchPlaceholder?: string,
     label: string,
-    selected: any,
-    clickHandler: (item: any) => void,
+    selected: IOption | any,
+    clickHandler: (item: IOption | any) => void,
     customLabel?: string,
     customValue?: string
 }
