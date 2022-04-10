@@ -1,12 +1,14 @@
 import React, { useState, useRef } from "react";
 
 import styles from "./LazyImage.module.css";
+import classNames from "classnames";
 
 interface ILazyImage {
     width: number,
     height: number,
     image: string,
-    alt: string
+    alt: string,
+    className: string
 }
 
 const LazyImage: React.FC<ILazyImage> = (
@@ -14,7 +16,8 @@ const LazyImage: React.FC<ILazyImage> = (
         width,
         height,
         image,
-        alt= "image"
+        alt= "image",
+        className
     }
     ) => {
     const [isVisible, setVisible] = useState<boolean>(false);
@@ -40,7 +43,9 @@ const LazyImage: React.FC<ILazyImage> = (
     }
 
     return (
-        <div ref={lazyContainer} style={{width: width, height: height}} className={styles.lazyImage}>
+        <div ref={lazyContainer} style={{width: width, height: `${!isVisible ? height : ""}`}} className={classNames(className, {
+            [styles.lazyImage]: !isVisible
+        })}>
             {
                 isVisible &&
                 <img style={{maxWidth: width, width: "100%"}} src={image} alt={alt} />

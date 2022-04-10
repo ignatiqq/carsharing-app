@@ -1,0 +1,34 @@
+.wrapper {
+    min-width: 368px;
+    border: 1px solid var(--gray-light);
+    transition: all .3s ease;
+    cursor: pointer;
+    padding: 16px;
+    z-index: 10;
+}
+
+.wrapper:hover {
+    border: 1px solid var(--primary-green);
+}
+
+.button {
+    border: 1px solid transparent;
+    background: none;
+}
+
+.carInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.carPrice {
+    font-size: 16px;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+}
+
+.carName {
+    font-size: 18px;
+    color: #000000;
+}
