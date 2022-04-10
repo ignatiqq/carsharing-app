@@ -1,6 +1,43 @@
 export interface IOrder {
     data: IOrderData,
+    options: {
+        cars: {
+            data: IAllCarsData | null,
+            isLoading: boolean,
+            error: string | null
+        }
+    }
     price: number
+}
+
+export interface IAllCarsData {
+    count: number,
+    data: Array<ICarData>,
+    fields: any
+}
+
+export interface ICarData {
+    categoryId: {
+        name: string,
+        description: string,
+        id: string
+    },
+    colors: Array<string>,
+    createdAt: number,
+    description: string,
+    id: string,
+    name: string,
+    number: string,
+    priceMax: number,
+    priceMin: number,
+    tank: 55,
+    thumbnail: {
+        size: number,
+        path: string,
+        originalname: string,
+        mimetype: string
+    },
+    updatedAt: number
 }
 
 export interface IOrderData {

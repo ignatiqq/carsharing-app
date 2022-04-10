@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useAppDispatch} from "../../store/hooks";
+import {getAllCarsData} from "../../store/order/actions";
+import { Loader } from "components";
 
 const Model = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+      console.log(123)
+      dispatch(getAllCarsData());
+  }, [])
+
   return (
-    <div>Model</div>
+    <div>
+        <Loader />
+    </div>
   )
 }
 
-export default Model
+export default Model;
