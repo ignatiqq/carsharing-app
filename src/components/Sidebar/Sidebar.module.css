@@ -2,16 +2,23 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   z-index: 20;
   transition: all 0.3s ease;
   background: rgba(17, 21, 24, 0.8);
 }
 
+.asideWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8888;
+}
+
 .sidebar {
-  position: absolute;
-  height: 100%;
+  position: fixed;
+  height: 100vh;
   display: flex;
   justify-content: center;
   min-width: 65px;

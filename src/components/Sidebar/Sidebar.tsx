@@ -31,7 +31,7 @@ const Sidebar = () => {
   }
 
   return (
-    <aside>
+    <aside className={styles.asideWrapper}>
     <SidebarNav setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
      {sidebarOpen && <div className={styles.overlay} />}
       <div className={styles.sidebar}>
