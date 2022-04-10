@@ -11,3 +11,7 @@ export { default as OrderInfo } from "./OrderInfo/OrderInfo";
 export { default as Map } from "./Map/Map";
 export { default as CarCard } from "./CarCard/CarCard";
 export { default as LazyImage } from "./LazyImage/LazyImage";
+
+// INPUTS
+
+export { default as RadioInput } from "./Inputs/Radio/Radio";

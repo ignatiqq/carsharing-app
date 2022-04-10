@@ -1,10 +1,9 @@
 import React from 'react'
 import {useTranslation} from "react-i18next";
 
-import { Loader } from "components";
 import {ICarOption} from "store/order/types";
 import withModelLogic from "./withModelLogic";
-import { CarCard } from "../../components";
+import {CarCard, RadioInput, Loader} from "components";
 import styles from "./Model.module.css";
 
 const Model = ({data, isLoading, error}: ICarOption) => {
@@ -21,6 +20,7 @@ const Model = ({data, isLoading, error}: ICarOption) => {
     }
     return (
         <div className={styles.wrapper}>
+            <RadioInput name="car-category" label="Hello" id="hi" value="World" />
             {
                 data && data.data ?
                     data.data.map(item => (
