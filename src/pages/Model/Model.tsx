@@ -31,7 +31,7 @@ const Model = ({data, isLoading, error}: ICarOption) => {
                     ))
                     :
                     error &&
-                    <div></div>
+                    <div>{t(error)}</div>
             }
         </div>
     )
