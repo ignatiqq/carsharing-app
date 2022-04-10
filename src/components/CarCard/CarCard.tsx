@@ -1,5 +1,6 @@
 import React from "react";
 
+import { LazyImage } from "..";
 import type { ICarData } from "store/order/types";
 
 interface ICarCard {
@@ -12,7 +13,12 @@ const CarCard: React.FC<ICarCard> = ({ onClick, car }) => {
     return (
         <div onClick={() => onClick(car)}>
             <div>{car.id}</div>
-            <img src={car.thumbnail.path} />
+            <LazyImage
+                width={256}
+                height={116}
+                image={car.thumbnail.path}
+                alt={car.name}
+            />
         </div>
     )
 }

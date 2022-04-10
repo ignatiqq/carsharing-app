@@ -25,6 +25,7 @@ const Model = ({data, isLoading, error}: ICarOption) => {
                 data && data.data ?
                     data.data.map(item => (
                         <CarCard
+                            key={item.id}
                             onClick={(item) => console.log(item)}
                             car={item}
                         />
