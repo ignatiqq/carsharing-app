@@ -14,13 +14,21 @@ const Sidebar = () => {
 
   useEffect(() => {
     const keyHandler = (e: KeyboardEvent) => {
-      if(sidebarOpen && e.key === "Escape"){
+      if (sidebarOpen && e.key === "Escape") {
         setSidebarOpen(false)
       }
     }
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   }, [])
+
+  useEffect(() => {
+    if(sidebarOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  }, [sidebarOpen])
 
   const sidebarOpenHanlder = () => {
       if(!sidebarOpen) {

@@ -1,5 +1,6 @@
 .overlay {
-  position: absolute;
+  display: none;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -9,25 +10,29 @@
   background: rgba(17, 21, 24, 0.8);
 }
 
-.asideWrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 8888;
-}
-
 .sidebar {
-  position: fixed;
+  position: absolute;
   height: 100vh;
   display: flex;
   justify-content: center;
   min-width: 65px;
+  z-index: 200;
+}
+
+.asideWrapper {
+  z-index: 1000;
 }
 
 @media (min-width: 640px) {
   .sidebar {
-    position: relative;
     background: #111518;
+    position: fixed;
+  }
+  .overlay {
+    display: block;
+  }
+  .asideWrapper {
+    min-width: 65px;
   }
 }
 
@@ -42,12 +47,13 @@
 }
 
 .buttonMenu {
-  z-index: 9999;
+  z-index: 10000;
 }
 
 @media (min-width: 640px) {
   .buttonMenu {
     display: block;
+    position: relative;
   }
 }
 

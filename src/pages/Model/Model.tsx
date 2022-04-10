@@ -20,7 +20,6 @@ const Model = ({data, isLoading, error}: ICarOption) => {
     }
     return (
         <div className={styles.wrapper}>
-            <RadioInput name="car-category" label="Hello" id="hi" value="World" />
             {
                 data && data.data ?
                     data.data.map(item => (

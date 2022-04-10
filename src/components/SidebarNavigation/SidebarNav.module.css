@@ -1,8 +1,7 @@
 .wrapper {
   position: fixed;
   width: 100%;
-  height: 100%;
-  z-index: 9999;
+  height: 100vh;
   background: #111518;
   transition: all 0.5s ease;
 }
@@ -14,7 +13,6 @@
 .closed {
   left: -100%;
 }
-
 @media (min-width: 1024px) {
   .navOpen {
     right: 50%;
@@ -36,6 +34,9 @@
 @media (min-width: 640px) {
   .nav {
     margin-left: 96px;
+  }
+  .wrapper {
+    z-index: 100;
   }
 }
 
