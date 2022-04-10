@@ -1,15 +1,30 @@
 export interface IOrder {
     data: IOrderData,
     options: {
-        cars: ICarOption
+        cars: ICarOption,
     }
     price: number
 }
 
 export interface ICarOption {
     data: IAllCarsData | null,
+    categories: ICarsCategories | null,
     isLoading: boolean,
     error: string | null
+}
+
+ export interface ICarsCategories {
+    count: number,
+    data: ICarsCategory | null,
+     fields: any
+ }
+
+export interface ICarsCategory {
+    name: string,
+    description: string,
+    id: string,
+    updatedAt?: number,
+    createdAt?: number
 }
 
 export interface IAllCarsData {

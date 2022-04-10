@@ -7,7 +7,8 @@ import {
     setAllCarsData,
     setAllCarsDataLoading,
     setAllCarsDataRequestError,
-    setOrderData
+    setOrderData,
+    setCarsCategoriesData
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
 import { orderInfo } from "constants/localStorageKeys";
@@ -31,9 +32,10 @@ const initialState: IOrder = {
     options: {
         cars: {
             data: null,
+            categories: null,
             isLoading: false,
-            error: null
-        }
+            error: null,
+        },
     },
     price: 0
 };
@@ -69,6 +71,12 @@ const order = createReducer(initialState, (builder) => {
                 ...state.options.cars,
                 data: null,
                 error: action.payload
+            }
+        })
+        .addCase(setCarsCategoriesData, (state, action) => {
+            state.options.cars = {
+                ...state.options.cars,
+                categories: action.payload
             }
         })
 })
