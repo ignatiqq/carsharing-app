@@ -54,40 +54,42 @@ const OrderInfo = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.title}>{t("Your order")}:</div>
-            <div className={styles.optionsWrapper}>
-                {
-                    orderInfo && orderInfo.length > 0 ?
-                    orderInfo.map(item => (
-                        <div className={styles.orderInfoItemWrapper} key={item.label}>
-                            <div className={styles.optionName}>
-                                {t(item.label)}
+            <div className={styles.position}>
+                <div className={styles.title}>{t("Your order")}:</div>
+                <div className={styles.optionsWrapper}>
+                    {
+                        orderInfo && orderInfo.length > 0 ?
+                        orderInfo.map(item => (
+                            <div className={styles.orderInfoItemWrapper} key={item.label}>
+                                <div className={styles.optionName}>
+                                    {t(item.label)}
+                                </div>
+                                <div className={styles.optionSeparator}>
+                                    ........................
+                                </div>
+                                <div className={styles.optionValue}>
+                                    {item.value}
+                                </div>
                             </div>
-                            <div className={styles.optionSeparator}>
-                                ........................
-                            </div>
-                            <div className={styles.optionValue}>
-                                {item.value}
-                            </div>
-                        </div>
-                    ))
-                    :
-                    <div>Здесь будут ваши данные о заказе</div>
-                }
+                        ))
+                        :
+                        <div>Здесь будут ваши данные о заказе</div>
+                    }
+                </div>
+                <div className={styles.priceWrapper}>
+                    <span className={styles.price}>{t("Price")}</span> от 8000 до 12000 &#8381;
+                </div>
+                <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
+                    <Button
+                        disabled={buttonOptions?.disabled}
+                        className={classNames(styles.nextBtn, {
+                        })}
+                        apperance='primary'
+                    >
+                            {buttonOptions && t(buttonOptions.name)}
+                    </Button>
+                </Link>
             </div>
-            <div className={styles.priceWrapper}>
-                <span className={styles.price}>{t("Price")}</span> от 8000 до 12000 &#8381;
-            </div>
-            <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
-                <Button 
-                    disabled={buttonOptions?.disabled}
-                    className={classNames(styles.nextBtn, {
-                    })}
-                    apperance='primary'
-                >
-                        {buttonOptions && t(buttonOptions.name)}
-                </Button>
-            </Link>
         </div>
     )
 }

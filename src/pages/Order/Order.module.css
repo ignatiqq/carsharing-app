@@ -11,6 +11,13 @@
   width: 100%;
 }
 
+.breadcrumpsWrapper {
+  background: #fff;
+  position: sticky;
+  top: 0px;
+  z-index: 20;
+}
+
 .section {
   width: 100%;
 }
