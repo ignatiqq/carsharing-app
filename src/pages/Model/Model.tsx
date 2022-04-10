@@ -1,21 +1,30 @@
-import React, {useEffect} from 'react'
-import {useAppDispatch} from "../../store/hooks";
-import {getAllCarsData} from "../../store/order/actions";
+import React from 'react'
+import {useTranslation} from "react-i18next";
+
 import { Loader } from "components";
+import {ICarOption} from "store/order/types";
+import withModelLogic from "./withModelLogic";
+import styles from "./Model.module.css";
 
-const Model = () => {
-  const dispatch = useAppDispatch();
+const Model = ({data, isLoading, error}: ICarOption) => {
 
-  useEffect(() => {
-      console.log(123)
-      dispatch(getAllCarsData());
-  }, [])
+    const { t } = useTranslation();
 
-  return (
-    <div>
-        <Loader />
-    </div>
-  )
+    if(isLoading) {
+        const description = t("Wait until all car models are loaded")
+        return (
+            <div className={styles.carsLoading}>
+                <Loader className={styles.loader} description={description} />
+            </div>
+        )
+    }
+    return (
+        <div className={styles.wrapper}>
+            {
+                data && data.data[0].id
+            }
+        </div>
+    )
 }
 
-export default Model;
+export default withModelLogic(Model);

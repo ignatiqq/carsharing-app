@@ -5,13 +5,18 @@ import { ReactComponent as LoaderIcon } from "assets/icons/loader.svg";
 import styles from "./Loader.module.css";
 
 interface ILoader {
-    className?: string
+    className?: string,
+    description?: string,
 }
 
-const Loader: React.FC<ILoader> = ({ className }) => {
+const Loader: React.FC<ILoader> = ({ className, description }) => {
   return (
-    <div>
+    <div className={styles.loaderWrapper}>
         <LoaderIcon className={classNames(className, styles.loading)} />
+        {
+            description &&
+            <div className={styles.description}>{description}</div>
+        }
     </div>
   )
 }

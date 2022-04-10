@@ -1,13 +1,15 @@
 export interface IOrder {
     data: IOrderData,
     options: {
-        cars: {
-            data: IAllCarsData | null,
-            isLoading: boolean,
-            error: string | null
-        }
+        cars: ICarOption
     }
     price: number
+}
+
+export interface ICarOption {
+    data: IAllCarsData | null,
+    isLoading: boolean,
+    error: string | null
 }
 
 export interface IAllCarsData {

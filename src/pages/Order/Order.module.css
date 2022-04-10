@@ -17,6 +17,7 @@
 
 .contentWrapper {
   display: flex;
+  min-height: 86%;
 }
 
 @media screen and (max-width: 1090px) {
