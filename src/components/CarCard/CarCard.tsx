@@ -20,8 +20,8 @@ const CarCard: React.FC<ICarCard> = ({ onClick, car }) => {
                         </div>
                         <LazyImage
                             className={styles.carImage}
-                            width={325}
-                            height={147}
+                            width={280}
+                            height={127}
                             image={car.thumbnail.path}
                             alt={car.name}
                         />

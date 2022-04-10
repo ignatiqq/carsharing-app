@@ -5,6 +5,7 @@
     cursor: pointer;
     padding: 16px;
     z-index: 10;
+    display: flex;
 }
 
 .wrapper:hover {
@@ -14,12 +15,15 @@
 .button {
     border: 1px solid transparent;
     background: none;
+    width: 100%;
+    cursor: pointer;
 }
 
 .carInfo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 20px;
 }
 
 .carPrice {
@@ -31,4 +35,10 @@
 .carName {
     font-size: 18px;
     color: #000000;
+    text-transform: uppercase;
+}
+
+.carImage {
+    display: flex;
+    margin: 0 0 0 auto;
 }
