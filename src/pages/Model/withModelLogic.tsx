@@ -11,7 +11,9 @@ const withModelLogic = (Component: React.FC<ICarOption>) => () => {
     }))
 
     useEffect(() => {
-        dispatch(getAllCarsData());
+        if(!cars.isLoading && !cars.data) {
+            dispatch(getAllCarsData());
+        }
     }, [])
 
     return <Component {...cars} />

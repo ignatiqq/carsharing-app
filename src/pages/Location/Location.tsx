@@ -27,7 +27,9 @@ const Location = () => {
   })) 
 
   useEffect(() => {
-    dispatch(getPoints())
+    if(!allPoints) {
+      dispatch(getPoints())
+    }
   }, [])
 
   const selectCityHandler = (item: ICurrentCity) => {
