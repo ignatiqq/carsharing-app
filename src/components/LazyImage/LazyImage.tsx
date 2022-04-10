@@ -43,7 +43,7 @@ const LazyImage: React.FC<ILazyImage> = (
     }
 
     return (
-        <div ref={lazyContainer} style={{width: width, height: `${!isVisible ? height : ""}`}} className={classNames(className, {
+        <div ref={lazyContainer} style={{width: width, height: !isVisible ? height : ""}} className={classNames(className, {
             [styles.lazyImage]: !isVisible
         })}>
             {
