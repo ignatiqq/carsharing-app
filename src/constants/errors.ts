@@ -1,0 +1,1 @@
+export const FailedRequest = "Error: Something go wrong, try later";

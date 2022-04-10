@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import { Loader } from "components";
 import {ICarOption} from "store/order/types";
 import withModelLogic from "./withModelLogic";
+import { CarCard } from "../../components";
 import styles from "./Model.module.css";
 
 const Model = ({data, isLoading, error}: ICarOption) => {
@@ -21,7 +22,16 @@ const Model = ({data, isLoading, error}: ICarOption) => {
     return (
         <div className={styles.wrapper}>
             {
-                data && data.data[0].id
+                data && data.data ?
+                    data.data.map(item => (
+                        <CarCard
+                            onClick={(item) => console.log(item)}
+                            car={item}
+                        />
+                    ))
+                    :
+                    error &&
+                    <div></div>
             }
         </div>
     )

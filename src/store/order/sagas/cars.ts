@@ -1,6 +1,7 @@
 import { takeLatest, put, call } from "redux-saga/effects";
 import type {AxiosResponse} from "axios";
 
+import { FailedRequest } from "constants/errors";
 import type { IAllCarsData } from "../types";
 import {getAllCarsData, setAllCarsData, setAllCarsDataRequestError} from "../actions";
 import { CarsService } from "api/services";
@@ -15,7 +16,7 @@ function *getCarsData() {
         if(response.status < 300) {
             yield put(setAllCarsData(response.data))
         } else {
-            throw new Error("Error: Something go wrong, try later")
+            throw new Error(FailedRequest)
         }
 
     } catch (e: any) {
