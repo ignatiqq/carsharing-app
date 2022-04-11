@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useTranslation} from "react-i18next";
 
-import {ICarOption} from "store/order/types";
+import type { ICarOption, ICarData, IAllCarsData } from "store/order/types";
+import { setCurrentCar } from "store/order/actions";
 import withModelLogic from "./withModelLogic";
 import {CarCard, RadioInput, Loader} from "components";
 import styles from "./Model.module.css";
+import { useAppDispatch } from 'store/hooks';
 
-const Model = ({data, isLoading, error}: ICarOption) => {
+export interface IModel {
+    data: IAllCarsData | null,
+    isLoading: boolean,
+    error: string | null
+}
+
+const Model: React.FC<IModel> = React.memo(({data, isLoading, error}) => {
 
     const { t } = useTranslation();
+
+    const dispatch = useAppDispatch();
 
     if(isLoading) {
         const description = t("Wait until all car models are loaded")
@@ -18,6 +28,11 @@ const Model = ({data, isLoading, error}: ICarOption) => {
             </div>
         )
     }
+
+    const setCurrentCarModel = (data: ICarData) => {
+        dispatch(setCurrentCar(data))
+    }
+
     return (
         <div className={styles.wrapper}>
             {
@@ -25,7 +40,7 @@ const Model = ({data, isLoading, error}: ICarOption) => {
                     data.data.map(item => (
                         <CarCard
                             key={item.id}
-                            onClick={(item) => console.log(item)}
+                            onClick={(item) => setCurrentCarModel(item)}
                             car={item}
                         />
                     ))
@@ -35,6 +50,6 @@ const Model = ({data, isLoading, error}: ICarOption) => {
             }
         </div>
     )
-}
+});
 
 export default withModelLogic(Model);

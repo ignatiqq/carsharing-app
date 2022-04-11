@@ -8,12 +8,16 @@ import {
     setAllCarsDataLoading,
     setAllCarsDataRequestError,
     setOrderData,
-    setCarsCategoriesData
+    setCarsCategoriesData,
+    setOrderStepsPassed,
+    setCurrentCar,
+    orderSetCarId
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
-import { orderInfo } from "constants/localStorageKeys";
+import { orderInfo, stepsPassed } from "constants/localStorageKeys";
 
-const orderFormLocalStorage =  JSON.parse(localStorage.getItem(orderInfo) as string);
+const orderFormLocalStorage = JSON.parse(localStorage.getItem(orderInfo) as string);
+const stepsPassedFromLocalStorage = JSON.parse(localStorage.getItem(stepsPassed) as string);
 
 const initialState: IOrder = {
     data: orderFormLocalStorage ? orderFormLocalStorage : {
@@ -32,11 +36,13 @@ const initialState: IOrder = {
     options: {
         cars: {
             data: null,
+            current: null,
             categories: null,
             isLoading: false,
             error: null,
         },
     },
+    stepsPassed: stepsPassedFromLocalStorage ? stepsPassedFromLocalStorage : 0,
     price: 0
 };
 
@@ -50,6 +56,9 @@ const order = createReducer(initialState, (builder) => {
         })
         .addCase(orderSetPointId, (state, action) => {
             state.data.pointId = action.payload
+        })
+        .addCase(orderSetCarId, (state, action) => {
+            state.data.carId = action.payload
         })
         .addCase(setCurrentCity, (state, action) => {
             state.data.cityId = {
@@ -78,6 +87,15 @@ const order = createReducer(initialState, (builder) => {
                 ...state.options.cars,
                 categories: action.payload
             }
+        })
+        .addCase(setCurrentCar, (state, action) => {
+            state.options.cars = {
+                ...state.options.cars,
+                current: action.payload
+            }
+        })
+        .addCase(setOrderStepsPassed, (state, action) => {
+            state.stepsPassed = action.payload
         })
 })
 

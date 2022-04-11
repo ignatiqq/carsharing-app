@@ -2,12 +2,14 @@ export interface IOrder {
     data: IOrderData,
     options: {
         cars: ICarOption,
-    }
+    },
+    stepsPassed: number,
     price: number
 }
 
 export interface ICarOption {
     data: IAllCarsData | null,
+    current: ICarData | null,
     categories: ICarsCategories | null,
     isLoading: boolean,
     error: string | null
@@ -16,7 +18,7 @@ export interface ICarOption {
  export interface ICarsCategories {
     count: number,
     data: ICarsCategory | null,
-     fields: any
+    fields: any
  }
 
 export interface ICarsCategory {
@@ -61,7 +63,7 @@ export interface IOrderData {
         orderStatusId: IOrderObject | null,
         cityId: IOrderObject | null,
         pointId: IOrderObject | null,
-        carId: object | null,
+        carId: IOrderObject | null,
         color: string | null,
         dateFrom: number | null,
         dateTo: number | null,

@@ -23,6 +23,10 @@ export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
         {
             label: "Point of issue",
             value: `${cityId?.value} ${pointId ? pointId.value : ""}`
+        },
+        {
+            label: "Model",
+            value: `${carId?.value}`
         }
     ]
 

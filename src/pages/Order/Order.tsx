@@ -27,7 +27,7 @@ const Order = () => {
         <div className={styles.breadcrumpsWrapper}>
             <hr></hr>
             <div className={classNames(styles.breadcrumpsContainer, styles.container)}>
-                <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={0} />
+                <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={order.stepsPassed} />
             </div>
             <hr></hr>
         </div>

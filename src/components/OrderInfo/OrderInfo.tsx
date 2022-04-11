@@ -1,14 +1,17 @@
 import Button from 'components/Button/Button';
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 
+import { stepsPassed } from "constants/localStorageKeys";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
 import type { IOrder } from 'store/order/types';
+import { setOrderStepsPassed } from 'store/order/actions';
+import OrderPrice from "components/OrderPrice/OrderPrice"
 import styles from "./OrderInfo.module.css";
-import classNames from 'classnames';
+
 
 const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
     switch(pathname) {
@@ -16,15 +19,17 @@ const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
             return {
                 nextPagePathname: "/order/model",
                 disabled: !order.data.cityId || !order.data.pointId,
-                name: "Choose model"
+                name: "Choose model",
+                nextStep: 1
             }
         }
 
         case "/order/model": {
             return {
                 nextPagePathname: "/order/additionality",
-                disabled: true,
-                name: "Additionality"
+                disabled: !order.data.carId,
+                name: "Additionality",
+                nextStep: 2
             }
         }
     }
@@ -33,7 +38,8 @@ const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
 interface IButtonOptions {
     nextPagePathname: string,
     disabled: boolean,
-    name: string
+    name: string,
+    nextStep: number
 }
 
 const OrderInfo = () => {
@@ -42,6 +48,7 @@ const OrderInfo = () => {
 
     const {t} = useTranslation();
     const location = useLocation();
+    const dispatch = useAppDispatch();
 
     const { order } = useAppSelector(({order}) => ({
         order: order
@@ -51,6 +58,11 @@ const OrderInfo = () => {
         setButtonOptions(getCurrentButtonOptions(location.pathname, order));
         setOrderInfo(getOrderInfoData(order.data));
     }, [location.pathname, order])
+    
+    function setPassedSteps(data:number) {
+        dispatch(setOrderStepsPassed(data))
+        localStorage.setItem(stepsPassed, JSON.stringify(data))
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -76,11 +88,10 @@ const OrderInfo = () => {
                         <div>Здесь будут ваши данные о заказе</div>
                     }
                 </div>
-                <div className={styles.priceWrapper}>
-                    <span className={styles.price}>{t("Price")}</span> от 8000 до 12000 &#8381;
-                </div>
+                <OrderPrice />
                 <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
                     <Button
+                        onClick={() => setPassedSteps(buttonOptions!.nextStep)}
                         disabled={buttonOptions?.disabled}
                         className={classNames(styles.nextBtn, {
                         })}

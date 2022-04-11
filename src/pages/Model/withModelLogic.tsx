@@ -1,13 +1,16 @@
 import React, {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "store/hooks";
-import {getAllCarsData} from "store/order/actions";
-import {ICarOption} from "store/order/types";
 
-const withModelLogic = (Component: React.FC<ICarOption>) => () => {
+import { orderSetCarId } from "store/order/actions";
+import {getAllCarsData} from "store/order/actions";
+import { IModel } from "./Model";
+
+const withModelLogic = (Component: React.FC<IModel>) => () => {
     const dispatch = useAppDispatch();
 
     const { cars } = useAppSelector(({order}) => ({
-        cars: order.options.cars
+        cars: order.options.cars,
+        currentCar: order.options.cars.current
     }))
 
     useEffect(() => {
@@ -16,7 +19,27 @@ const withModelLogic = (Component: React.FC<ICarOption>) => () => {
         }
     }, [])
 
-    return <Component {...cars} />
+    const { currentCar } = useAppSelector(({order}) => ({
+        currentCar: order.options.cars.current
+    }))
+
+    useEffect(() => {
+        if(currentCar) {
+            dispatch(orderSetCarId({
+                id: currentCar.id,
+                value: currentCar.name
+            }))
+        }
+    }, [currentCar])
+
+
+    return (
+        <Component 
+            data={cars.data} 
+            isLoading={cars.isLoading} 
+            error={cars.error} 
+        />
+    )
 
 }
 
