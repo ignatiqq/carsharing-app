@@ -1,5 +1,6 @@
 .wrapper {
-    min-width: 468px;
+    max-width: 468px;
+    width: 100%;
     border: 1px solid var(--gray-light);
     transition: all .3s ease;
     cursor: pointer;
