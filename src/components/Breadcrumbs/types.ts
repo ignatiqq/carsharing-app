@@ -1,7 +1,8 @@
-export interface IUseBreadcumps {
+export interface IBreadcrumbs {
     routes: Array<IRoute>
     currentRoutePathname: string,
-    stepsPassed: number
+    stepsPassed: number,
+    className?: string
 }
 
 export interface IRoute {

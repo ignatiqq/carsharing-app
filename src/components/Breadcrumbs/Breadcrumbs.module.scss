@@ -30,14 +30,15 @@
 .list {
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 400px) {
+    & {
+      font-size: 13px;
+    }
+  }
+  
 }
 
 .arrow {
   margin: 0px 20px;
-}
-
-@media screen and (max-width: 400px) {
-  .list {
-    font-size: 13px;
-  }
 }

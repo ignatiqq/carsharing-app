@@ -5,7 +5,7 @@
   padding: 0px 15px;
 }
 
-.breadcrumpsContainer {
+.breadcrumbsContainer {
   max-width: 1600px;
   margin: 10px auto;
   width: 100%;
@@ -17,10 +17,23 @@
 
 .contentWrapper {
   display: flex;
+  height: calc(100% - 145px);
 }
 
 @media screen and (max-width: 1090px) {
   .contentWrapper {
     flex-direction: column;
+  }
+}
+
+.paddingContainer {
+  padding-left: 64px;
+  padding-right: 64px;
+
+  @media screen and (max-width: 720px) {
+    & {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 }

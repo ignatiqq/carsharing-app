@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import type { IUseBreadcumps, IRoute } from "./types";
-import styles from "./Breadcumps.module.css";
+import type { IBreadcrumbs, IRoute } from "./types";
+import styles from "./Breadcrumbs.module.scss";
 import { ReactComponent as Arrow } from "assets/icons/Arrow.svg";
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, stepsPassed}) => {
+const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, stepsPassed, className}) => {
 
   const [sortedRoutes, setSortedRoutes] = React.useState<Array<IRoute> | null>(null);
   const [selectedRoute, setSelectedRoute] = React.useState<string | null>(null);
@@ -36,7 +36,7 @@ const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, ste
   }
 
   return (
-    <ul className={styles.ul}>
+    <ul className={classNames(styles.ul, className)}>
       {
         sortedRoutes && 
         sortedRoutes.map((item) => (
@@ -68,4 +68,4 @@ const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, ste
 
 }
 
-export default Breadcumps;
+export default Breadcrumbs;

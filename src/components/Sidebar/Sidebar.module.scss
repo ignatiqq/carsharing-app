@@ -15,34 +15,34 @@
   display: flex;
   justify-content: center;
   min-width: 65px;
-}
 
-@media (min-width: 640px) {
-  .sidebar {
-    position: relative;
-    background: #111518;
+  @media (min-width: 640px) {
+    & {
+      position: relative;
+      background: #111518;
+    }
   }
 }
+
 
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 90%;
-  max-height: 90%;
-  margin: auto 0;
+  margin: 35px 0px;
 }
 
 .buttonMenu {
   z-index: 9999;
-}
-
-@media (min-width: 640px) {
-  .buttonMenu {
-    display: block;
+  
+  @media (min-width: 640px) {
+    & {
+      display: block;
+    }
   }
 }
+
 
 .menuLight {
   stroke: white;
@@ -50,11 +50,11 @@
 
 .menuDark {
   stroke: black;
-}
 
-@media (min-width: 640px) {
-  .menuDark {
-    stroke: white;
+  @media (min-width: 640px) {
+    & {
+      stroke: white;
+    }
   }
 }
 

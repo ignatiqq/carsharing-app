@@ -7,7 +7,7 @@ import { Button, LanguageSelector } from 'components';
 import SidebarNav from '../SidebarNavigation/SidebarNav';
 import { languages } from 'components/LanguageSelector/languages';
 
-import styles from "./Sidebar.module.css";
+import styles from "./Sidebar.module.scss";
 
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

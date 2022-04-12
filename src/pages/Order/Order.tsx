@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Header, Breadcrumps, OrderInfo } from 'components';
+import { Header, Breadcrumbs, OrderInfo } from 'components';
 import { routes } from 'routes/order';
-import styles from "./Order.module.css";
+import styles from "./Order.module.scss";
 import { useAppSelector } from 'store/hooks';
 import { orderInfo } from 'constants/localStorageKeys';
-import isEqual from 'lodash.isequal';
 
 
 const Order = () => {
@@ -24,13 +23,18 @@ const Order = () => {
 
   return (
     <section className={styles.section}>
-      <Header />
+      <Header className={styles.paddingContainer} />
       <hr></hr>
-      <div className={classNames(styles.breadcrumpsContainer, styles.container)}>
-        <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={0} />
+      <div className={classNames(styles.breadcrumbsContainer)}>
+        <Breadcrumbs 
+          routes={routes} 
+          currentRoutePathname={pathname} 
+          stepsPassed={0} 
+          className={styles.paddingContainer}
+        />
       </div>
       <hr></hr>
-      <div className={classNames(styles.contentWrapper, styles.container)}>
+      <div className={classNames(styles.contentWrapper, styles.paddingContainer)}>
         <div className={styles.container}>
             <Outlet />
         </div>

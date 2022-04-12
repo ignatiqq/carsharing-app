@@ -1,4 +1,4 @@
-import type { IRoute } from 'components/Breadcrumps/types';
+import type { IRoute } from 'components/Breadcrumbs/types';
 
 export const routes: Array<IRoute> = [
     {
