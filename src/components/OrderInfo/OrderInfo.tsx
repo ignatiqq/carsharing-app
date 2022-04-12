@@ -7,7 +7,7 @@ import { useAppSelector } from 'store/hooks';
 
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
 import type { IOrder } from 'store/order/types';
-import styles from "./OrderInfo.module.css";
+import styles from "./OrderInfo.module.scss";
 import classNames from 'classnames';
 
 const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
@@ -64,7 +64,6 @@ const OrderInfo = () => {
                                 {t(item.label)}
                             </div>
                             <div className={styles.optionSeparator}>
-                                ........................
                             </div>
                             <div className={styles.optionValue}>
                                 {item.value}
@@ -81,8 +80,7 @@ const OrderInfo = () => {
             <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
                 <Button 
                     disabled={buttonOptions?.disabled}
-                    className={classNames(styles.nextBtn, {
-                    })}
+                    className={classNames(styles.nextBtn)}
                     apperance='primary'
                 >
                         {buttonOptions && t(buttonOptions.name)}
