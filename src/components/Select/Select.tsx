@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { IOption, ISelect } from "./types";
-import styles from "./Select.module.css";
+import styles from "./Select.module.scss";
 
 
 const Select: React.FC<ISelect> = (
@@ -14,7 +14,8 @@ const Select: React.FC<ISelect> = (
     selected, 
     clickHandler,
     customLabel = "label",
-    customValue = "value"
+    customValue = "value",
+    width = 224
   }
   ) => {
 
@@ -81,7 +82,7 @@ const Select: React.FC<ISelect> = (
           onFocus={openSelectDropdownHandler}
           onBlur={closeSelectDropdownHandler}
         />
-        <div className={classNames(styles.optionWrapper, {
+        <div style={{width: `${width}px`}} className={classNames(styles.optionWrapper, {
           [styles.optionWrapperOpen]: selectDropdownOpened
         })}>
           {

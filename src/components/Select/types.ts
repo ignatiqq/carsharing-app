@@ -10,5 +10,6 @@ export interface ISelect {
     selected: IOption | any,
     clickHandler: (item: IOption | any) => void,
     customLabel?: string,
-    customValue?: string
+    customValue?: string,
+    width?: number
 }

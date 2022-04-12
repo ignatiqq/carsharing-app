@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
 
 import { Select, Map } from "components";
-import styles from "./Location.module.css";
+import styles from "./Location.module.scss";
 import { getPoints } from "store/location/points/actions";
 import { setCurrentCity } from 'store/location/cities/actions'; 
 import { orderSetPointId } from 'store/order/actions';

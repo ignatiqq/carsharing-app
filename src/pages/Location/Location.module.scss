@@ -1,5 +1,11 @@
 .wrapper {
   margin: 25px 0px;
+  font-size: 14px;
+
+  & select, input {
+    font-size: 14px;
+    max-width: 224px;
+  }
 }
 
 .selectsWrapper {
