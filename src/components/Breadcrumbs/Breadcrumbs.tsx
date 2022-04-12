@@ -42,12 +42,6 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
         sortedRoutes.map((item) => (
           <li className={styles.list} key={item.name} >
             {
-              item.index !== 0 &&
-              <span className={styles.arrow}>
-                <Arrow/>
-              </span>
-            }
-            {
               item.index > stepsPassed + 1 ? (
                 <span className={styles.span}>{t(item.name)}</span>
               )

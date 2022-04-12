@@ -25,6 +25,7 @@
 .ul {
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .list {
@@ -36,6 +37,15 @@
     & {
       font-size: 13px;
     }
+  }
+  
+  &:last-child:after {
+    display: none;
+  }
+
+  &:after {
+    content: url("../../assets/icons/Arrow.svg");
+    margin: 0px 20px;
   }
   
 }
