@@ -19,7 +19,6 @@ const Order = () => {
   return (
     <section className={styles.section}>
       <Header className={styles.paddingContainer} />
-      <hr></hr>
       <div className={classNames(styles.breadcrumbsContainer)}>
         <Breadcrumbs 
           routes={routes} 
@@ -28,7 +27,6 @@ const Order = () => {
           className={styles.paddingContainer}
         />
       </div>
-      <hr></hr>
       <div className={classNames(styles.contentWrapper, styles.paddingContainer)}>
         <div className={styles.container}>
             <Outlet />

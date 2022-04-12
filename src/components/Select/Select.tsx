@@ -21,7 +21,7 @@ const Select: React.FC<ISelect> = (
 
   const [optionLabel, setOptionLabel] = useState<string>(customLabel);
   const [optionValue, setOptionValue] = useState<string>(customValue);
-  const [optionsToShow, setOptionsToShow] = useState<any>(null); 
+  const [optionsToShow, setOptionsToShow] = useState<Array<any> | null>(null); 
   const [optionSearch, setOptionSearch] = useState<string>("");
   const [selectDropdownOpened, setSelectDropdownOpened] = useState<boolean>(false);
 
@@ -62,12 +62,14 @@ const Select: React.FC<ISelect> = (
     setOptionSearch("");
   }
 
-  const selectCutyHandler = (item: IOption) => {
+  const selectCityHandler = (item: IOption) => {
     clickHandler(item)
     setOptionSearch("");
     setSelectDropdownOpened(false);
   }
   
+  const inputValue = selectDropdownOpened ? optionSearch : selected ? selected[optionLabel as keyof IOption] : optionSearch;
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.inputLabel} htmlFor='search-input'>{t(label)}</label>
@@ -75,7 +77,7 @@ const Select: React.FC<ISelect> = (
         <input
           name="search-input" 
           type="search" 
-          value={selectDropdownOpened ? optionSearch : selected ? selected[optionLabel as keyof IOption] : optionSearch} 
+          value={inputValue} 
           onChange={searchOptionHandler} 
           placeholder={t(searchPlaceholder)}
           className={styles.input}
@@ -92,7 +94,7 @@ const Select: React.FC<ISelect> = (
                 className={classNames(styles.option, {
                   [styles.optionActive]: item[optionValue as keyof IOption] === selected && selected[optionValue as keyof IOption]
                 })} 
-                onMouseDown={() => selectCutyHandler(item)}
+                onMouseDown={() => selectCityHandler(item)}
                 key={item[optionValue as keyof IOption]} 
                 value={item[optionValue as keyof IOption]}
               >

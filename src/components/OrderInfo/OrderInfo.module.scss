@@ -63,8 +63,13 @@
 .nextBtn {
   width: 100%;
   padding: 13px 0px;
-  max-width: 287px;
+  width: 287px;
   border-radius: 8px;
+
+  &Wrapper {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .orderInfoItemWrapper {
