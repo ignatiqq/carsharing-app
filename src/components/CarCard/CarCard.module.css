@@ -9,8 +9,12 @@
     display: flex;
 }
 
-.wrapper:hover {
+.wrapperActive {
     border: 1px solid var(--primary-green);
+}
+
+.wrapper:hover {
+    border: 1px solid var(--gray-dark);
 }
 
 .button {

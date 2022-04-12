@@ -8,8 +8,9 @@ import { IModel } from "./Model";
 const withModelLogic = (Component: React.FC<IModel>) => () => {
     const dispatch = useAppDispatch();
 
-    const { cars } = useAppSelector(({order}) => ({
+    const { cars, currentCarId, currentCar } = useAppSelector(({order}) => ({
         cars: order.options.cars,
+        currentCarId: order.data.carId,
         currentCar: order.options.cars.current
     }))
 
@@ -18,10 +19,6 @@ const withModelLogic = (Component: React.FC<IModel>) => () => {
             dispatch(getAllCarsData());
         }
     }, [])
-
-    const { currentCar } = useAppSelector(({order}) => ({
-        currentCar: order.options.cars.current
-    }))
 
     useEffect(() => {
         if(currentCar) {
@@ -32,9 +29,9 @@ const withModelLogic = (Component: React.FC<IModel>) => () => {
         }
     }, [currentCar])
 
-
     return (
         <Component 
+            currentCarId={currentCarId!.id}
             data={cars.data} 
             isLoading={cars.isLoading} 
             error={cars.error} 

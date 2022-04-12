@@ -7,18 +7,18 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 
 import { stepsPassed } from "constants/localStorageKeys";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
-import type { IOrder } from 'store/order/types';
+import type { IOrderData } from 'store/order/types';
 import { setOrderStepsPassed } from 'store/order/actions';
 import OrderPrice from "components/OrderPrice/OrderPrice"
 import styles from "./OrderInfo.module.css";
 
 
-const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
+const getCurrentButtonOptions = (pathname: string, order: IOrderData) => {
     switch(pathname) {
         case "/order/location": {
             return {
                 nextPagePathname: "/order/model",
-                disabled: !order.data.cityId || !order.data.pointId,
+                disabled: !order.cityId || !order.pointId,
                 name: "Choose model",
                 nextStep: 1
             }
@@ -27,7 +27,7 @@ const getCurrentButtonOptions = (pathname: string, order: IOrder) => {
         case "/order/model": {
             return {
                 nextPagePathname: "/order/additionality",
-                disabled: !order.data.carId,
+                disabled: !order.carId,
                 name: "Additionality",
                 nextStep: 2
             }
@@ -50,14 +50,14 @@ const OrderInfo = () => {
     const location = useLocation();
     const dispatch = useAppDispatch();
 
-    const { order } = useAppSelector(({order}) => ({
-        order: order
+    const { orderData } = useAppSelector(({order}) => ({
+        orderData: order.data
     }))
 
     useEffect(() => {
-        setButtonOptions(getCurrentButtonOptions(location.pathname, order));
-        setOrderInfo(getOrderInfoData(order.data));
-    }, [location.pathname, order])
+        setButtonOptions(getCurrentButtonOptions(location.pathname, orderData));
+        setOrderInfo(getOrderInfoData(orderData));
+    }, [location.pathname, orderData])
     
     function setPassedSteps(data:number) {
         dispatch(setOrderStepsPassed(data))

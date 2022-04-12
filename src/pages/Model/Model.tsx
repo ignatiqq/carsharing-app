@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {useTranslation} from "react-i18next";
 
-import type { ICarOption, ICarData, IAllCarsData } from "store/order/types";
+import type { ICarData, IAllCarsData } from "store/order/types";
 import { setCurrentCar } from "store/order/actions";
 import withModelLogic from "./withModelLogic";
 import {CarCard, RadioInput, Loader} from "components";
@@ -10,11 +10,12 @@ import { useAppDispatch } from 'store/hooks';
 
 export interface IModel {
     data: IAllCarsData | null,
+    currentCarId: string | null,
     isLoading: boolean,
-    error: string | null
+    error: string | null,
 }
 
-const Model: React.FC<IModel> = React.memo(({data, isLoading, error}) => {
+const Model: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error}) => {
 
     const { t } = useTranslation();
 
@@ -30,7 +31,7 @@ const Model: React.FC<IModel> = React.memo(({data, isLoading, error}) => {
     }
 
     const setCurrentCarModel = (data: ICarData) => {
-        dispatch(setCurrentCar(data))
+        dispatch(setCurrentCar(data));
     }
 
     return (
@@ -39,6 +40,7 @@ const Model: React.FC<IModel> = React.memo(({data, isLoading, error}) => {
                 data && data.data ?
                     data.data.map(item => (
                         <CarCard
+                            currentCarId={currentCarId}
                             key={item.id}
                             onClick={(item) => setCurrentCarModel(item)}
                             car={item}
@@ -46,7 +48,7 @@ const Model: React.FC<IModel> = React.memo(({data, isLoading, error}) => {
                     ))
                     :
                     error &&
-                    <div>{t(error)}</div>
+                <div>{t(error)}</div>
             }
         </div>
     )
