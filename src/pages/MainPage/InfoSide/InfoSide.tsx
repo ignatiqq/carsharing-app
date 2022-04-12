@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, Header } from "components";
 import Footer from "./Footer/Footer";
 
-import styles from "./InfoSide.module.css";
+import styles from "./InfoSide.module.scss";
 import { useTranslation } from 'react-i18next';
 
 
@@ -14,7 +14,7 @@ const InfoSide: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Header />
+      <Header className={styles.header} />
       <div>
         <div>
           <div className={styles.infoTextWrapper}>
