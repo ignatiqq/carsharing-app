@@ -61,7 +61,7 @@ const Location = () => {
         />
       </div>
       <div>
-        <div className={styles.mapChoose}>Выбрать на карте:</div>
+        <div className={styles.mapChoose}>{t("Choose on map")}:</div>
         <Map 
           currentCity={currentCity}
           currentPoint={currentPoint && currentPoint as any}
