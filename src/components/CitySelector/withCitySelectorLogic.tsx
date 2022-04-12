@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import type { ICurrentCity } from "store/location/cities/types";
-import type { IOrderObject } from 'store/order/types';
 import { getAllCities, setCurrentCity } from "store/location/cities/actions";
 import { orderInfo } from 'constants/localStorageKeys';
 

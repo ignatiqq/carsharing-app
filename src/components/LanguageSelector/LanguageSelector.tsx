@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import type { ILanguages, ILanguage } from './languages';
 import { Button } from "components";
-import styles from "./LanguageSelector.module.css";
+import styles from "./LanguageSelector.module.scss";
 import FlagOfRussia from "assets/images/FlagOfRussia.png";
 import FlagOfUsa from "assets/images/FlagOfUsa.png";
 

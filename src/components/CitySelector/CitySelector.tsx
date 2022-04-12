@@ -1,7 +1,7 @@
 import React from 'react';
 
 import marker from "assets/icons/marker.svg";
-import styles from "./CitySelector.module.css";
+import styles from "./CitySelector.module.scss";
 import { Loader } from 'components';
 import type { IComponent } from "./withCitySelectorLogic";
 import withCitySelectorLogic from './withCitySelectorLogic';

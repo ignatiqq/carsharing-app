@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { ReactComponent as TelegramIcon } from "assets/icons/TelegramIcon.svg";
 import { pagesLink } from './links';
-import styles from "./SidebarNav.module.css";
+import styles from "./SidebarNav.module.scss";
 import { useTranslation } from 'react-i18next';
 
 interface ISidebarNav {

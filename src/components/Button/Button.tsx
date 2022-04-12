@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import classNames from "classnames"
 
-import styles from "./Button.module.css";
+import styles from "./Button.module.scss";
 
 interface IButton {
     apperance?: "primary" | "default"
