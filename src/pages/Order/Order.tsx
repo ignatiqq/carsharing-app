@@ -6,7 +6,6 @@ import { Header, Breadcrumbs, OrderInfo } from 'components';
 import { routes } from 'routes/order';
 import styles from "./Order.module.scss";
 import { useAppSelector } from 'store/hooks';
-import { orderInfo } from 'constants/localStorageKeys';
 
 
 const Order = () => {
@@ -16,10 +15,6 @@ const Order = () => {
   const { order } = useAppSelector(({order}) => ({
     order: order
   }))
-
-  useEffect(() => {
-    localStorage.setItem(orderInfo, JSON.stringify(order.data));
-  }, [order])
 
   return (
     <section className={styles.section}>

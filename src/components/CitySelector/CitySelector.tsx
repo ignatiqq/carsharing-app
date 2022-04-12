@@ -3,10 +3,10 @@ import React from 'react';
 import marker from "assets/icons/marker.svg";
 import styles from "./CitySelector.module.scss";
 import { Loader } from 'components';
-import type { IComponent } from "./withCitySelectorLogic";
+import type { ICurrentCityComponent } from "./withCitySelectorLogic";
 import withCitySelectorLogic from './withCitySelectorLogic';
 
-const CitySelector = ({currentCity}: IComponent) => {
+const CitySelector = ({currentCity}: ICurrentCityComponent) => {
 
   return (
       <div className={styles.currentCity}>

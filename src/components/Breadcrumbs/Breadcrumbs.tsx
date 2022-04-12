@@ -35,6 +35,13 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
     setSelectedRoute(pathname);
   }
 
+  const breadcrumbLinkStyle = (item: IRoute) => {
+    return classNames(styles.link, {
+      [styles.current]: item.pathname === selectedRoute,
+      [styles.passed]: item.index < stepsPassed
+    })
+  }
+
   return (
     <ul className={classNames(styles.ul, className)}>
       {
@@ -46,10 +53,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
                 <span className={styles.span}>{t(item.name)}</span>
               )
               :
-              <Link className={classNames(styles.link, {
-                [styles.current]: item.pathname === selectedRoute,
-                [styles.passed]: item.index < stepsPassed
-              })} 
+              <Link className={breadcrumbLinkStyle(item)} 
               to={item.pathname}>
                 {t(item.name)}
               </Link>

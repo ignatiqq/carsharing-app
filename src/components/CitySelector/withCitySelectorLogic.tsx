@@ -3,13 +3,12 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import type { ICurrentCity } from "store/location/cities/types";
 import { getAllCities, setCurrentCity } from "store/location/cities/actions";
-import { orderInfo } from 'constants/localStorageKeys';
 
-export interface IComponent {
+export interface ICurrentCityComponent {
     currentCity: ICurrentCity | null
 }
 
-const withCitySelectorLogic = (Component: React.FC<IComponent>) => () => {
+const withCitySelectorLogic = (Component: React.FC<ICurrentCityComponent>) => () => {
 
     const dispatch = useAppDispatch();
 
@@ -24,19 +23,8 @@ const withCitySelectorLogic = (Component: React.FC<IComponent>) => () => {
     }, [])
 
     useEffect(() => {
-        if(allCities && allCities.data) {
-            const orderDataFromLocalStorage = localStorage.getItem(orderInfo);
-            
-            if(orderDataFromLocalStorage) {
-                const parsedOrderData = JSON.parse(orderDataFromLocalStorage);
-                if(parsedOrderData.cityId) {
-                    dispatch(setCurrentCity({id: parsedOrderData.cityId.id, name: parsedOrderData.cityId.value}))
-                } else {
-                    dispatch(setCurrentCity(allCities.data[0]))
-                }
-            } else {
-                dispatch(setCurrentCity(allCities.data[0]))
-            }
+        if(allCities?.data) {
+            dispatch(setCurrentCity(allCities.data[0]))
         }
     }, [allCities])
 

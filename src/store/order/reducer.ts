@@ -3,12 +3,10 @@ import type { IOrder } from "./types";
 
 import { orderSetCityId, orderSetPointId, setOrderData } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
-import { orderInfo } from "constants/localStorageKeys";
 
-const orderFormLocalStorage =  JSON.parse(localStorage.getItem(orderInfo) as string);
 
 const initialState: IOrder = {
-    data: orderFormLocalStorage ? orderFormLocalStorage : {
+    data: {
         orderStatusId: null,
         cityId: null,
         pointId: null,
@@ -16,6 +14,7 @@ const initialState: IOrder = {
         color: null,
         dateFrom: null,
         dateTo: null,
+        price: 0,
         rateId: null,
         isFullTank: false,
         isNeedChildChair: false,
