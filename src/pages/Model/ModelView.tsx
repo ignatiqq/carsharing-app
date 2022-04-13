@@ -1,24 +1,21 @@
 import React, { useEffect } from 'react'
 import {useTranslation} from "react-i18next";
 
-import type { ICarData, IAllCarsData } from "store/order/types";
-import { setCurrentCar } from "store/order/actions";
+import type { IAllCarsData, ICarData } from "store/order/types";
 import {CarCard, RadioInput, Loader} from "components";
 import styles from "./Model.module.css";
-import { useAppDispatch } from 'store/hooks';
 
 export interface IModel {
     data: IAllCarsData | null,
     currentCarId: string | null,
     isLoading: boolean,
     error: string | null,
+    setCurrentCarModel: (data: ICarData) => void
 }
 
-const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error}) => {
+const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error, setCurrentCarModel}) => {
 
     const { t } = useTranslation();
-
-    const dispatch = useAppDispatch();
 
     if(isLoading) {
         const description = t("Wait until all car models are loaded")
@@ -29,12 +26,11 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
         )
     }
 
-    const setCurrentCarModel = (data: ICarData) => {
-        dispatch(setCurrentCar(data));
-    }
-
     return (
         <div className={styles.wrapper}>
+            <div>
+                <RadioInput label='hello' value='world' id="123" name="hello-world" />
+            </div>
             {
                 data && data.data ?
                     data.data.map(item => (

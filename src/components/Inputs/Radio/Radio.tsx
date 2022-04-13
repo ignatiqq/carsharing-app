@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import styles from "./Radio.module.css";
+import styles from "./Radio.module.scss";
 
 interface IRadio {
     label: string,
