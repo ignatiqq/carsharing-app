@@ -21,5 +21,9 @@
     "Point of issue": "Пункт выдачи",
     "Your order": "Ваш заказ",
     "Price": "Цена",
-    "Choose model": "Выбрать модель"
+    "Choose model": "Выбрать модель",
+    "From": "От",
+    "To": "До",
+    "Choose on map": "Выбрать на карте"
+
 }

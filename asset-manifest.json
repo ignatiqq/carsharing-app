@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/carsharing-app/static/css/main.9efed8f6.css",
-    "main.js": "/carsharing-app/static/js/main.3b260681.js",
+    "main.css": "/carsharing-app/static/css/main.7b166a62.css",
+    "main.js": "/carsharing-app/static/js/main.bd8a7749.js",
     "static/media/sliderImage4.png": "/carsharing-app/static/media/sliderImage4.102be8088d4cd8dd3682.png",
     "static/media/sliderImage3.png": "/carsharing-app/static/media/sliderImage3.8762cd9bfd58fc56a0b3.png",
     "static/media/sliderImage2.png": "/carsharing-app/static/media/sliderImage2.983a40bbc8d5cfb7e85c.png",
@@ -18,16 +18,16 @@
     "index.html": "/carsharing-app/index.html",
     "static/media/getFetch.cjs": "/carsharing-app/static/media/getFetch.c780682470504fffbd04.cjs",
     "static/media/menuBtn.svg": "/carsharing-app/static/media/menuBtn.ef9d36c55a46fdd59a41d11dee14f5b8.svg",
-    "static/media/XIcon.svg": "/carsharing-app/static/media/XIcon.97d64a18a0479e849b03d7378c174bac.svg",
-    "static/media/CloseIcon.svg": "/carsharing-app/static/media/CloseIcon.13854ee106ed73c47a96.svg",
+    "static/media/XIcon.svg": "/carsharing-app/static/media/XIcon.51cb39210b16fa85fd149df4c40c3234.svg",
+    "static/media/CloseIcon.svg": "/carsharing-app/static/media/CloseIcon.01609553fec431d0b9d6.svg",
     "static/media/btnNext.svg": "/carsharing-app/static/media/btnNext.7591c327fb5160f95b31.svg",
     "static/media/btnPrev.svg": "/carsharing-app/static/media/btnPrev.1752ae9160db5265a941.svg",
-    "static/media/Arrow.svg": "/carsharing-app/static/media/Arrow.ce81e7425fdbcb8e18e8475e250c5da8.svg",
-    "main.9efed8f6.css.map": "/carsharing-app/static/css/main.9efed8f6.css.map",
-    "main.3b260681.js.map": "/carsharing-app/static/js/main.3b260681.js.map"
+    "static/media/Arrow.svg": "/carsharing-app/static/media/Arrow.3f54b55d7d55c4a8870e.svg",
+    "main.7b166a62.css.map": "/carsharing-app/static/css/main.7b166a62.css.map",
+    "main.bd8a7749.js.map": "/carsharing-app/static/js/main.bd8a7749.js.map"
   },
   "entrypoints": [
-    "static/css/main.9efed8f6.css",
-    "static/js/main.3b260681.js"
+    "static/css/main.7b166a62.css",
+    "static/js/main.bd8a7749.js"
   ]
 }
