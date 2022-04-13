@@ -3,10 +3,12 @@ import React from 'react';
 import marker from "assets/icons/marker.svg";
 import styles from "./CitySelector.module.scss";
 import { Loader } from 'components';
-import type { ICurrentCityComponent } from "./withCitySelectorLogic";
-import withCitySelectorLogic from './withCitySelectorLogic';
+import type { ICurrentCity } from 'store/location/cities/types';
+export interface ICitySelector {
+  currentCity: ICurrentCity | null
+}
 
-const CitySelector = ({currentCity}: ICurrentCityComponent) => {
+const CitySelector: React.FC<ICitySelector> = ({currentCity}) => {
 
   return (
       <div className={styles.currentCity}>
@@ -16,4 +18,4 @@ const CitySelector = ({currentCity}: ICurrentCityComponent) => {
   )
 }
 
-export default withCitySelectorLogic(CitySelector);
+export default CitySelector;

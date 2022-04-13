@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import type { ICurrentCity } from "store/location/cities/types";
+import CitySelector from './CitySelector';
 import { getAllCities, setCurrentCity } from "store/location/cities/actions";
 
 export interface ICurrentCityComponent {
     currentCity: ICurrentCity | null
 }
 
-const withCitySelectorLogic = (Component: React.FC<ICurrentCityComponent>) => () => {
+const CitySelectorLogic = () => {
 
     const dispatch = useAppDispatch();
 
@@ -31,8 +32,8 @@ const withCitySelectorLogic = (Component: React.FC<ICurrentCityComponent>) => ()
     const currentCityCondition = currentCity ? currentCity : allCities && allCities.data && allCities.data[0]
 
     return (
-        <Component currentCity={currentCityCondition} />
+        <CitySelector currentCity={currentCityCondition} />
     )
 }
 
-export default withCitySelectorLogic
+export default CitySelectorLogic;
