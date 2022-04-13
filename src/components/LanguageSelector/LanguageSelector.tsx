@@ -21,8 +21,11 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
 
   const { i18n } = useTranslation();
 
+  console.log(i18n);
+
   const changeLanguageHandler = (item: ILanguage) => {
     i18n.changeLanguage(item.language);
+    localStorage.setItem(item.language, "i18nextLng");
     setSelectedLanguage(item.label);
     setPopupOpened(false);
   }
@@ -33,7 +36,9 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       const languageToSet = languages.find(item => item.language === currentLanguage);
       if(languageToSet) {
         setSelectedLanguage(languageToSet.label)
-      } 
+      } else {
+        setSelectedLanguage(i18n.languages[0])
+      }
     }
   }, [])
 
@@ -80,7 +85,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       </div>
       <div onClick={openPopupHandler} className={classNames(styles.wrapper)}>
         <Button className={styles.button}>
-          {selectedLanguage ? selectedLanguage: i18n.resolvedLanguage?.toUpperCase()}
+          {selectedLanguage && selectedLanguage}
         </Button>
       </div>
     </div>
