@@ -1,7 +1,6 @@
 export interface IOption {
-    label: string,
-    value: string
-  }
+    [key: string]: string,
+}
   
 export interface ISelect {
     options: Array <IOption | any> | null,
@@ -11,5 +10,6 @@ export interface ISelect {
     clickHandler: (item: IOption | any) => void,
     customLabel?: string,
     customValue?: string,
-    width?: number
+    dropdownClassName?: number,
+    selectClassName?: string
 }

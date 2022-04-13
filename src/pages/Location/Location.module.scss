@@ -4,12 +4,13 @@
 
   & select, input {
     font-size: 14px;
-    max-width: 224px;
+    width: 224px;
   }
 }
 
 .selectsWrapper {
   margin-bottom: 45px;
+  max-width: 330px;
 }
 
 .mapChoose {

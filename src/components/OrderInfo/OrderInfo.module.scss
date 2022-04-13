@@ -28,7 +28,6 @@
 }
 
 .optionName {
-  width: 50%;
   color: var(--primary-black);
   font-size: 14px;
   font-weight: 300;
@@ -36,7 +35,7 @@
 
 .optionSeparator {
   color: var(--gray-dark);
-  width: 30%;
+  width: 40%;
   text-align: center;
   border: none;
   border-bottom: 2px dotted var(--gray-dark);
@@ -45,7 +44,6 @@
 
 .optionValue {
   text-align: right;
-  width: 50%;
   color: var(--gray-dark);
   font-weight: 300;
   font-size: 14px;
@@ -65,10 +63,21 @@
   padding: 13px 0px;
   width: 287px;
   border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  background: linear-gradient(90deg, #0EC261 0%, #039F67) 100%;
 
   &Wrapper {
     display: flex;
     justify-content: center;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &:active {
+    filter: brightness(0.8);
   }
 }
 

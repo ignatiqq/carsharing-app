@@ -15,7 +15,8 @@ const Select: React.FC<ISelect> = (
     clickHandler,
     customLabel = "label",
     customValue = "value",
-    width = 224
+    selectClassName,
+    dropdownClassName
   }
   ) => {
 
@@ -67,8 +68,8 @@ const Select: React.FC<ISelect> = (
     setOptionSearch("");
     setSelectDropdownOpened(false);
   }
-  
-  const inputValue = selectDropdownOpened ? optionSearch : selected ? selected[optionLabel as keyof IOption] : optionSearch;
+
+  const inputValue = selectDropdownOpened ? optionSearch : selected && selected[optionLabel];
 
   return (
     <div className={styles.wrapper}>
@@ -80,25 +81,25 @@ const Select: React.FC<ISelect> = (
           value={inputValue} 
           onChange={searchOptionHandler} 
           placeholder={t(searchPlaceholder)}
-          className={styles.input}
+          className={classNames(styles.input, selectClassName)}
           onFocus={openSelectDropdownHandler}
           onBlur={closeSelectDropdownHandler}
         />
-        <div style={{width: `${width}px`}} className={classNames(styles.optionWrapper, {
+        <div className={classNames(styles.optionWrapper, dropdownClassName, {
           [styles.optionWrapperOpen]: selectDropdownOpened
         })}>
           {
             optionsToShow && optionsToShow.length > 0 ?
-            optionsToShow.map((item: IOption) => (  
+            optionsToShow.map((item) => (  
               <button 
                 className={classNames(styles.option, {
-                  [styles.optionActive]: item[optionValue as keyof IOption] === selected && selected[optionValue as keyof IOption]
+                  [styles.optionActive]: item[optionValue] === selected && selected[optionValue]
                 })} 
                 onMouseDown={() => selectCityHandler(item)}
-                key={item[optionValue as keyof IOption]} 
-                value={item[optionValue as keyof IOption]}
+                key={item[optionValue]} 
+                value={item[optionValue]}
               >
-                {item[optionLabel as keyof IOption]}
+                {item[optionLabel]}
               </button>
             ))
             :

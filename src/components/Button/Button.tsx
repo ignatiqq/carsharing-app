@@ -30,12 +30,14 @@ const Button: React.FC<IButton> = (
     }
     ) => {
 
+    const buttonBackground = apperance === "primary" && !disabled ? `linear-gradient(90deg, ${gradientFrom} 0%, ${gradientTo}) 100%` : ""
+
     return (
         <button
             onClick={onClick}
             type={type}
             disabled={loading || disabled}
-            style={{background: apperance === "primary" && !disabled ? `linear-gradient(90deg, ${gradientFrom} 0%, ${gradientTo}) 100%` : ""}}
+            style={{background: buttonBackground}}
             className={classNames(styles.btn, className, {
                 [styles.btnDisabled]: disabled || loading,
             })}

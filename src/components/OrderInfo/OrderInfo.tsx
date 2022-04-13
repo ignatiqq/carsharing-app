@@ -52,6 +52,8 @@ const OrderInfo = () => {
         setOrderInfo(getOrderInfoData(order.data));
     }, [location.pathname, order])
 
+    const nextBtnPathname = buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname;
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>{t("Your order")}:</div>
@@ -63,8 +65,7 @@ const OrderInfo = () => {
                             <div className={styles.optionName}>
                                 {t(item.label)}
                             </div>
-                            <div className={styles.optionSeparator}>
-                            </div>
+                            <div className={styles.optionSeparator} />
                             <div className={styles.optionValue}>
                                 {item.value}
                             </div>
@@ -78,14 +79,12 @@ const OrderInfo = () => {
                 <span className={styles.price}>{t("Price")}</span> {t("From")} 8000 {t("To")} 12000 &#8381;
             </div>
             <div className={styles.nextBtnWrapper}>
-            <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
-                <Button 
-                    disabled={buttonOptions?.disabled}
-                    className={classNames(styles.nextBtn)}
-                    apperance='primary'
+            <Link 
+                style={{color: "#FFFFFF"}} 
+                to={nextBtnPathname}
+                className={styles.nextBtn}
                 >
-                        {buttonOptions && t(buttonOptions.name)}
-                </Button>
+                {buttonOptions && t(buttonOptions.name)}
             </Link>
             </div>
         </div>
