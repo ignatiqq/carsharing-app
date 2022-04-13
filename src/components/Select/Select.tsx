@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { IOption, ISelect } from "./types";
-import styles from "./Select.module.css";
+import styles from "./Select.module.scss";
 
 
 const Select: React.FC<ISelect> = (
@@ -14,13 +14,15 @@ const Select: React.FC<ISelect> = (
     selected, 
     clickHandler,
     customLabel = "label",
-    customValue = "value"
+    customValue = "value",
+    selectClassName,
+    dropdownClassName
   }
   ) => {
 
   const [optionLabel, setOptionLabel] = useState<string>(customLabel);
   const [optionValue, setOptionValue] = useState<string>(customValue);
-  const [optionsToShow, setOptionsToShow] = useState<any>(null); 
+  const [optionsToShow, setOptionsToShow] = useState<Array<any> | null>(null); 
   const [optionSearch, setOptionSearch] = useState<string>("");
   const [selectDropdownOpened, setSelectDropdownOpened] = useState<boolean>(false);
 
@@ -61,12 +63,14 @@ const Select: React.FC<ISelect> = (
     setOptionSearch("");
   }
 
-  const selectCutyHandler = (item: IOption) => {
+  const selectCityHandler = (item: IOption) => {
     clickHandler(item)
     setOptionSearch("");
     setSelectDropdownOpened(false);
   }
-  
+
+  const inputValue = selectDropdownOpened ? optionSearch : selected ? selected[optionLabel] : optionSearch;
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.inputLabel} htmlFor='search-input'>{t(label)}</label>
@@ -74,28 +78,28 @@ const Select: React.FC<ISelect> = (
         <input
           name="search-input" 
           type="search" 
-          value={selectDropdownOpened ? optionSearch : selected ? selected[optionLabel as keyof IOption] : optionSearch} 
+          value={inputValue} 
           onChange={searchOptionHandler} 
           placeholder={t(searchPlaceholder)}
-          className={styles.input}
+          className={classNames(styles.input, selectClassName)}
           onFocus={openSelectDropdownHandler}
           onBlur={closeSelectDropdownHandler}
         />
-        <div className={classNames(styles.optionWrapper, {
+        <div className={classNames(styles.optionWrapper, dropdownClassName, {
           [styles.optionWrapperOpen]: selectDropdownOpened
         })}>
           {
             optionsToShow && optionsToShow.length > 0 ?
-            optionsToShow.map((item: IOption) => (  
+            optionsToShow.map((item) => (  
               <button 
                 className={classNames(styles.option, {
-                  [styles.optionActive]: item[optionValue as keyof IOption] === selected && selected[optionValue as keyof IOption]
+                  [styles.optionActive]: item[optionValue] === selected && selected[optionValue]
                 })} 
-                onMouseDown={() => selectCutyHandler(item)}
-                key={item[optionValue as keyof IOption]} 
-                value={item[optionValue as keyof IOption]}
+                onMouseDown={() => selectCityHandler(item)}
+                key={item[optionValue]} 
+                value={item[optionValue]}
               >
-                {item[optionLabel as keyof IOption]}
+                {item[optionLabel]}
               </button>
             ))
             :

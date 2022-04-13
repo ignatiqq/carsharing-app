@@ -2,7 +2,7 @@ import type { IOrderData } from "store/order/types";
 
 export interface IOrderInfoData {
     label: string,
-    value: string | number | boolean
+    value: string | number | boolean | undefined
 }
 
 export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
@@ -26,7 +26,7 @@ export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
         },
         {
             label: "Model",
-            value: `${carId?.value}`
+            value: carId?.value
         }
     ]
 

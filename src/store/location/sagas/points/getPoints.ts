@@ -3,13 +3,17 @@ import { AxiosResponse } from "axios";
 
 import { FailedRequest } from "constants/errors";
 import type { IGetPointsResponse } from "./types";
-import { PointsService } from "api/services";
 import { setPoints, setPointsRequestError, getPoints } from "../../points/actions";
+import { requestGet } from "api/requests";
+
+const getPointsRequest = () => {
+    return requestGet("db/point")
+}
 
 
 function *getAllPoints() {
     try {
-        const response: AxiosResponse<IGetPointsResponse> = yield call(PointsService.getPoint);
+        const response: AxiosResponse<IGetPointsResponse> = yield call(getPointsRequest);
         
         if(response && response.data) {
             yield put(setPoints(response.data.data));

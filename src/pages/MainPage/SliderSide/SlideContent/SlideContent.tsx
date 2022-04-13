@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from 'components';
 import type { ISlide } from '../types';
-import styles from "./SlideContent.module.css";
+import styles from "./SlideContent.module.scss";
 import { useTranslation } from 'react-i18next';
 
 const SlideContent: React.FC<ISlide> = ({image, title, subtitle, button}) => {

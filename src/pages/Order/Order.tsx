@@ -1,37 +1,45 @@
 import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-
-import { Header, Breadcrumps, OrderInfo } from 'components';
-import { routes } from 'routes/order';
-import styles from "./Order.module.css";
 import { useAppSelector } from 'store/hooks';
-import { orderInfo } from 'constants/localStorageKeys';
+
+import { allOrderSteps } from 'constants/allOrderSteps';
+import { isStepAvaliable } from 'utils/isStepAvaliable';
+import { Header, Breadcrumbs, OrderInfo } from 'components';
+import { routes } from 'routes/order';
+import styles from "./Order.module.scss";
 
 
 const Order = () => {
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
-  const { order } = useAppSelector(({order}) => ({
-    order: order
+  const { stepsPassed } = useAppSelector(({order}) => ({
+    stepsPassed: order.stepsPassed
   }))
 
   useEffect(() => {
-      localStorage.setItem(orderInfo, JSON.stringify(order.data));
-  }, [order])
+    const isRequestedStepAvaliable = isStepAvaliable({allOrderSteps, currentStep: stepsPassed, requestedStepPathname: pathname});
+    console.log(isRequestedStepAvaliable)
+    if(!isRequestedStepAvaliable) {
+      const avaliableStep = allOrderSteps.find(item => item.step === stepsPassed);
+        navigate(avaliableStep!.pathname)
+    }
+  }, [pathname])
 
   return (
     <section className={styles.section}>
-      <Header />
-        <div className={styles.breadcrumpsWrapper}>
-            <hr></hr>
-            <div className={classNames(styles.breadcrumpsContainer, styles.container)}>
-                <Breadcrumps routes={routes} currentRoutePathname={pathname} stepsPassed={order.stepsPassed} />
-            </div>
-            <hr></hr>
-        </div>
-      <div className={classNames(styles.contentWrapper, styles.container)}>
+      <Header className={styles.paddingContainer} />
+      <div className={classNames(styles.breadcrumbsContainer)}>
+        <Breadcrumbs
+          routes={routes}
+          currentRoutePathname={pathname}
+          stepsPassed={stepsPassed}
+          className={styles.paddingContainer}
+        />
+      </div>
+      <div className={classNames(styles.contentWrapper, styles.paddingContainer)}>
         <div className={styles.container}>
             <Outlet />
         </div>

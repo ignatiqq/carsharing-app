@@ -7,16 +7,24 @@ import {
     setAllCarsDataRequestError,
     setCarsCategoriesData
 } from "../actions";
-import { CarsService, CategoriesService } from "api/services";
 import { setAllCarsDataLoading } from "../actions";
+import { requestGet } from "api/requests";
+
+const getCarsRequest = () => {
+    return requestGet("/db/car/")
+}
+
+const getCategoriesRequest = () => {
+    return requestGet("/db/category/")
+}
 
 function *getCarsData() {
     try {
         yield put(setAllCarsDataLoading(true));
 
         const { carsDataResponse, categoriesDataResponse } = yield all({
-            carsDataResponse: call(CarsService.getCars),
-            categoriesDataResponse: call(CategoriesService.getCarCategories)
+            carsDataResponse: call(getCarsRequest),
+            categoriesDataResponse: call(getCategoriesRequest)
         })
 
         if(carsDataResponse.status < 300) {

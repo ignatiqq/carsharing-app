@@ -3,7 +3,6 @@ import {useTranslation} from "react-i18next";
 
 import type { ICarData, IAllCarsData } from "store/order/types";
 import { setCurrentCar } from "store/order/actions";
-import withModelLogic from "./withModelLogic";
 import {CarCard, RadioInput, Loader} from "components";
 import styles from "./Model.module.css";
 import { useAppDispatch } from 'store/hooks';
@@ -15,7 +14,7 @@ export interface IModel {
     error: string | null,
 }
 
-const Model: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error}) => {
+const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error}) => {
 
     const { t } = useTranslation();
 
@@ -54,4 +53,4 @@ const Model: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, erro
     )
 });
 
-export default withModelLogic(Model);
+export default ModelView;

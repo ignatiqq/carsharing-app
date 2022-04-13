@@ -29,11 +29,11 @@
   flex-direction: column;
   justify-content: center;
   margin-left: 40px;
-}
 
-@media (min-width: 640px) {
-  .nav {
-    margin-left: 96px;
+  @media (min-width: 640px) {
+    & {
+      margin-left: 96px;
+    }
   }
   .wrapper {
     z-index: 100;
@@ -56,21 +56,21 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   font-weight: 500;
+
+  &hover {
+    color: var(--primary-green);
+  }
 }
 
 .linksMargin {
   margin-bottom: 16px;
 }
 
-.link:hover {
-  color: var(--primary-green);
-}
-
 .socialsLink {
   fill: white;
   margin-right: 24px;
-}
 
-.socialsLink:hover {
-  fill: var(--primary-green);
+  &:hover {
+    fill: var(--primary-green);
+  }
 }

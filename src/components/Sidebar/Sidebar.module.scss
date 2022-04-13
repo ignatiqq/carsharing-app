@@ -1,6 +1,5 @@
 .overlay {
-  display: none;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -21,6 +20,13 @@
 
 .asideWrapper {
   z-index: 1000;
+
+  @media (min-width: 640px) {
+    & {
+      position: relative;
+      background: #111518;
+    }
+  }
 }
 
 @media (min-width: 640px) {
@@ -36,26 +42,27 @@
   }
 }
 
+
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 90%;
-  max-height: 90%;
-  margin: auto 0;
+  margin: 35px 0px;
 }
 
 .buttonMenu {
-  z-index: 10000;
-}
+  z-index: 9999;
 
-@media (min-width: 640px) {
-  .buttonMenu {
-    display: block;
-    position: relative;
+  @media (min-width: 640px) {
+    & {
+      display: block;
+      position: relative;
+
+    }
   }
 }
+
 
 .menuLight {
   stroke: white;
@@ -63,11 +70,11 @@
 
 .menuDark {
   stroke: black;
-}
 
-@media (min-width: 640px) {
-  .menuDark {
-    stroke: white;
+  @media (min-width: 640px) {
+    & {
+      stroke: white;
+    }
   }
 }
 

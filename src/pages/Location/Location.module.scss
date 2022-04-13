@@ -1,9 +1,16 @@
 .wrapper {
   margin: 25px 0px;
+  font-size: 14px;
+
+  & select, input {
+    font-size: 14px;
+    width: 224px;
+  }
 }
 
 .selectsWrapper {
-  margin-bottom: 30px;
+  margin-bottom: 45px;
+  max-width: 330px;
 }
 
 .mapChoose {

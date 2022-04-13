@@ -7,7 +7,6 @@
   color: var(--gray-dark);
   font-weight: bold;
   transition: all 0.3s ease;
-  z-index: 999;
 }
 
 .link:hover {
@@ -25,19 +24,31 @@
 .ul {
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .list {
   display: flex;
   align-items: center;
+  font-size: 14px;
+
+  @media screen and (max-width: 400px) {
+    & {
+      font-size: 13px;
+    }
+  }
+
+  &:last-child:after {
+    display: none;
+  }
+
+  &:after {
+    content: url("../../assets/icons/Arrow.svg");
+    margin: 0px 20px;
+  }
+  
 }
 
 .arrow {
   margin: 0px 20px;
-}
-
-@media screen and (max-width: 400px) {
-  .list {
-    font-size: 13px;
-  }
 }

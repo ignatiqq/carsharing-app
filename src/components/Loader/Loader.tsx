@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from "classnames";
 
 import { ReactComponent as LoaderIcon } from "assets/icons/loader.svg";
-import styles from "./Loader.module.css";
+import styles from "./Loader.module.scss";
 
 interface ILoader {
     className?: string,

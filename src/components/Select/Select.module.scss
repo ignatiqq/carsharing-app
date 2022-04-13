@@ -2,23 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
   position: relative;
-  max-width: 300px;
 }
 
 .wrapper {
   display: flex;
+  justify-content: end;
   align-items: center;
   width: 100%;
   margin: 10px 0px;
 }
 
 .inputLabel {
-  min-width: 120px;
   color: var(--primary-black);
   text-align: right;
   margin-right: 10px;
+
+  @media(max-width: 400px) {
+    min-width: 86px;
+  }
 }
 
 .input {
@@ -28,21 +30,21 @@
   padding: 5px 10px;
   width: 100%;
   outline: none;
-  font-size: 16px;
-}
+  font-size: 14px;
 
-.input::placeholder {
-  font-size: 16px;
-}
+  &::placeholder {
+    font-size: 14px;
+  }
 
-.input::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  background: url('../../assets/icons/CloseIcon.svg');
-  margin-right: 6px;
-  margin-bottom: 2px;
-  cursor: pointer;
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+    background: url('../../assets/icons/CloseIcon.svg');
+    margin-right: 6px;
+    margin-bottom: 2px;
+    cursor: pointer;
+  }
 }
 
 .option {
@@ -55,14 +57,14 @@
   text-align: start;
   cursor: pointer;
   transition: all 0.3s ease;
-}
 
-.optionActive {
-  color: var(--primary-green);
-}
+  &Active {
+    color: var(--primary-green);
+  }
 
-.option:hover {
-  color: var(--primary-green);
+  &:hover {
+    color: var(--primary-green);
+  }
 }
 
 .optionWrapper {
@@ -72,7 +74,7 @@
   min-width: 250px;
   max-height: 200px;
   position: absolute;
-  right: 0;
+  font-size: 14px;
   top: 30px;
   z-index: 888;
   overflow: auto;
@@ -82,27 +84,27 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
-}
 
-.optionWrapperOpen {
-  opacity: 1;
-  pointer-events: all;
-}
+  &::-webkit-scrollbar {
+    border-left: 1px solid var(--gray-dark);
+    max-width: 5px;
+  }
 
-.optionWrapper::-webkit-scrollbar {
-  border-left: 1px solid var(--gray-dark);
-  max-width: 5px;
-}
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray-dark);
+    border: 0.1px solid var(--gray-dark);
+    border-radius: 999px;
+  }
 
-.optionWrapper::-webkit-scrollbar-thumb {
-  background: var(--gray-dark);
-  border: 0.1px solid var(--gray-dark);
-  border-radius: 999px;
+  &Open {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .notFound {
   padding: 15px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
   text-align: center;
 }

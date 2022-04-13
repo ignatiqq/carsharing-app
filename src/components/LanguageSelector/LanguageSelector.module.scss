@@ -10,10 +10,10 @@
   transition: all 0.3s ease;
   border: 999px;
   border-radius: 999px;
-}
 
-.button:hover {
-  border: 1px solid #fff;
+  &:hover {
+    border: 1px solid #fff;
+  } 
 }
 
 .popup {
@@ -26,11 +26,11 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.2s ease;
-}
 
-.popupOpened {
-  opacity: 1;
-  pointer-events: all;
+  &Opened {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .languageBtn {
@@ -42,14 +42,10 @@
   background: #000;
   transition: all 0.3s ease;
   border-radius: 0px;
-}
 
-.activeLanguageBtn {
-  background: var(--primary-green);
-}
-
-.languageBtn:hover {
-  background: var(--primary-green);
+  &:hover {
+    background: var(--primary-green);
+  } 
 }
 
 .imageFlag {

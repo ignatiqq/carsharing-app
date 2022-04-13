@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import SlideContent from "./SlideContent/SlideContent";
 import { slides } from './SlideContent/slidesConstants';
 import "./sliderCustomStyles.scss";
-import styles from './SliderSide.module.css';
+import styles from './SliderSide.module.scss';
  
 const SliderSide: React.FC = () => {
   return (

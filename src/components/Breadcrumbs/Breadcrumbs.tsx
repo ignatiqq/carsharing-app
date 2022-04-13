@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import type { IUseBreadcumps, IRoute } from "./types";
-import styles from "./Breadcumps.module.css";
+import type { IBreadcrumbs, IRoute } from "./types";
+import styles from "./Breadcrumbs.module.scss";
 import { ReactComponent as Arrow } from "assets/icons/Arrow.svg";
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, stepsPassed}) => {
+const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, stepsPassed, className}) => {
 
   const [sortedRoutes, setSortedRoutes] = React.useState<Array<IRoute> | null>(null);
   const [selectedRoute, setSelectedRoute] = React.useState<string | null>(null);
@@ -35,27 +35,25 @@ const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, ste
     setSelectedRoute(pathname);
   }
 
+  const breadcrumbLinkStyle = (item: IRoute) => {
+    return classNames(styles.link, {
+      [styles.current]: item.pathname === selectedRoute,
+      [styles.passed]: item.index < stepsPassed
+    })
+  }
+
   return (
-    <ul className={styles.ul}>
+    <ul className={classNames(styles.ul, className)}>
       {
         sortedRoutes && 
         sortedRoutes.map((item) => (
           <li className={styles.list} key={item.name} >
             {
-              item.index !== 0 &&
-              <span className={styles.arrow}>
-                <Arrow/>
-              </span>
-            }
-            {
-              item.index > stepsPassed + 1 ? (
+              item.index > stepsPassed ? (
                 <span className={styles.span}>{t(item.name)}</span>
               )
               :
-              <Link className={classNames(styles.link, {
-                [styles.current]: item.pathname === selectedRoute,
-                [styles.passed]: item.index < stepsPassed
-              })} 
+              <Link className={breadcrumbLinkStyle(item)} 
               to={item.pathname}>
                 {t(item.name)}
               </Link>
@@ -68,4 +66,4 @@ const Breadcumps: React.FC<IUseBreadcumps> = ({routes, currentRoutePathname, ste
 
 }
 
-export default Breadcumps;
+export default Breadcrumbs;

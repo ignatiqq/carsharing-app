@@ -3,7 +3,6 @@ import { YMaps, Map as YMap, Placemark } from 'react-yandex-maps';
 import type { YMapsApi } from "react-yandex-maps";
 
 import { getYmapCoordinates, getGeocodeByName } from "utils/yMapHelper";
-import { getPointsByCityId } from 'utils/pointsHelper';
 import type { ICurrentCity } from "store/location/cities/types";
 import type { ICurrentPoint } from "store/location/points/types"
 
@@ -55,7 +54,7 @@ const Map: React.FC<IMap> = (
 
     useEffect(() => {
         if(ymap && currentCity) {
-            getAndSetCurrentCoordinates(`${currentCity && currentCity.name}, ${currentPoint && currentPoint.value ? currentPoint.value : ""}`);
+            getAndSetCurrentCoordinates(`${currentCity && currentCity.name}, ${currentPoint?.value ? currentPoint.value : ""}`);
         }
     }, [ymap, currentCity, currentPoint])
 
@@ -88,7 +87,7 @@ const Map: React.FC<IMap> = (
                 onLoad={(ymaps) => setYMap(ymaps)}
             >
                 {
-                    pointsData && pointsData.length > 0 &&
+                    pointsData.length > 0 &&
                     pointsData.map((item) => (
                         <Placemark
                             options={{ preset: 'islands#circleIcon', iconColor: '#0EC261' }}

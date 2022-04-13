@@ -14,13 +14,9 @@ import {
     orderSetCarId
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
-import { orderInfo, stepsPassed } from "constants/localStorageKeys";
-
-const orderFormLocalStorage = JSON.parse(localStorage.getItem(orderInfo) as string);
-const stepsPassedFromLocalStorage = JSON.parse(localStorage.getItem(stepsPassed) as string);
 
 const initialState: IOrder = {
-    data: orderFormLocalStorage ? orderFormLocalStorage : {
+    data: {
         orderStatusId: null,
         cityId: null,
         pointId: null,
@@ -28,6 +24,7 @@ const initialState: IOrder = {
         color: null,
         dateFrom: null,
         dateTo: null,
+        price: 0,
         rateId: null,
         isFullTank: false,
         isNeedChildChair: false,
@@ -42,7 +39,7 @@ const initialState: IOrder = {
             error: null,
         },
     },
-    stepsPassed: stepsPassedFromLocalStorage ? stepsPassedFromLocalStorage : 0,
+    stepsPassed: 0,
     price: 0
 };
 

@@ -3,9 +3,9 @@ import {useAppDispatch, useAppSelector} from "store/hooks";
 
 import { orderSetCarId } from "store/order/actions";
 import {getAllCarsData} from "store/order/actions";
-import { IModel } from "./Model";
+import ModelView from "./ModelView";
 
-const withModelLogic = (Component: React.FC<IModel>) => () => {
+const Model = () => {
     const dispatch = useAppDispatch();
 
     const { cars, currentCarId, currentCar } = useAppSelector(({order}) => ({
@@ -30,8 +30,8 @@ const withModelLogic = (Component: React.FC<IModel>) => () => {
     }, [currentCar])
 
     return (
-        <Component 
-            currentCarId={currentCarId!.id}
+        <ModelView 
+            currentCarId={currentCarId && currentCarId.id}
             data={cars.data} 
             isLoading={cars.isLoading} 
             error={cars.error} 
@@ -40,4 +40,4 @@ const withModelLogic = (Component: React.FC<IModel>) => () => {
 
 }
 
-export default withModelLogic;
+export default Model;

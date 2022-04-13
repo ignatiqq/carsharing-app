@@ -3,14 +3,17 @@ import type { AxiosResponse } from "axios";
 
 import { FailedRequest } from "constants/errors";
 import { setAllCitiesLoading, setAllCities, setAllCitiesLoadingError, getAllCities } from "../../cities/actions";
-import {CitiesService} from "api/services";
+import { requestGet } from "api/requests";
 
+const getCitiesRequest = () => {
+    return requestGet("/db/city");
+}
 
 export function *getCities() {
     try {
         yield put(setAllCitiesLoading(true));
 
-        const response: AxiosResponse = yield call(CitiesService.getCities);
+        const response: AxiosResponse = yield call(getCitiesRequest);
 
         if(response && response.data) {
             yield put(setAllCities(response.data.data));

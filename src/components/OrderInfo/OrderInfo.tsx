@@ -1,16 +1,13 @@
 import Button from 'components/Button/Button';
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 
-import { stepsPassed } from "constants/localStorageKeys";
+import { setOrderStepsPassed } from "store/order/actions";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
-import type { IOrderData } from 'store/order/types';
-import { setOrderStepsPassed } from 'store/order/actions';
-import OrderPrice from "components/OrderPrice/OrderPrice"
-import styles from "./OrderInfo.module.css";
+import type { IOrder, IOrderData } from 'store/order/types';
+import styles from "./OrderInfo.module.scss";
 
 
 const getCurrentButtonOptions = (pathname: string, order: IOrderData) => {
@@ -58,48 +55,51 @@ const OrderInfo = () => {
         setButtonOptions(getCurrentButtonOptions(location.pathname, orderData));
         setOrderInfo(getOrderInfoData(orderData));
     }, [location.pathname, orderData])
-    
-    function setPassedSteps(data:number) {
-        dispatch(setOrderStepsPassed(data))
-        localStorage.setItem(stepsPassed, JSON.stringify(data))
+
+    function setPassedSteps(data:number | undefined) {
+        if(data) {
+            dispatch(setOrderStepsPassed(data))
+        }
     }
+
+    const nextBtnPathname = buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname;
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.position}>
-                <div className={styles.title}>{t("Your order")}:</div>
+            <div className={styles.title}>{t("Your order")}:</div>
                 <div className={styles.optionsWrapper}>
                     {
                         orderInfo && orderInfo.length > 0 ?
-                        orderInfo.map(item => (
-                            <div className={styles.orderInfoItemWrapper} key={item.label}>
-                                <div className={styles.optionName}>
-                                    {t(item.label)}
+                            orderInfo.map(item => 
+                                item.value && (
+                                <div className={styles.orderInfoItemWrapper} key={item.label}>
+                                    <div className={styles.optionName}>
+                                        {t(item.label)}
+                                    </div>
+                                    <div className={styles.optionSeparator} />
+                                    <div className={styles.optionValue}>
+                                        {item.value}
+                                    </div>
                                 </div>
-                                <div className={styles.optionSeparator}>
-                                    ........................
-                                </div>
-                                <div className={styles.optionValue}>
-                                    {item.value}
-                                </div>
-                            </div>
-                        ))
-                        :
-                        <div>Здесь будут ваши данные о заказе</div>
+                            ))
+                            :
+                            <div>Здесь будут ваши данные о заказе</div>
                     }
                 </div>
-                <OrderPrice />
-                <Link style={{color: "#FFFFFF"}} to={buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname}>
-                    <Button
-                        onClick={() => setPassedSteps(buttonOptions!.nextStep)}
-                        disabled={buttonOptions?.disabled}
-                        className={classNames(styles.nextBtn, {
-                        })}
-                        apperance='primary'
+            <div className={styles.priceWrapper}>
+                <span className={styles.price}>{t("Price")}</span> от 8000 до 12000 &#8381;
+            </div>
+                <div className={styles.nextBtnWrapper}>
+                    <Link
+                        onClick={() => setPassedSteps(buttonOptions?.nextStep)}
+                        style={{color: "#FFFFFF"}}
+                        to={nextBtnPathname}
+                        className={styles.nextBtn}
                     >
-                            {buttonOptions && t(buttonOptions.name)}
-                    </Button>
-                </Link>
+                        {buttonOptions && t(buttonOptions.name)}
+                    </Link>
+                </div>
             </div>
         </div>
     )

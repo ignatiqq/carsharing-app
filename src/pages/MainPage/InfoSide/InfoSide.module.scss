@@ -4,31 +4,23 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-}
 
-@media (min-width: 640px) {
-  .wrapper {
-    margin: auto 48px;
+  @media (min-width: 640px) {
+    & {
+      margin: 35px 48px;
+    }
   }
-}
 
-@media (min-width: 1024px) {
-  .wrapper {
-    flex-basis: 50%;
+  @media (min-width: 1024px) {
+    & {
+      flex-basis: 50%;
+    }
   }
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 16px;
-  margin-top: 20px;
 }
 
 @media (min-width: 640px) {
   .header {
-    margin: 0;
+    padding: 0;
   }
 }
 
@@ -37,25 +29,27 @@
   flex-direction: column;
   width: 100%;
   align-items: flex-end;
-}
 
-@media (min-width: 640px) {
-  .headerWrapper {
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
+  @media (min-width: 640px) {
+    & {
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }
+
 
 .buttonHeader {
   z-index: 30;
-}
 
-@media (min-width: 640px) {
-  .buttonHeader {
-    display: none;
+  @media (min-width: 640px) {
+    & {
+      display: none;
+    }
   }
 }
+
 
 .buttonHeaderIcon {
   fill: black;
@@ -70,13 +64,14 @@
 .cityBlockWrapper {
   display: flex;
   margin-top: 8px;
-}
 
-@media (min-width: 640px) {
-  .cityBlockWrapper {
-    margin: 0;
+  @media (min-width: 640px) {
+    & {
+      margin: 0;
+    }
   }
 }
+
 
 .cityBlockText {
   margin-left: 8px;
@@ -87,13 +82,16 @@
 .infoTextWrapper {
   padding: 16px 0px;
   margin-left: 20px;
+
+  @media (min-width: 640px) {
+    & {
+      margin: 0;
+    }
+  }
+
 }
 
 @media (min-width: 640px) {
-  .infoTextWrapper {
-    margin: 0;
-  }
-
   .infoTitleWrapper {
     line-height: 70px;
   }
@@ -105,10 +103,6 @@
   font-size: 48px;
 }
 
-.infoTitleCompany {
-  color: var(--primary-green);
-}
-
 @media (min-width: 640px) {
   .infoTitleCompany,
   .infoTitleText {
@@ -116,27 +110,34 @@
   }
 }
 
+.infoTitleCompany {
+  color: var(--primary-green);
+}
+
+
 .infoParagraph {
   font-weight: 300;
   color: var(--gray-dark);
   font-size: 18px;
-}
 
-@media (min-width: 640px) {
-  .infoParagraph {
-    font-size: 26px;
+  @media (min-width: 640px) {
+    & {
+      font-size: 26px;
+    }
   }
 }
+
 
 .bookButton {
   width: 100%;
   border-radius: 0px;
   padding: 10px 50px;
-}
-
-@media (min-width: 640px) {
-  .bookButton {
-    border-radius: 4px;
-    width: auto;
+  
+  @media (min-width: 640px) {
+    & {
+      border-radius: 4px;
+      width: auto;
+    }
   }
+  
 }

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import type { ILanguages, ILanguage } from './languages';
 import { Button } from "components";
-import styles from "./LanguageSelector.module.css";
+import styles from "./LanguageSelector.module.scss";
 import FlagOfRussia from "assets/images/FlagOfRussia.png";
 import FlagOfUsa from "assets/images/FlagOfUsa.png";
 
@@ -80,7 +80,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       </div>
       <div onClick={openPopupHandler} className={classNames(styles.wrapper)}>
         <Button className={styles.button}>
-          {selectedLanguage ? selectedLanguage: i18n.resolvedLanguage.toUpperCase()}
+          {selectedLanguage ? selectedLanguage: i18n.resolvedLanguage?.toUpperCase()}
         </Button>
       </div>
     </div>
