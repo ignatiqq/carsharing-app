@@ -21,7 +21,6 @@ const Order = () => {
 
   useEffect(() => {
     const isRequestedStepAvaliable = isStepAvaliable({allOrderSteps, currentStep: stepsPassed, requestedStepPathname: pathname});
-    console.log(isRequestedStepAvaliable)
     if(!isRequestedStepAvaliable) {
       const avaliableStep = allOrderSteps.find(item => item.step === stepsPassed);
         navigate(avaliableStep!.pathname)

@@ -17,7 +17,7 @@ export interface ICarOption {
 
  export interface ICarsCategories {
     count: number,
-    data: ICarsCategory | null,
+    data: Array<ICarsCategory> | null,
     fields: any
  }
 

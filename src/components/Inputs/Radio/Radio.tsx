@@ -23,10 +23,10 @@ const Radio: React.FC<IRadio> = (
     }
 ) => {
     return (
-        <>
+        <div className={classNames(styles.wrapper, className)}>
             <input className={classNames(styles.radio)} type="radio" id={id} name={name} value={value} />
             <label htmlFor={id}>{label}</label>
-        </>
+        </div>
     )
 }
 

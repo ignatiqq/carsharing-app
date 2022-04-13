@@ -21,8 +21,6 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
 
   const { i18n } = useTranslation();
 
-  console.log(i18n);
-
   const changeLanguageHandler = (item: ILanguage) => {
     i18n.changeLanguage(item.language);
     localStorage.setItem(item.language, "i18nextLng");

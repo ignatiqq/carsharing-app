@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {useTranslation} from "react-i18next";
 
-import type { IAllCarsData, ICarData } from "store/order/types";
+import type { IAllCarsData, ICarData, ICarsCategory } from "store/order/types";
 import {CarCard, RadioInput, Loader} from "components";
-import styles from "./Model.module.css";
+import styles from "./Model.module.scss";
 
 export interface IModel {
     data: IAllCarsData | null,
     currentCarId: string | null,
     isLoading: boolean,
     error: string | null,
+    categories: Array<ICarsCategory> | null,
     setCurrentCarModel: (data: ICarData) => void
 }
 
-const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error, setCurrentCarModel}) => {
+const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error, categories, setCurrentCarModel}) => {
 
     const { t } = useTranslation();
 
@@ -29,8 +30,29 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
     return (
         <div className={styles.wrapper}>
             <div>
-                <RadioInput label='hello' value='world' id="123" name="hello-world" />
+                <RadioInput 
+                    className={styles.radioInput}
+                    label={t("All")} 
+                    value={"All"} 
+                    id={"all-type"} 
+                    name="car-type" 
+                    
+                />
+                {
+                    categories && categories.length > 0 &&
+                    categories.map(item => (
+                        <RadioInput 
+                            key={item.id} 
+                            label={item.name} 
+                            value={item.id} 
+                            id={item.id} 
+                            className={styles.radioInput}
+                            name="car-type" 
+                        />
+                    ))
+                }
             </div>
+            <div className={styles.carCardWrapper}>
             {
                 data && data.data ?
                     data.data.map(item => (
@@ -45,6 +67,7 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
                     error &&
                 <div>{t(error)}</div>
             }
+            </div>
         </div>
     )
 });

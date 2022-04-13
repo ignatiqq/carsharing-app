@@ -101,6 +101,11 @@
   font-weight: 500;
   background: linear-gradient(90deg, #0EC261 0%, #039F67) 100%;
 
+  &Disabled {
+    pointer-events: none;
+    background: var(--gray-light);
+  }
+
   &Wrapper {
     display: flex;
     justify-content: center;

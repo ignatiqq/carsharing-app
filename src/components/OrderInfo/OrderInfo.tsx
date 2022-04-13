@@ -6,8 +6,9 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 
 import { setOrderStepsPassed } from "store/order/actions";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
-import type { IOrder, IOrderData } from 'store/order/types';
+import type { IOrderData } from 'store/order/types';
 import styles from "./OrderInfo.module.scss";
+import classNames from 'classnames';
 
 
 const getCurrentButtonOptions = (pathname: string, order: IOrderData) => {
@@ -94,8 +95,10 @@ const OrderInfo = () => {
                     <Link
                         onClick={() => setPassedSteps(buttonOptions?.nextStep)}
                         style={{color: "#FFFFFF"}}
-                        to={nextBtnPathname}
-                        className={styles.nextBtn}
+                        to={!buttonOptions?.disabled ? nextBtnPathname : window.location.pathname}
+                        className={classNames(styles.nextBtn, {
+                            [styles.nextBtnDisabled]: buttonOptions?.disabled
+                        })}
                     >
                         {buttonOptions && t(buttonOptions.name)}
                     </Link>

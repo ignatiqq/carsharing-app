@@ -41,6 +41,7 @@ const Model = () => {
             data={cars.data} 
             isLoading={cars.isLoading} 
             error={cars.error} 
+            categories={cars?.categories && cars?.categories?.data}
             setCurrentCarModel={setCurrentCarModel}
         />
     )
