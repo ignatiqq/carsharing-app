@@ -1,0 +1,11 @@
+.currentCity {
+  display: flex;
+  align-items: center;
+  color: var(--gray-dark);
+  font-size: 14px;
+  cursor: default;
+}
+
+.currentCityText {
+  margin-left: 8px;
+}
