@@ -42,8 +42,10 @@ const Sidebar = () => {
     <aside className={styles.asideWrapper}>
     <SidebarNav setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
      {sidebarOpen && <div className={styles.overlay} />}
-      <div className={styles.sidebar}>
-          <div className={styles.wrapper}>
+      <div className={classNames(styles.sidebar, {
+        [styles.sidebarOpened]: sidebarOpen
+      })}>
+          <div className={classNames(styles.wrapper)}>
             <Button onClick={sidebarOpenHanlder} className={styles.buttonMenu}>
               {
                 sidebarOpen 

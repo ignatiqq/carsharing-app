@@ -11,11 +11,20 @@
 
 .sidebar {
   position: absolute;
-  height: 100vh;
   display: flex;
   justify-content: center;
   min-width: 65px;
-  z-index: 200;
+
+  &Opened {
+    height: 100%;
+    z-index: 200;
+  }
+
+  @media (min-width: 640px) {
+    & {
+      height: 100%;
+    }
+  }
 }
 
 .asideWrapper {

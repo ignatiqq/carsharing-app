@@ -4,6 +4,8 @@
     border: 1px solid var(--gray-light);
     transition: all .3s ease;
     cursor: pointer;
+    min-height: 300px;
+    max-height: 350px;
     padding: 16px;
     z-index: 10;
     display: flex;
@@ -46,4 +48,11 @@
 .carImage {
     display: flex;
     margin: 0 0 0 auto;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }

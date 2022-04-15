@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 
 import { setOrderStepsPassed } from "store/order/actions";
+import { OrderPrice } from "components";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
 import type { IOrderData } from 'store/order/types';
 import styles from "./OrderInfo.module.scss";
@@ -88,9 +89,7 @@ const OrderInfo = () => {
                             <div>Здесь будут ваши данные о заказе</div>
                     }
                 </div>
-            <div className={styles.priceWrapper}>
-                <span className={styles.price}>{t("Price")}</span> {t("From")} 8000 {t("To")} 12000 &#8381;
-            </div>
+                <OrderPrice />
                 <div className={styles.nextBtnWrapper}>
                     <Link
                         onClick={() => setPassedSteps(buttonOptions?.nextStep)}

@@ -2,7 +2,7 @@ import React from "react";
 
 import { LazyImage } from "..";
 import type { ICarData } from "store/order/types";
-import styles from "./CarCard.module.css";
+import styles from "./CarCard.module.scss";
 import classNames from "classnames";
 
 interface ICarCard {
@@ -18,7 +18,7 @@ const CarCard: React.FC<ICarCard> = React.memo(({ currentCarId, onClick, car }) 
             [styles.wrapperActive]: currentCarId && currentCarId === car.id
         })} >
             <button className={styles.button} onClick={() => onClick(car)}>
-                <div>
+                <div className={styles.cardWrapper}>
                     <div className={styles.carInfo}>
                         <div className={styles.carName}>{car.name}</div>
                         <div className={styles.carPrice}>{car.priceMin} - {car.priceMax} &#8381;</div>
