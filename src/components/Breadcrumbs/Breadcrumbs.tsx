@@ -54,7 +54,8 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
               )
               :
               <Link className={breadcrumbLinkStyle(item)} 
-              to={item.pathname}>
+                to={item.pathname}
+              >
                 {t(item.name)}
               </Link>
             }

@@ -35,7 +35,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       if(languageToSet) {
         setSelectedLanguage(languageToSet.label)
       } else {
-        setSelectedLanguage(i18n.languages[0])
+        setSelectedLanguage(i18n.resolvedLanguage)
       }
     }
   }, [])
@@ -83,7 +83,8 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       </div>
       <div onClick={openPopupHandler} className={classNames(styles.wrapper)}>
         <Button className={styles.button}>
-          {selectedLanguage && selectedLanguage}
+          {console.log(i18n)}
+          {selectedLanguage && selectedLanguage.toUpperCase()}
         </Button>
       </div>
     </div>
