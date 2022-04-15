@@ -7,10 +7,13 @@
 
 .wrapper {
   display: flex;
-  justify-content: end;
   align-items: center;
   width: 100%;
   margin: 10px 0px;
+
+  @media (min-width: 640px) {
+    justify-content: end;
+  }
 }
 
 .inputLabel {

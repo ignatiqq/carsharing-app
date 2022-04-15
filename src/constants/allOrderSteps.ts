@@ -15,7 +15,7 @@ export const allOrderSteps = [
         step: 1
     },
     {
-        pathname: "/order/additionality",
+        pathname: "/order/additionally",
         step: 2
     },
     {

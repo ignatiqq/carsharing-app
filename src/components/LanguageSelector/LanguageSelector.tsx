@@ -83,7 +83,6 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({className, languages}) =
       </div>
       <div onClick={openPopupHandler} className={classNames(styles.wrapper)}>
         <Button className={styles.button}>
-          {console.log(i18n)}
           {selectedLanguage && selectedLanguage.toUpperCase()}
         </Button>
       </div>

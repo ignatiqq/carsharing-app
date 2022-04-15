@@ -25,10 +25,19 @@ const getCurrentButtonOptions = (pathname: string, order: IOrderData) => {
 
         case "/order/model": {
             return {
-                nextPagePathname: "/order/additionality",
+                nextPagePathname: "/order/additionally",
                 disabled: !order.carId,
-                name: "Additionality",
+                name: "Additionally",
                 nextStep: 2
+            }
+        }
+
+        case "/order/additionally": {
+            return {
+                nextPagePathname: "/order/total",
+                disabled: !order.dateFrom || !order.dateTo || !order.rateId || !order.color,
+                name: "Total",
+                nextStep: 3
             }
         }
     }

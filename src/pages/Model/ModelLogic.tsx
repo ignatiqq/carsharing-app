@@ -34,7 +34,6 @@ const Model = () => {
 
     useEffect(() => {
         if(cars && cars.data) {
-            console.log(cars.data)
             setFilteredCars(cars.data.data)
         }
     }, [cars.data])

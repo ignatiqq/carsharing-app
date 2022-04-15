@@ -20,11 +20,17 @@
     "City": "City",
     "Point of issue": "Point of issue",
     "Your order": "Your order",
+    "Choose model": "Choose model",
     "Price": "Price",
     "Wait until all car models are loaded": "Wait until all car models are loaded",
     "Error: Something go wrong, try later": "Error: Something go wrong, try later",
     "From": "From",
     "To": "To",
     "Choose on map": "Choose on map",
-    "All": "All"
+    "All": "All",
+    "Спорт": "Sport",
+    "Супер-эконом": "Super-econom",
+    "Люкс": "Luxury",
+    "Эконом+": "Econom+",
+    "Бизнес": "Buisness"
 }
