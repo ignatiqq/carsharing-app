@@ -11,7 +11,10 @@ import {
     setCarsCategoriesData,
     setOrderStepsPassed,
     setCurrentCar,
-    orderSetCarId
+    orderSetCarId,
+    setOrderRates,
+    setOrderRatesLoading,
+    setOrderRatesError
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
 
@@ -38,6 +41,11 @@ const initialState: IOrder = {
             isLoading: false,
             error: null,
         },
+        rates: {
+            data: null,
+            isLoading: false,
+            error: null
+        }
     },
     stepsPassed: 0,
     price: 0
@@ -93,6 +101,26 @@ const order = createReducer(initialState, (builder) => {
         })
         .addCase(setOrderStepsPassed, (state, action) => {
             state.stepsPassed = action.payload
+        })
+        .addCase(setOrderRates, (state, action) => {
+            state.options.rates = {
+                ...state.options.rates,
+                data: action.payload,
+                isLoading: false
+            }
+        })
+        .addCase(setOrderRatesLoading, (state, action) => {
+            state.options.rates = {
+                ...state.options.rates,
+                isLoading: action.payload
+            }
+        })
+        .addCase(setOrderRatesError, (state, action) => {
+            state.options.rates = {
+                ...state.options.rates,
+                data: null,
+                error: action.payload
+            }
         })
 })
 

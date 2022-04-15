@@ -10,9 +10,13 @@ import {
     SET_CARS_CATEGORIES_DATA,
     SET_ORDER_STEPS_PASSED,
     SET_CURRENT_CAR,
-    ORDER_SET_CAR_ID
+    ORDER_SET_CAR_ID,
+    GET_ORDER_RATES,
+    SET_ORDER_RATES,
+    SET_ORDER_RATES_LOADING,
+    SET_ORDER_RATES_ERROR
 } from "./constants";
-import {IOrderObject, IOrder, IAllCarsData, ICarsCategories, ICarData} from "./types";
+import {IOrderObject, IOrder, IAllCarsData, ICarsCategories, ICarData, IRateOption} from "./types";
 
 export const orderSetCityId = createAction<IOrderObject | null>(ORDER_SET_CITY_ID);
 export const orderSetPointId = createAction<IOrderObject | null>(ORDER_SET_POINT_ID);
@@ -28,3 +32,8 @@ export const setCurrentCar = createAction<ICarData>(SET_CURRENT_CAR);
 export const setCarsCategoriesData = createAction<ICarsCategories>(SET_CARS_CATEGORIES_DATA);
 
 export const setOrderStepsPassed = createAction<number>(SET_ORDER_STEPS_PASSED);
+
+export const getOrderRates = createAction(GET_ORDER_RATES);
+export const setOrderRates = createAction<Array<IRateOption> | null>(SET_ORDER_RATES);
+export const setOrderRatesLoading = createAction<boolean>(SET_ORDER_RATES_LOADING);
+export const setOrderRatesError = createAction<string>(SET_ORDER_RATES_ERROR);

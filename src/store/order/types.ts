@@ -2,9 +2,28 @@ export interface IOrder {
     data: IOrderData,
     options: {
         cars: ICarOption,
+        rates: IRateOptions
     },
     stepsPassed: number,
     price: number
+}
+
+export interface IRateOptions {
+    data: Array<IRateOption> | null,
+    isLoading: boolean,
+    error: string | null
+}
+
+export interface IRateOption {
+    createdAt: number,
+    updatedAt: number,
+    id: string,
+    price: number,
+    rateTypeId: {
+        unit: string,
+        name: string,
+        id: string
+    }
 }
 
 export interface ICarOption {
