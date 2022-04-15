@@ -5,7 +5,6 @@
 
   @media screen and (max-width: 1090px) {
     & {
-      border-top: 2px solid #eeeeee;
       border-left: none;
       padding: 30px 0px 20px 0px;
     }
@@ -30,7 +29,6 @@
     width: 92%;
     right: 0;
     left: 54%;
-    border-top: none;
   }
 }
 
@@ -41,6 +39,7 @@
     width: auto;
     transform: none;
     min-width: 350px;
+    border-top: none;
   }
 }
 

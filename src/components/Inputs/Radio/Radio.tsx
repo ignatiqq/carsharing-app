@@ -9,7 +9,8 @@ interface IRadio {
     id: string,
     name: string,
     color?: string,
-    className?: string
+    className?: string,
+    onClick: (data: any) => void
 }
 
 const Radio: React.FC<IRadio> = (
@@ -18,12 +19,12 @@ const Radio: React.FC<IRadio> = (
         value,
         id,
         name,
-        color = "#0ec261",
+        onClick,
         className
     }
 ) => {
     return (
-        <div className={classNames(styles.wrapper, className)}>
+        <div onClick={onClick} className={classNames(styles.wrapper, className)}>
             <input className={classNames(styles.radio)} type="radio" id={id} name={name} value={value} />
             <label htmlFor={id}>{label}</label>
         </div>
