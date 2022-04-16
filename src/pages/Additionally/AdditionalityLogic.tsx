@@ -8,15 +8,21 @@ const Additionality = () => {
 
     const dispatch = useAppDispatch();
     
-    const { isLoading } = useAppSelector(({order}) => ({
-        isLoading: order.options.rates.isLoading
+    const { isLoading, currentCar, orderData } = useAppSelector(({order}) => ({
+        isLoading: order.options.rates.isLoading,
+        currentCar: order.options.cars.current,
+        orderData: order.data
     }))
 
     useEffect(() => {
         dispatch(getOrderRates())
     }, [])
 
-    return <AdditionalityView isLoading={isLoading} />
+    return <AdditionalityView 
+        isLoading={isLoading} 
+        currentCar={currentCar}
+        orderData={orderData}
+    />
 }
 
 export default Additionality;

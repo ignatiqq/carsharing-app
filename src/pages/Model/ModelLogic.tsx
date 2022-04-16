@@ -10,6 +10,7 @@ import { setCurrentCar } from "store/order/actions";
 const Model = () => {
     const dispatch = useAppDispatch();
     const [filteredCars, setFilteredCars] = useState<Array<ICarData> | null>(null);
+    const [currentCategory, setCurrentCategory] = useState<string | null>(null);
 
     const { cars, currentCarId, currentCar } = useAppSelector(({order}) => ({
         cars: order.options.cars,
@@ -43,6 +44,7 @@ const Model = () => {
     }
 
     const filterCarsByCategoryId = (categoryId: string) => {
+        setCurrentCategory(categoryId);
         if(filteredCars && cars && cars.data?.data) {
             console.log(categoryId)
             const filteredCarsData = cars.data.data.filter((item) => {
@@ -61,6 +63,7 @@ const Model = () => {
             data={filteredCars} 
             isLoading={cars.isLoading} 
             error={cars.error} 
+            currentCategory={currentCategory}
             categories={cars?.categories && cars?.categories?.data}
             setCurrentCarModel={setCurrentCarModel}
             filterCarsByCategoryId={filterCarsByCategoryId}

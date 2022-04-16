@@ -7,7 +7,7 @@ import type { IRateOption } from "../types";
 import { FailedRequest } from "constants/errors";
 
 const getOrderRatesData = () => {
-    return requestGet("/db/rates");
+    return requestGet("/db/rate");
 }
 
 function *getRatesData() {

@@ -10,6 +10,7 @@ interface IRadio {
     name: string,
     color?: string,
     className?: string,
+    selected: string | null,
     onClick: (data: any) => void
 }
 
@@ -20,13 +21,18 @@ const Radio: React.FC<IRadio> = (
         id,
         name,
         onClick,
+        selected,
         className
     }
 ) => {
+
+    console.log(selected, id)
     return (
         <div onClick={onClick} className={classNames(styles.wrapper, className)}>
             <input className={classNames(styles.radio)} type="radio" id={id} name={name} value={value} />
-            <label htmlFor={id}>{label}</label>
+            <label className={classNames(styles.label, {
+                [styles.labelActive]: selected === id
+            })} htmlFor={id}>{label}</label>
         </div>
     )
 }

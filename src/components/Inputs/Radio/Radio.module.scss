@@ -33,3 +33,11 @@
     }
 
 }
+
+.label {
+    color: var(--gray-dark);
+
+    &Active {
+        color: var(--primary-black);
+    }
+}

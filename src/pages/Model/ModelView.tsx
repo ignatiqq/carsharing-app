@@ -11,11 +11,12 @@ export interface IModel {
     isLoading: boolean,
     error: string | null,
     categories: Array<ICarsCategory> | null,
+    currentCategory: string | null,
     filterCarsByCategoryId: (data: string) => void,
-    setCurrentCarModel: (data: ICarData) => void
+    setCurrentCarModel: (data: ICarData) => void,
 }
 
-const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error, categories, filterCarsByCategoryId, setCurrentCarModel}) => {
+const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error, categories, currentCategory, filterCarsByCategoryId, setCurrentCarModel}) => {
 
     const { t } = useTranslation();
 
@@ -36,9 +37,9 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
                     className={styles.radioInput}
                     label={t("All")} 
                     value={"All"} 
-                    id={"all-type"} 
+                    id="all" 
                     name="car-type" 
-                    
+                    selected={currentCategory}
                 />
                 {
                     categories && categories.length > 0 &&
@@ -49,6 +50,7 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
                             label={t(item.name)} 
                             value={item.id} 
                             id={item.id} 
+                            selected={currentCategory}
                             className={styles.radioInput}
                             name="car-type" 
                         />
