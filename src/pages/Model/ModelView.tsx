@@ -11,14 +11,17 @@ export interface IModel {
     error: string | null,
     categories: Array<ICarsCategory> | null,
     currentCategory: string | null,
+    currentCarId: string | null,
     filterCarsByCategoryId: (data: string) => void,
     setCurrentCarModel: (data: ICarData) => void,
 }
 
 
-const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, categories, currentCategory, filterCarsByCategoryId, setCurrentCarModel}) => {
+const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, currentCarId, categories, currentCategory, filterCarsByCategoryId, setCurrentCarModel}) => {
 
     const { t } = useTranslation();
+
+    console.log(currentCarId);
 
     if(isLoading) {
         const description = t("Wait until all car models are loaded")
@@ -62,6 +65,7 @@ const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, categor
                 data ?
                     data.map(item => (
                         <CarCard
+                            currentCarId={currentCarId}
                             key={item.id}
                             onClick={(item) => setCurrentCarModel(item)}
                             car={item}

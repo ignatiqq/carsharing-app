@@ -66,6 +66,7 @@ const Model = () => {
             error={error}
             categories={categories && categories.data}
             currentCategory={currentCategory}
+            currentCarId={currentCar && currentCar.id}
             setCurrentCarModel={setCurrentCarModel}
             filterCarsByCategoryId={filterCarsByCategoryId}
         />
