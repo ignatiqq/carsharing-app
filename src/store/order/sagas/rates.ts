@@ -15,7 +15,7 @@ function *getRatesData() {
 
         yield put(setOrderRatesLoading(true));
 
-        const response: AxiosResponse<Array<IRateOption>> = yield call(getOrderRatesData);
+        const response: AxiosResponse<IRateOption> = yield call(getOrderRatesData);
 
         if(response.status < 300) {
             yield put(setOrderRates(response.data))

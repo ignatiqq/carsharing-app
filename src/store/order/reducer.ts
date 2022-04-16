@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import type { IOrder } from "./types";
+import type { IOrder, IOrderData } from "./types";
 
 import {
     orderSetCityId,
@@ -14,7 +14,8 @@ import {
     orderSetCarId,
     setOrderRates,
     setOrderRatesLoading,
-    setOrderRatesError
+    setOrderRatesError,
+    setAdditionallyBooleanOption
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
 
@@ -120,6 +121,12 @@ const order = createReducer(initialState, (builder) => {
                 ...state.options.rates,
                 data: null,
                 error: action.payload
+            }
+        })
+        .addCase(setAdditionallyBooleanOption, (state, action) => {
+            const orderDataOptionToUpdate = state.data[action.payload as keyof IOrderData] !== undefined;
+            if(orderDataOptionToUpdate && typeof orderDataOptionToUpdate === "boolean") {
+                (state.data[action.payload as keyof IOrderData] as boolean) = !state.data[action.payload as keyof IOrderData] as boolean
             }
         })
 })

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 
 import AdditionalityView from './AdditionallyView'; 
-import { getOrderRates } from 'store/order/actions';
+import { getOrderRates, setAdditionallyBooleanOption } from 'store/order/actions';
 
 const Additionality = () => {
 
@@ -19,12 +19,17 @@ const Additionality = () => {
         dispatch(getOrderRates())
     }, [])
 
+    const setAdditionallyOption = (value: string) => {
+        dispatch(setAdditionallyBooleanOption(value))
+    }
+
     return (
         <AdditionalityView 
             isLoading={isLoading} 
             currentCar={currentCar}
             orderData={orderData}
             ratesData={ratesData}
+            setAdditionallyOption={setAdditionallyOption}
         />
     )
 }

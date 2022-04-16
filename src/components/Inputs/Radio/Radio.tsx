@@ -28,7 +28,7 @@ const Radio: React.FC<IRadio> = (
 
     return (
         <div onClick={onClick} className={classNames(styles.wrapper, className)}>
-            <input className={classNames(styles.radio)} type="radio" id={id} name={name} value={value} />
+            <input className={classNames(styles.radio)} defaultChecked={id === selected} type="radio" id={id} name={name} value={value} />
             <label className={classNames(styles.label, {
                 [styles.labelActive]: selected === id
             })} htmlFor={id}>{label}</label>

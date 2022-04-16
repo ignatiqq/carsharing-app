@@ -9,12 +9,18 @@ export interface IOrder {
 }
 
 export interface IRateOptions {
-    data: Array<IRateOption> | null,
+    data: IRateOption | null,
     isLoading: boolean,
     error: string | null
 }
 
 export interface IRateOption {
+    fields: object,
+    count: number,
+    data: Array<IRateOptionData>
+}
+
+export interface IRateOptionData {
     createdAt: number,
     updatedAt: number,
     id: string,
@@ -86,7 +92,7 @@ export interface IOrderData {
         color: IOrderObject | null,
         dateFrom: number | null,
         dateTo: number | null,
-        rateId: object | null,
+        rateId: IOrderObject | null,
         price: number,
         isFullTank: boolean,
         isNeedChildChair: boolean,

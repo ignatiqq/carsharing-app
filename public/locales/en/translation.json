@@ -39,5 +39,13 @@
     "Color": "Color",
     "Rental date": "Rental date",
     "Tariff": "Tariff",
-    "Additional services": "Additional services"
+    "Additional services": "Additional services",
+    "черный": "Black",
+    "синий": "Blue",
+    "белый": "White",
+    "красный": "Red",
+    "желтый": "Yellow",
+    "isFullTank": "Полный бак",
+    "isNeedChildChair": "Детское кресло",
+    "isRightWheel": "Правый руль"
 }

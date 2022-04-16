@@ -17,3 +17,4 @@ export { default as DatePicker } from "./Datepicker/Datepicker";
 // INPUTS
 
 export { default as RadioInput } from "./Inputs/Radio/Radio";
+export { default as CheckboxInput } from "./Inputs/Checkbox/Checkbox";

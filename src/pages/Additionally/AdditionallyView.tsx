@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from "./Additionally.module.scss";
 import { Loader } from "components";
-import {ColorPicker, RentPicker} from 'components/Order/Additionally';
+import {ColorPicker, RentPicker, TariffPicker, AdditionallyPicker} from 'components/Order/Additionally';
 import type { ICarData, IOrderData, IRateOption } from 'store/order/types';
 
 
@@ -11,10 +11,11 @@ interface IAdditionalityView {
   isLoading: boolean,
   currentCar: ICarData | null,
   orderData: IOrderData,
-  ratesData: Array<IRateOption> | null
+  ratesData: IRateOption | null,
+  setAdditionallyOption: (data: string) => void
 }
 
-const AdditionalityView: React.FC<IAdditionalityView> = ({isLoading, currentCar, orderData, ratesData}) => {
+const AdditionalityView: React.FC<IAdditionalityView> = ({isLoading, currentCar, orderData, ratesData, setAdditionallyOption}) => {
 
   const { t } = useTranslation();
 
@@ -30,11 +31,19 @@ const AdditionalityView: React.FC<IAdditionalityView> = ({isLoading, currentCar,
   return (
     <div className={styles.wrapper}>
       <ColorPicker 
-        orderData={orderData}
+        color={orderData && orderData.color}
         currentCar={currentCar}
       />
       <RentPicker 
         pickDate={(item) => console.log("pick date", item)}
+      />
+      <TariffPicker 
+        rates={ratesData}
+        currentRate={orderData.rateId}
+      />
+      <AdditionallyPicker 
+        orderData={orderData}
+        setAdditionallyOption={setAdditionallyOption}
       />
     </div>
   )

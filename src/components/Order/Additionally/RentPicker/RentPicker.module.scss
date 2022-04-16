@@ -4,20 +4,24 @@
         border: none;
         border-bottom: 1px solid var(--gray-dark);
         background: transparent;
-        padding: 5px 10px;
+        padding: 2px 10px;
+        font-size: 14px;
         width: 100%;
         outline: none;
-        font-size: 14px;
         width: 224px;
     }
 
     &CustomWrapper {
         display: flex;
         align-items: flex-end;
-        max-width: 250px;
+        max-width: 267px;
     }
 
-    &DatePickerName {
+    &Name {
         margin-bottom: 16px;
     }
+}
+
+.wrapper {
+    margin-bottom: 32px;
 }

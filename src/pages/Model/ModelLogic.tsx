@@ -10,7 +10,7 @@ import { setCurrentCar } from "store/order/actions";
 const Model = () => {
     const dispatch = useAppDispatch();
     const [filteredCars, setFilteredCars] = useState<Array<ICarData> | null>(null);
-    const [currentCategory, setCurrentCategory] = useState<string | null>(null);
+    const [currentCategory, setCurrentCategory] = useState<string>("all");
 
     const { carsData, isLoading, error, categories, currentCar } = useAppSelector(({order}) => ({
         carsData: order.options.cars.data,

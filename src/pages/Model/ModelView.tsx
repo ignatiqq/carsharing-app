@@ -21,8 +21,6 @@ const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, current
 
     const { t } = useTranslation();
 
-    console.log(currentCarId);
-
     if(isLoading) {
         const description = t("Wait until all car models are loaded")
         return (

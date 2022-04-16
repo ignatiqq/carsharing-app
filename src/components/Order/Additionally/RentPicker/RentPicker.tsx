@@ -13,7 +13,7 @@ const RentPicker: React.FC<IRentPicker> = ({ pickDate }) => {
     const { t } = useTranslation();
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             <div className={styles.DatePickerName}>{t("Rental date")}:</div>
             <DatePicker 
                 className={styles.DatePickerCustomInput}

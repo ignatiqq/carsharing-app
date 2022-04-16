@@ -39,5 +39,13 @@
     "Color": "Цвет",
     "Rental date": "Дата аренды",
     "Tariff": "Тариф",
-    "Additional services": "Доп услуги"
+    "Additional services": "Доп услуги",
+    "черный": "Черный",
+    "синий": "Синий",
+    "белый": "Белый",
+    "красный": "Красный",
+    "желтый": "Желтый",
+    "isFullTank": "Full tank",
+    "isNeedChildChair": "Need child chair",
+    "isRightWheel": "Right wheel"
 }
