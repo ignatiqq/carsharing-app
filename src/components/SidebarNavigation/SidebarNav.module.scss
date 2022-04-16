@@ -20,7 +20,7 @@
   }
 
   .wrapper {
-    width: 50%;
+    width: 55%;
   }
 }
 
@@ -58,7 +58,7 @@
   text-transform: uppercase;
   font-weight: 500;
 
-  &hover {
+  &:hover {
     color: var(--primary-green);
   }
 }
