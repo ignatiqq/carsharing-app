@@ -90,7 +90,7 @@ const OrderInfo = () => {
                                     </div>
                                     <div className={styles.optionSeparator} />
                                     <div className={styles.optionValue}>
-                                        {item.value}
+                                        {typeof item.value === "string" ? t(item.value) : item.value}
                                     </div>
                                 </div>
                             ))

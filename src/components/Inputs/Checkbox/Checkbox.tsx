@@ -11,6 +11,7 @@ interface ICheckbox {
     color?: string,
     className?: string,
     selected: boolean,
+    customCheckboxStyles?: string,
     onChange: (data: any) => void
 }
 
@@ -22,13 +23,14 @@ const Checkbox: React.FC<ICheckbox> = (
         name,
         onChange,
         selected,
-        className
+        className,
+        customCheckboxStyles
     }
 ) => {
 
     return (
         <div className={classNames(styles.wrapper, className)}>
-            <input onChange={(e) => onChange(e.target.value)} className={classNames(styles.checkbox)} checked={selected} type="checkbox" id={id} name={name} value={value} />
+            <input onChange={(e) => onChange(e.target.value)} className={classNames(styles.checkbox, customCheckboxStyles)} checked={selected} type="checkbox" id={id} name={name} value={value} />
             <label className={classNames(styles.label, {
                 [styles.labelActive]: selected
             })} htmlFor={id}>{label}</label>

@@ -27,6 +27,18 @@ export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
         {
             label: "Model",
             value: carId?.value
+        },
+        {
+            label: "isFullTank",
+            value: isFullTank && "Yes"
+        },
+        {
+            label: "isNeedChildChair",
+            value: isNeedChildChair && "Yes"
+        },
+        {
+            label: "isRightWheel",
+            value: isRightWheel && "Yes"
         }
     ]
 
