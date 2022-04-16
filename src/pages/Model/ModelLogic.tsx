@@ -56,7 +56,7 @@ const Model = () => {
             })
             setFilteredCars(filteredCarsData)
         }
-    }, [])
+    }, [filteredCars])
 
 
     return (

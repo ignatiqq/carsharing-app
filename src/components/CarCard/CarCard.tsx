@@ -1,9 +1,11 @@
 import React from "react";
+// import { createSelector } from "@reduxjs/toolkit";
+import classNames from "classnames";
 
 import { LazyImage } from "..";
 import type { ICarData } from "store/order/types";
 import styles from "./CarCard.module.scss";
-import classNames from "classnames";
+
 
 interface ICarCard {
     onClick: (data: ICarData) => void,

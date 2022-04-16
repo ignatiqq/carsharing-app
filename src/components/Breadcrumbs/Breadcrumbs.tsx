@@ -7,7 +7,7 @@ import { ReactComponent as Arrow } from "assets/icons/Arrow.svg";
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, stepsPassed, className}) => {
+const Breadcrumbs: React.FC<IBreadcrumbs> = React.memo(({routes, currentRoutePathname, stepsPassed, className}) => {
 
   const [sortedRoutes, setSortedRoutes] = React.useState<Array<IRoute> | null>(null);
   const [selectedRoute, setSelectedRoute] = React.useState<string | null>(null);
@@ -64,7 +64,6 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
       }
     </ul>
   )
-
-}
+})
 
 export default Breadcrumbs;
