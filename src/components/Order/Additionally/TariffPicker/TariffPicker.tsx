@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 
-import { CheckboxInput, RadioInput } from 'components';
+import { RadioInput } from 'components';
 import { IOrderObject, IRateOption } from 'store/order/types';
 import styles from "./TariffPicker.module.scss";
 

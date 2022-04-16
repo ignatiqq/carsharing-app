@@ -23,6 +23,10 @@ const Additionality = () => {
         dispatch(setAdditionallyBooleanOption(value))
     }
 
+    const pickDate = (data: Date) => {
+        console.log(data)
+    }
+
     return (
         <AdditionalityView 
             isLoading={isLoading} 
@@ -30,6 +34,7 @@ const Additionality = () => {
             orderData={orderData}
             ratesData={ratesData}
             setAdditionallyOption={setAdditionallyOption}
+            pickDate={pickDate}
         />
     )
 }

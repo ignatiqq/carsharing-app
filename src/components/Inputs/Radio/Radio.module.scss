@@ -5,6 +5,7 @@
 .radio {
     cursor: pointer;
     margin-right: 5px;
+    cursor: pointer;
 
     &:after {
         width: 15px;
@@ -35,8 +36,13 @@
 }
 
 .label {
+    cursor: pointer;
     color: var(--gray-dark);
     margin-left: 8px;
+
+    &:hover {
+        color: var(--primary-black);
+    }
 
     &Active {
         color: var(--primary-black);

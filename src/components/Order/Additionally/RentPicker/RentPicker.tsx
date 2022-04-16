@@ -8,7 +8,7 @@ interface IRentPicker {
     pickDate: (data: Date) => void
 }
 
-const RentPicker: React.FC<IRentPicker> = ({ pickDate }) => {
+const RentPicker: React.FC<IRentPicker> = React.memo(({ pickDate }) => {
 
     const { t } = useTranslation();
 
@@ -22,6 +22,6 @@ const RentPicker: React.FC<IRentPicker> = ({ pickDate }) => {
             />  
         </div> 
     )
-}
+})
 
 export default RentPicker

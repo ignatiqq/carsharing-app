@@ -32,7 +32,7 @@ const ColorPicker: React.FC<IColorPicker> = React.memo(({color, currentCar}) => 
                     currentCar.colors.map(item => (
                         <RadioInput 
                             key={item}
-                            label={t(item)}
+                            label={t(item.toLocaleLowerCase())}
                             value={item}
                             id={item}
                             name='additionally-color'

@@ -45,7 +45,7 @@
     "белый": "White",
     "красный": "Red",
     "желтый": "Yellow",
-    "isFullTank": "Полный бак",
-    "isNeedChildChair": "Детское кресло",
-    "isRightWheel": "Правый руль"
+    "isFullTank": "Full tank",
+    "isNeedChildChair": "Need child chair",
+    "isRightWheel": "Right wheel"
 }

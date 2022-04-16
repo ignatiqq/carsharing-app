@@ -17,8 +17,8 @@ const AdditionallyPicker: React.FC<IAdditionallyPicker> = ({ orderData, setAddit
 
     return (
         <div className={styles.wrapper}>
-            <div>{t("Additional services")}</div>
-            <div>
+            <div className={styles.additionallyText}>{t("Additional services")}</div>
+            <div className={styles.additionallyWrapper}>
                 {
                     additionallyOptions &&
                     additionallyOptions.map(item => (
@@ -29,7 +29,8 @@ const AdditionallyPicker: React.FC<IAdditionallyPicker> = ({ orderData, setAddit
                             id={item.label}
                             name="additionally-option"
                             selected={orderData[item.label as keyof IOrderData] === true}
-                            onChange={(value) => setAdditionallyOption(value)}
+                            onChange={setAdditionallyOption}
+                            className={styles.additionallyCheckbox}
                         />
                     ))
                 }

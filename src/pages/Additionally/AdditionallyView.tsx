@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import styles from "./Additionally.module.scss";
@@ -12,10 +12,18 @@ interface IAdditionalityView {
   currentCar: ICarData | null,
   orderData: IOrderData,
   ratesData: IRateOption | null,
-  setAdditionallyOption: (data: string) => void
+  setAdditionallyOption: (data: string) => void,
+  pickDate: (date: Date) => void
 }
 
-const AdditionalityView: React.FC<IAdditionalityView> = ({isLoading, currentCar, orderData, ratesData, setAdditionallyOption}) => {
+const AdditionalityView: React.FC<IAdditionalityView> = ({
+    isLoading,
+    currentCar,
+    orderData,
+    ratesData,
+    setAdditionallyOption,
+    pickDate
+  }) => {
 
   const { t } = useTranslation();
 
@@ -35,7 +43,7 @@ const AdditionalityView: React.FC<IAdditionalityView> = ({isLoading, currentCar,
         currentCar={currentCar}
       />
       <RentPicker 
-        pickDate={(item) => console.log("pick date", item)}
+        pickDate={pickDate}
       />
       <TariffPicker 
         rates={ratesData}
