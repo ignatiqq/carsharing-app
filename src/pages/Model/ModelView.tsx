@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import {useTranslation} from "react-i18next";
 
-import type { IAllCarsData, ICarData, ICarsCategory } from "store/order/types";
+import type { IAllCarsData, ICarData, ICarOption, ICarsCategory } from "store/order/types";
 import {CarCard, RadioInput, Loader} from "components";
 import styles from "./Model.module.scss";
 
 export interface IModel {
     data: Array<ICarData> | null,
-    currentCarId: string | null,
     isLoading: boolean,
     error: string | null,
     categories: Array<ICarsCategory> | null,
@@ -16,7 +15,8 @@ export interface IModel {
     setCurrentCarModel: (data: ICarData) => void,
 }
 
-const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, error, categories, currentCategory, filterCarsByCategoryId, setCurrentCarModel}) => {
+
+const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, categories, currentCategory, filterCarsByCategoryId, setCurrentCarModel}) => {
 
     const { t } = useTranslation();
 
@@ -62,7 +62,6 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
                 data ?
                     data.map(item => (
                         <CarCard
-                            currentCarId={currentCarId}
                             key={item.id}
                             onClick={(item) => setCurrentCarModel(item)}
                             car={item}
@@ -70,7 +69,7 @@ const ModelView: React.FC<IModel> = React.memo(({data, currentCarId, isLoading, 
                     ))
                     :
                     error &&
-                <div>{t(error)}</div>
+                <div className={styles.error}>{t(error)}</div>
             }
             </div>
         </div>

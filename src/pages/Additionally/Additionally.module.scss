@@ -16,32 +16,3 @@
     height: 100%;
     margin: 20px 10px;
 }
-
-.colorText {
-    margin-bottom: 16px;
-}
-
-.colorSelect {
-    margin-right: 16px;
-}
-
-.colorWrapper {
-    margin: 20px 0px;
-}
-
-.DatePickerCustomInput {
-    border: none;
-    border-bottom: 1px solid var(--gray-dark);
-    background: transparent;
-    padding: 5px 10px;
-    width: 100%;
-    outline: none;
-    font-size: 14px;
-    width: 224px;
-}
-
-.DatePickerCustomWrapper {
-    display: flex;
-    align-items: flex-end;
-    max-width: 250px;
-}

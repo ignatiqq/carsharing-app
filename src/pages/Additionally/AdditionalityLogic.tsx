@@ -8,9 +8,10 @@ const Additionality = () => {
 
     const dispatch = useAppDispatch();
     
-    const { isLoading, currentCar, orderData } = useAppSelector(({order}) => ({
+    const { isLoading, currentCar, orderData, ratesData } = useAppSelector(({order}) => ({
         isLoading: order.options.rates.isLoading,
         currentCar: order.options.cars.current,
+        ratesData: order.options.rates.data,
         orderData: order.data
     }))
 
@@ -18,11 +19,14 @@ const Additionality = () => {
         dispatch(getOrderRates())
     }, [])
 
-    return <AdditionalityView 
-        isLoading={isLoading} 
-        currentCar={currentCar}
-        orderData={orderData}
-    />
+    return (
+        <AdditionalityView 
+            isLoading={isLoading} 
+            currentCar={currentCar}
+            orderData={orderData}
+            ratesData={ratesData}
+        />
+    )
 }
 
 export default Additionality;

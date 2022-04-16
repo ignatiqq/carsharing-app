@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {useAppDispatch, useAppSelector} from "store/hooks";
 
 import type { IAllCarsData, ICarData, ICarsCategory } from "store/order/types";
@@ -12,9 +12,11 @@ const Model = () => {
     const [filteredCars, setFilteredCars] = useState<Array<ICarData> | null>(null);
     const [currentCategory, setCurrentCategory] = useState<string | null>(null);
 
-    const { cars, currentCarId, currentCar } = useAppSelector(({order}) => ({
-        cars: order.options.cars,
-        currentCarId: order.data.carId,
+    const { carsData, isLoading, error, categories, currentCar } = useAppSelector(({order}) => ({
+        carsData: order.options.cars.data,
+        isLoading: order.options.cars.isLoading,
+        error: order.options.cars.error,
+        categories: order.options.cars.categories,
         currentCar: order.options.cars.current
     }))
 
@@ -28,43 +30,42 @@ const Model = () => {
     }, [currentCar])
 
     useEffect(() => {
-        if(!cars.isLoading && !cars.data) {
+        if(!isLoading && !carsData) {
             dispatch(getAllCarsData());
         }
     }, [])
 
     useEffect(() => {
-        if(cars && cars.data) {
-            setFilteredCars(cars.data.data)
+        if(carsData) {
+            setFilteredCars(carsData.data)
         }
-    }, [cars.data])
+    }, [carsData])
 
-    const setCurrentCarModel = (data: ICarData) => {
+    const setCurrentCarModel = useCallback((data: ICarData) => {
         dispatch(setCurrentCar(data));
-    }
+    }, [])
 
-    const filterCarsByCategoryId = (categoryId: string) => {
+    const filterCarsByCategoryId = useCallback((categoryId: string) => {
         setCurrentCategory(categoryId);
-        if(filteredCars && cars && cars.data?.data) {
-            console.log(categoryId)
-            const filteredCarsData = cars.data.data.filter((item) => {
+        if(filteredCars && carsData?.data) {
+            const filteredCarsData = carsData.data.filter((item) => {
                 if(categoryId !== "all") {
                     return item.categoryId.id === categoryId
                 }
-                return cars.data?.data
+                return carsData?.data
             })
             setFilteredCars(filteredCarsData)
         }
-    }
+    }, [])
+
 
     return (
         <ModelView 
-            currentCarId={currentCarId && currentCarId.id}
             data={filteredCars} 
-            isLoading={cars.isLoading} 
-            error={cars.error} 
+            isLoading={isLoading}
+            error={error}
+            categories={categories && categories.data}
             currentCategory={currentCategory}
-            categories={cars?.categories && cars?.categories?.data}
             setCurrentCarModel={setCurrentCarModel}
             filterCarsByCategoryId={filterCarsByCategoryId}
         />

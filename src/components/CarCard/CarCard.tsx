@@ -6,17 +6,14 @@ import styles from "./CarCard.module.scss";
 import classNames from "classnames";
 
 interface ICarCard {
-    currentCarId: string | null,
     onClick: (data: ICarData) => void,
     car: ICarData
 }
 
-const CarCard: React.FC<ICarCard> = React.memo(({ currentCarId, onClick, car }) => {
+const CarCard: React.FC<ICarCard> = React.memo(({ onClick, car }) => {
 
     return (
-        <div className={classNames(styles.wrapper, {
-            [styles.wrapperActive]: currentCarId && currentCarId === car.id
-        })} >
+        <div className={classNames(styles.wrapper)} >
             <button className={styles.button} onClick={() => onClick(car)}>
                 <div className={styles.cardWrapper}>
                     <div className={styles.carInfo}>

@@ -12,6 +12,7 @@ export { default as OrderPrice } from "./Order/OrderPrice/OrderPrice";
 export { default as Map } from "./Map/Map";
 export { default as CarCard } from "./CarCard/CarCard";
 export { default as LazyImage } from "./LazyImage/LazyImage";
+export { default as DatePicker } from "./Datepicker/Datepicker";
 
 // INPUTS
 
