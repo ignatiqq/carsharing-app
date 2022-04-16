@@ -1,0 +1,18 @@
+.customInput {
+    background: #fff;
+}
+
+.pickerItem {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 13px;
+
+    &Span {
+        margin-right: 5px;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}

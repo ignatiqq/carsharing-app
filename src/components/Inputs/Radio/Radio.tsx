@@ -26,7 +26,6 @@ const Radio: React.FC<IRadio> = (
     }
 ) => {
 
-    console.log(selected, id)
     return (
         <div onClick={onClick} className={classNames(styles.wrapper, className)}>
             <input className={classNames(styles.radio)} type="radio" id={id} name={name} value={value} />
