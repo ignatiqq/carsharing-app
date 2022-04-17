@@ -48,5 +48,7 @@
     "isFullTank": "Full tank",
     "isNeedChildChair": "Need child chair",
     "isRightWheel": "Right wheel",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "Rental duration": "Rental duration",
+    "Less than an hour": "Less than an hour"
 }

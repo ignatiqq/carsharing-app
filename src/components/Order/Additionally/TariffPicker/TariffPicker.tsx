@@ -7,10 +7,11 @@ import styles from "./TariffPicker.module.scss";
 
 interface ITariffPicker {
   rates: IRateOption | null,
-  currentRate: IOrderObject | null
+  currentRate: IOrderObject | null,
+  setRateOption: (rate: string) => void
 }
 
-const TariffPicker: React.FC<ITariffPicker> = React.memo(({ rates, currentRate }) => {
+const TariffPicker: React.FC<ITariffPicker> = React.memo(({ rates, currentRate, setRateOption }) => {
 
   const { t } = useTranslation();
 
@@ -24,12 +25,12 @@ const TariffPicker: React.FC<ITariffPicker> = React.memo(({ rates, currentRate }
             <RadioInput 
               key={item.id}
               label={`${item.rateTypeId.name}, ${item.price} / ${item.rateTypeId.unit}`}
-              value={item.rateTypeId.name}
+              value={item.rateTypeId.id}
               id={item.id}
               name="order-tariff"
               className={styles.tariffCustomRadio}
               selected={currentRate && currentRate.id}
-              onClick={(item) => console.log(item)}
+              onChange={setRateOption}
             />
           ))
         }

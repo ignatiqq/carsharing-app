@@ -1,4 +1,3 @@
-import Button from 'components/Button/Button';
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

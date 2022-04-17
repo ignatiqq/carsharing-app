@@ -89,7 +89,7 @@ export interface IOrderData {
         cityId: IOrderObject | null,
         pointId: IOrderObject | null,
         carId: IOrderObject | null,
-        color: IOrderObject | null,
+        color: string,
         dateFrom: number | null,
         dateTo: number | null,
         rateId: IOrderObject | null,

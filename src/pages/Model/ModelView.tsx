@@ -34,10 +34,10 @@ const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, current
         <div className={styles.wrapper}>
             <div>
                 <RadioInput 
-                    onClick={() => filterCarsByCategoryId("all")}
+                    onChange={(item) => filterCarsByCategoryId(item)}
                     className={styles.radioInput}
                     label={t("All")} 
-                    value={"All"} 
+                    value={"all"} 
                     id="all" 
                     name="car-type" 
                     selected={currentCategory}
@@ -46,7 +46,7 @@ const ModelView: React.FC<IModel> = React.memo(({data, isLoading, error, current
                     categories && categories.length > 0 &&
                     categories.map(item => (
                         <RadioInput 
-                            onClick={() => filterCarsByCategoryId(item.id)}
+                            onChange={(item) => filterCarsByCategoryId(item)}
                             key={item.id} 
                             label={t(item.name)} 
                             value={item.id} 

@@ -5,7 +5,7 @@ import styles from "./RentPicker.module.scss";
 import { useTranslation } from 'react-i18next';
 
 interface IRentPicker {
-    pickDate: (data: Date) => void
+    pickDate: (startDate: Date, endDate: Date) => void
 }
 
 const RentPicker: React.FC<IRentPicker> = React.memo(({ pickDate }) => {
@@ -18,7 +18,7 @@ const RentPicker: React.FC<IRentPicker> = React.memo(({ pickDate }) => {
             <DatePicker 
                 className={styles.DatePickerCustomInput}
                 wrapperClassName={styles.DatePickerCustomWrapper}
-                changeDataHandler={(item) => pickDate(item)}
+                changeDataHandler={pickDate}
             />  
         </div> 
     )

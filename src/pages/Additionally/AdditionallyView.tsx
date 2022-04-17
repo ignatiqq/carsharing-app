@@ -13,7 +13,9 @@ interface IAdditionalityView {
   orderData: IOrderData,
   ratesData: IRateOption | null,
   setAdditionallyOption: (data: string) => void,
-  pickDate: (date: Date) => void
+  pickDate: (startDate: Date, endDate: Date) => void,
+  setColorOption: (color: string) => void,
+  setRateOption: (rate: string) => void
 }
 
 const AdditionalityView: React.FC<IAdditionalityView> = ({
@@ -22,7 +24,9 @@ const AdditionalityView: React.FC<IAdditionalityView> = ({
     orderData,
     ratesData,
     setAdditionallyOption,
-    pickDate
+    pickDate,
+    setColorOption,
+    setRateOption
   }) => {
 
   const { t } = useTranslation();
@@ -41,6 +45,7 @@ const AdditionalityView: React.FC<IAdditionalityView> = ({
       <ColorPicker 
         color={orderData && orderData.color}
         currentCar={currentCar}
+        setColorOption={setColorOption}
       />
       <RentPicker 
         pickDate={pickDate}
@@ -48,6 +53,7 @@ const AdditionalityView: React.FC<IAdditionalityView> = ({
       <TariffPicker 
         rates={ratesData}
         currentRate={orderData.rateId}
+        setRateOption={setRateOption}
       />
       <AdditionallyPicker 
         orderData={orderData}

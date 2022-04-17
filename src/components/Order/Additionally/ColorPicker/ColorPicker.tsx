@@ -6,11 +6,12 @@ import styles from "./ColorPicker.module.scss";
 import { useTranslation } from 'react-i18next';
 
 interface IColorPicker {
-    color: IOrderObject | null,
-    currentCar: ICarData | null
+    color: string,
+    currentCar: ICarData | null,
+    setColorOption: (color: string) => void
 }
 
-const ColorPicker: React.FC<IColorPicker> = React.memo(({color, currentCar}) => {
+const ColorPicker: React.FC<IColorPicker> = React.memo(({color, currentCar, setColorOption}) => {
 
     const { t } = useTranslation();
 
@@ -20,12 +21,12 @@ const ColorPicker: React.FC<IColorPicker> = React.memo(({color, currentCar}) => 
             <div>
                 <RadioInput 
                     label={t("Any")}
-                    value="Any"
+                    value={currentCar ? currentCar.colors[Math.round(Math.random() * currentCar?.colors.length)] : "any"}
                     id="any"
                     name='additionally-color'
                     className={styles.colorSelect}
-                    selected={color && color.value}
-                    onClick={(item) => console.log(item)}
+                    selected={color && color}
+                    onChange={setColorOption}
                     />
                     {
                     currentCar?.colors &&
@@ -37,8 +38,8 @@ const ColorPicker: React.FC<IColorPicker> = React.memo(({color, currentCar}) => 
                             id={item}
                             name='additionally-color'
                             className={styles.colorSelect}
-                            selected={color && color.value}
-                            onClick={(item) => console.log(item)}
+                            selected={color && color}
+                            onChange={setColorOption}
                         />
                     ))
                     }

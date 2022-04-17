@@ -1,4 +1,5 @@
 import type { IOrderData } from "store/order/types";
+import { getDaysAndHoursFormat } from "./dateFormatter";
 
 export interface IOrderInfoData {
     label: string,
@@ -27,6 +28,18 @@ export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
         {
             label: "Model",
             value: carId?.value
+        },
+        {
+            label: "Color",
+            value: color
+        },
+        {
+            label: "Rental duration",
+            value: (dateTo && dateFrom) ? getDaysAndHoursFormat(dateTo - dateFrom, true) : undefined
+        },
+        {
+            label: "Tariff",
+            value: rateId?.value
         },
         {
             label: "isFullTank",

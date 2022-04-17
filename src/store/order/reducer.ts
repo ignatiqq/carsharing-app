@@ -15,7 +15,11 @@ import {
     setOrderRates,
     setOrderRatesLoading,
     setOrderRatesError,
-    setAdditionallyBooleanOption
+    setAdditionallyBooleanOption,
+    orderSetDateFrom,
+    orderSetDateTo,
+    orderSetColor,
+    orderSetRateId
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
 
@@ -25,7 +29,7 @@ const initialState: IOrder = {
         cityId: null,
         pointId: null,
         carId: null,
-        color: null,
+        color: "",
         dateFrom: null,
         dateTo: null,
         price: 0,
@@ -65,6 +69,18 @@ const order = createReducer(initialState, (builder) => {
         })
         .addCase(orderSetCarId, (state, action) => {
             state.data.carId = action.payload
+        })
+        .addCase(orderSetDateFrom, (state, action) => {
+            state.data.dateFrom = action.payload
+        })
+        .addCase(orderSetDateTo, (state, action) => {
+            state.data.dateTo = action.payload
+        })
+        .addCase(orderSetColor, (state, action) => {
+            state.data.color = action.payload
+        })
+        .addCase(orderSetRateId, (state, action) => {
+            state.data.rateId = action.payload
         })
         .addCase(setCurrentCity, (state, action) => {
             state.data.cityId = {

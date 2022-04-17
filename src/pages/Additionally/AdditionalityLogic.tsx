@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react';
+import { batch } from 'react-redux';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 
 import AdditionalityView from './AdditionallyView'; 
-import { getOrderRates, setAdditionallyBooleanOption } from 'store/order/actions';
+import { converteDateToSeconds } from 'utils/dateFormatter';
+import { 
+    getOrderRates, 
+    orderSetColor, 
+    orderSetDateFrom, 
+    orderSetDateTo, 
+    setAdditionallyBooleanOption,
+    orderSetRateId
+} from 'store/order/actions';
 
 const Additionality = () => {
 
@@ -23,8 +32,22 @@ const Additionality = () => {
         dispatch(setAdditionallyBooleanOption(value))
     }
 
-    const pickDate = (data: Date) => {
-        console.log(data)
+    const pickDate = (startDate: Date, endDate: Date) => {
+        batch(() => {
+            dispatch(orderSetDateFrom(converteDateToSeconds(startDate)))
+            dispatch(orderSetDateTo(converteDateToSeconds(endDate)))
+        })
+    }
+
+    const setColorOption = (color: string) => {
+        dispatch(orderSetColor(color))
+    }
+
+    const setRateOption = (rateId: string) => {
+        const selectedRate = ratesData!.data.filter(item => item.rateTypeId.id === rateId)[0];
+        if(selectedRate) {
+            dispatch(orderSetRateId({id: selectedRate.id, value: selectedRate.rateTypeId.name}))
+        }
     }
 
     return (
@@ -35,6 +58,8 @@ const Additionality = () => {
             ratesData={ratesData}
             setAdditionallyOption={setAdditionallyOption}
             pickDate={pickDate}
+            setColorOption={setColorOption}
+            setRateOption={setRateOption}
         />
     )
 }

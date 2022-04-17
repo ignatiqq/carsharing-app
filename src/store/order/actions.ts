@@ -15,13 +15,21 @@ import {
     SET_ORDER_RATES,
     SET_ORDER_RATES_LOADING,
     SET_ORDER_RATES_ERROR,
-    SET_ADDITIONALLY_BOOLEAN_OPTION
+    SET_ADDITIONALLY_BOOLEAN_OPTION,
+    ORDER_SET_DATE_FROM,
+    ORDER_SET_DATE_TO,
+    ORDER_SET_COLOR,
+    ORDER_SET_RATE_ID
 } from "./constants";
 import {IOrderObject, IOrder, IAllCarsData, ICarsCategories, ICarData, IRateOption} from "./types";
 
 export const orderSetCityId = createAction<IOrderObject | null>(ORDER_SET_CITY_ID);
 export const orderSetPointId = createAction<IOrderObject | null>(ORDER_SET_POINT_ID);
 export const orderSetCarId = createAction<IOrderObject | null>(ORDER_SET_CAR_ID);
+export const orderSetDateFrom = createAction<number>(ORDER_SET_DATE_FROM);
+export const orderSetDateTo = createAction<number>(ORDER_SET_DATE_TO);
+export const orderSetColor = createAction<string>(ORDER_SET_COLOR);
+export const orderSetRateId = createAction<IOrderObject>(ORDER_SET_RATE_ID);
 export const setOrderData = createAction<IOrder>(SET_ORDER_DATA);
 export const setAdditionallyBooleanOption = createAction<string>(SET_ADDITIONALLY_BOOLEAN_OPTION);
 
