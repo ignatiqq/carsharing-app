@@ -6,15 +6,15 @@ export const orderPriceByRate = (rentDuration: number, rateId: string) => {
     return Math.ceil(rentDuration / rateDataByRateId.duration) * rateDataByRateId.price;
 }
 
-// export const orderAdditionallyPrice = (orderData: IOrderData, additionallyOptions: IAdditionallyOptions) => {
-//     let additionallyOptionsSum = 0;
-//     additionallyOptions.forEach(item => {
-//         const orderDataByLabel = orderData[item.label as keyof IOrderData];
-//         const getAdditionallyDataByLabel = additionallyOptions.filter(option => item.label = option.label)[0];
-//         additionallyOptionsSum += ((typeof orderDataByLabel === "boolean" ? getAdditionallyDataByLabel.price : 0) as number)
-//     })
-//     return additionallyOptionsSum;
-// }
+export const orderAdditionallyPrice = (orderData: IOrderData, additionallyOptions: IAdditionallyOptions) => {
+    let additionallyOptionsSum = 0;
+    additionallyOptions.forEach(item => {
+        const orderDataByLabel = orderData[item.label as keyof IOrderData];
+        const getAdditionallyDataByLabel = additionallyOptions.filter(option => item.label === option.label)[0];
+        additionallyOptionsSum += ((typeof orderDataByLabel === "boolean" && orderDataByLabel ? getAdditionallyDataByLabel.price : 0) as number)
+    })
+    return additionallyOptionsSum;
+}
 
 const getPriceByRateId = (allRates: IRateTypes, rateId: string) => {
     return allRates.filter(item => item.id === rateId)[0];
