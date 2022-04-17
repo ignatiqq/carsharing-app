@@ -48,5 +48,7 @@
     "isFullTank": "Полный бак",
     "isNeedChildChair": "Детское кресло",
     "isRightWheel": "Правый руль",
-    "Yes": "Да"
+    "Yes": "Да",
+    "Rental duration": "Длительность аренды",
+    "Less than an hour": "Меньше часа"
 }
