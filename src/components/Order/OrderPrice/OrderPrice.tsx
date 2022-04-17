@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-
-import styles from "./OrderPrice.module.scss";
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
-import { ICarData, IOrderData } from 'store/order/types';
+
+import { additionallyOptions } from 'constants/orderData';
+import styles from "./OrderPrice.module.scss";
+import { orderPriceByRate } from "utils/orderSum";
 
 const OrderPrice = () => {
 
@@ -17,10 +18,10 @@ const OrderPrice = () => {
     const totalPrice = useMemo(() => {
         if(orderData && currentCar) {
 
-            if(orderData.dateFrom && orderData.dateTo) {
-                return
+            if(orderData.dateFrom && orderData.dateTo && orderData.rateId) {
+                return `${t("Price")} ${orderPriceByRate(orderData.dateTo - orderData.dateFrom, orderData.rateId.id)} ₽`;
             }
-            return `${t("Price")} ${t("From")} ${currentCar.priceMin} ${t("To")} ${currentCar.priceMax}  ₽`
+            return `${t("Price")} ${t("From")} ${currentCar.priceMin} ${t("To")} ${currentCar.priceMax} ₽`
 
         }
     }, [orderData, currentCar])

@@ -25,7 +25,7 @@ const Radio: React.FC<IRadio> = (
         className
     }
 ) => {
-
+    
     return (
         <div className={classNames(styles.wrapper, className)}>
             <input onChange={(e) => onChange(e.target.value)} className={classNames(styles.radio)} defaultChecked={id === selected} type="radio" id={id} name={name} value={value} />
