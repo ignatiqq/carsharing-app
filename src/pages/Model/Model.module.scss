@@ -23,6 +23,8 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 15px;
+    max-height: 60vh;
+    overflow-x: auto;
 
     @media(min-width: 640px) {
         margin-top: 48px;
