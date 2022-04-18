@@ -1,7 +1,7 @@
 import React from "react";
-// import { createSelector } from "@reduxjs/toolkit";
 import classNames from "classnames";
 
+import carHolder from "assets/images/carHolder.png";
 import { LazyImage } from "..";
 import type { ICarData } from "store/order/types";
 import styles from "./CarCard.module.scss";
@@ -26,6 +26,7 @@ const CarCard: React.FC<ICarCard> = React.memo(({ currentCarId, onClick, car }) 
                         <div className={styles.carPrice}>{car.priceMin} - {car.priceMax} &#8381;</div>
                     </div>
                     <LazyImage
+                        imageHolderSrc={carHolder}
                         className={styles.carImage}
                         width={280}
                         height={127}

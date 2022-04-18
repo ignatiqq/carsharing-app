@@ -8,7 +8,8 @@ interface ILazyImage {
     height: number,
     image: string,
     alt: string,
-    className: string
+    className: string,
+    imageHolderSrc: string
 }
 
 const LazyImage: React.FC<ILazyImage> = (
@@ -17,7 +18,8 @@ const LazyImage: React.FC<ILazyImage> = (
         height,
         image,
         alt= "image",
-        className
+        className,
+        imageHolderSrc
     }
     ) => {
     const [isVisible, setVisible] = useState<boolean>(false);
@@ -48,7 +50,15 @@ const LazyImage: React.FC<ILazyImage> = (
         })}>
             {
                 isVisible &&
-                <img style={{maxWidth: width, width: "100%"}} src={image} alt={alt} />
+                <img 
+                    style={{maxWidth: width, width: "100%"}} 
+                    onError={({currentTarget}) => {
+                        currentTarget.onerror = null;
+                        currentTarget.src = imageHolderSrc
+                    }} 
+                    src={image} 
+                    alt={alt}
+                />
             }
         </div>
     )

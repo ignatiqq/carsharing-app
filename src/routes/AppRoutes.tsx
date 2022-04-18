@@ -1,6 +1,13 @@
 import { useRoutes } from 'react-router-dom';
 
-import { MainPage, Order, Location, Model, Additionally } from "pages";
+import { 
+    MainPage, 
+    Order, 
+    Location, 
+    Model, 
+    Additionally,
+    Total
+} from "pages";
 
 const AppRoutes = () => useRoutes([
     {path: "/", element: <MainPage />},
@@ -20,6 +27,10 @@ const AppRoutes = () => useRoutes([
             {
                 path: "/order/additionally",
                 element:  <Additionally />
+            },
+            {
+                path: "/order/total",
+                element: <Total />
             }
         ]
     }

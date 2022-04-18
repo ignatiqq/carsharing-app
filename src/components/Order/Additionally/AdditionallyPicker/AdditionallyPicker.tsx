@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 
 import { CheckboxInput } from 'components';
-import { additionallyOptions, IAdditionallyOptions } from "constants/orderData";
+import { additionallyOptions } from "constants/orderData";
 import styles from "./AdditionallyPicker.module.scss";
 import type { IOrderData } from 'store/order/types';
 

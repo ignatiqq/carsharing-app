@@ -9,6 +9,7 @@ import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
 import type { IOrderData } from 'store/order/types';
 import styles from "./OrderInfo.module.scss";
 import classNames from 'classnames';
+import { Button } from 'components';
 
 
 const getCurrentButtonOptions = (pathname: string, order: IOrderData) => {
@@ -99,16 +100,27 @@ const OrderInfo = () => {
                 </div>
                 <OrderPrice />
                 <div className={styles.nextBtnWrapper}>
-                    <Link
-                        onClick={() => setPassedSteps(buttonOptions?.nextStep)}
-                        style={{color: "#FFFFFF"}}
-                        to={!buttonOptions?.disabled ? nextBtnPathname : window.location.pathname}
-                        className={classNames(styles.nextBtn, {
-                            [styles.nextBtnDisabled]: buttonOptions?.disabled
-                        })}
-                    >
-                        {buttonOptions && t(buttonOptions.name)}
-                    </Link>
+                    {
+                        location.pathname === "/order/total"
+                        ?
+                        <Button
+                            apperance='primary'
+                            className={classNames(styles.nextBtn)}
+                        >
+                            {t("Order")}
+                        </Button>
+                        :
+                        <Link
+                            onClick={() => setPassedSteps(buttonOptions?.nextStep)}
+                            style={{color: "#FFFFFF"}}
+                            to={!buttonOptions?.disabled ? nextBtnPathname : window.location.pathname}
+                            className={classNames(styles.nextBtn, {
+                                [styles.nextBtnDisabled]: buttonOptions?.disabled
+                            })}
+                        >
+                            {buttonOptions && t(buttonOptions.name)}
+                        </Link>
+                    }
                 </div>
             </div>
         </div>

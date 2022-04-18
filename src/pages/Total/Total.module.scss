@@ -1,0 +1,33 @@
+.wrapper {
+    margin: 25px 0px;
+
+    &Content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 800px;
+    }
+}
+
+.car {
+
+    &Text {
+        * {
+            margin: 8px 0px;
+        }
+
+        &Bold {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        &Light {
+            font-weight: 300;
+            font-size: 14px;
+        }
+    }
+
+    &Name {
+        font-size: 18px;
+    }
+}
