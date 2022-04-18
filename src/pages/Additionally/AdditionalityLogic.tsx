@@ -25,8 +25,10 @@ const Additionality = () => {
     }))
 
     useEffect(() => {
-        dispatch(getOrderRates())
-    }, [])
+        if(!ratesData) {
+            dispatch(getOrderRates())
+        }
+    }, [ratesData])
 
     const setAdditionallyOption = (value: string) => {
         dispatch(setAdditionallyBooleanOption(value))
