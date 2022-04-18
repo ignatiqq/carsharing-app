@@ -33,10 +33,14 @@ const Additionality = () => {
     }
 
     const pickDate = (startDate: Date, endDate: Date) => {
-        batch(() => {
-            dispatch(orderSetDateFrom(converteDateToSeconds(startDate)))
-            dispatch(orderSetDateTo(converteDateToSeconds(endDate)))
-        })
+        const endDateSeconds = converteDateToSeconds(endDate);
+        const startDateSeconds = converteDateToSeconds(startDate);
+        if(endDateSeconds - startDateSeconds > 0) {
+            batch(() => {
+                dispatch(orderSetDateFrom(startDateSeconds))
+                dispatch(orderSetDateTo(endDateSeconds))
+            })
+        }
     }
 
     const setColorOption = (color: string) => {

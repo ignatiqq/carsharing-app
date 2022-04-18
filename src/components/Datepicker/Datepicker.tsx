@@ -15,13 +15,12 @@ interface IDatepicker {
     dateTo: number | null
 }
 
-const Datepicker: React.FC<IDatepicker> = ({changeDataHandler, className, wrapperClassName}) => {
-    const [startDate, setStartDate] = React.useState<Date | null>(null);
+const Datepicker: React.FC<IDatepicker> = ({changeDataHandler, className, wrapperClassName, dateTo}) => {
+    const [startDate, setStartDate] = React.useState<Date |  null>(null);
     const [endDate, setEndDate] = React.useState<Date | null>(null);
 
     const { t, i18n } = useTranslation();
     
-
     useEffect(() => {
         setStartDate(getUTCDate(Date.now()));
         registerLocale("ru", ru);
@@ -29,10 +28,10 @@ const Datepicker: React.FC<IDatepicker> = ({changeDataHandler, className, wrappe
     }, [])
 
     useEffect(() => {
-        if(endDate) {
-            setEndDate(endDate)
+        if(dateTo) {
+            setEndDate(new Date(dateTo * 1000))
         }
-    }, [endDate])
+    }, [dateTo])
 
     const changeStartDate = (date: Date | null) => {
         setStartDate(date);

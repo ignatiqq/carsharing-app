@@ -23,8 +23,8 @@ const OrderPrice = () => {
 
             if(orderData.dateFrom && orderData.dateTo && orderData.rateId) {
                 const orderPrice = orderPriceByRate(orderData.dateTo - orderData.dateFrom, orderData.rateId.id) + orderAdditionallyPrice(orderData, additionallyOptions);
-                dispatch(orderSetPrice(orderPrice))
-                return `${t("Price")} ${orderPrice} ₽`;
+                dispatch(orderSetPrice(orderPrice ? orderPrice : 0))
+                return `${t("Price")} ${orderPrice ? orderPrice : 0} ₽`;
             }
             return `${t("Price")} ${t("From")} ${currentCar.priceMin} ${t("To")} ${currentCar.priceMax} ₽`
 
