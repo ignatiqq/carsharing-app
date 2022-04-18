@@ -45,11 +45,22 @@
     "белый": "White",
     "красный": "Red",
     "желтый": "Yellow",
+    "оранжевый": "Orange",
     "isFullTank": "Full tank",
     "isNeedChildChair": "Need child chair",
     "isRightWheel": "Right wheel",
     "Yes": "Yes",
     "Rental duration": "Rental duration",
     "Less than an hour": "Less than an hour",
-    "Order": "Order"
+    "Order": "Order",
+    "Fuel": "Fuel",
+    "Available from": "Available from",
+    "Месячный": "Monthly",
+    "Поминутно": "Minute by minute",
+    "Суточный": "Daily",
+    "Недельный": "Weekly",
+    "Недельный (Акция!)": "Weekly (Promotion!)",
+    "3 Месяца": "3 Months",
+    "Годовой": "Yearly",
+    "Number not recognized": "Number not recognized"
 }
