@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 interface IPortal {
-    children: React.FC
+    children: React.ReactNode
 }
 
 const Portal: React.FC<IPortal> = ({ children }) => {

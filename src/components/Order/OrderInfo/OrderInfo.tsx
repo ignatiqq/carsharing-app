@@ -3,45 +3,13 @@ import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 
+import { getCurrentButtonOptions } from './getCurrentButtonOptions';
 import { setOrderStepsPassed } from "store/order/actions";
 import { OrderPrice } from "components";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
-import type { IOrderData } from 'store/order/types';
 import styles from "./OrderInfo.module.scss";
 import classNames from 'classnames';
-import { Button } from 'components';
-
-
-const getCurrentButtonOptions = (pathname: string, order: IOrderData) => {
-    switch(pathname) {
-        case "/order/location": {
-            return {
-                nextPagePathname: "/order/model",
-                disabled: !order.cityId || !order.pointId,
-                name: "Choose model",
-                nextStep: 1
-            }
-        }
-
-        case "/order/model": {
-            return {
-                nextPagePathname: "/order/additionally",
-                disabled: !order.carId,
-                name: "Additionally",
-                nextStep: 2
-            }
-        }
-
-        case "/order/additionally": {
-            return {
-                nextPagePathname: "/order/total",
-                disabled: !order.dateFrom || !order.dateTo || !order.rateId || !order.color,
-                name: "Total",
-                nextStep: 3
-            }
-        }
-    }
-}
+import { Button, ModalStandart, ModalStandartBlank } from 'components';
 
 interface IButtonOptions {
     nextPagePathname: string,
@@ -53,6 +21,7 @@ interface IButtonOptions {
 const OrderInfo = () => {
     const [buttonOptions, setButtonOptions] = useState<IButtonOptions | null | undefined>(null);
     const [orderInfo, setOrderInfo] = useState<Array<IOrderInfoData> | null>(null);
+    const [orderModalOpen, setOrderModalOpen] = useState<boolean>(false);
 
     const {t} = useTranslation();
     const location = useLocation();
@@ -71,6 +40,10 @@ const OrderInfo = () => {
         if(data) {
             dispatch(setOrderStepsPassed(data))
         }
+    }
+
+    function openOrderModalHandler() {
+        setOrderModalOpen((prev) => !prev);
     }
 
     const nextBtnPathname = buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname;
@@ -104,6 +77,7 @@ const OrderInfo = () => {
                         location.pathname === "/order/total"
                         ?
                         <Button
+                            onClick={openOrderModalHandler}
                             apperance='primary'
                             className={classNames(styles.nextBtn)}
                         >
@@ -123,6 +97,16 @@ const OrderInfo = () => {
                     }
                 </div>
             </div>
+            <ModalStandart
+                isOpen={orderModalOpen}
+                setOpen={setOrderModalOpen}
+            >
+                <ModalStandartBlank 
+                    title={t("Confirm order")}
+                    confirmHandler={() => console.log("confirm handler")}
+                    cancelHanlder={() => setOrderModalOpen(false)}
+                />
+            </ModalStandart>
         </div>
     )
 }
