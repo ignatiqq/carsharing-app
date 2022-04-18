@@ -12,7 +12,11 @@
   width: 100%;
   border-top: 2px solid var(--gray-light);
   border-bottom: 2px solid var(--gray-light);
-  padding: 8px 0px;
+  padding: 2px 0px;
+
+  @media(min-width: 390px) {
+    padding: 8px 0px;
+  }
 }
 
 .section {
@@ -21,7 +25,7 @@
 
 .contentWrapper {
   display: flex;
-  height: calc(100% - 164px);
+  height: calc(100% - 138px);
 
   @media screen and (max-width: 1090px) {
     & {

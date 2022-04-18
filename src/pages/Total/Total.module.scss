@@ -1,11 +1,16 @@
 .wrapper {
     margin: 25px 0px;
+    padding-right: 15px;
 
     &Content {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
         max-width: 800px;
+
+        @media(min-width: 460px) {
+            flex-direction: row;
+        }
     }
 }
 
@@ -28,6 +33,25 @@
     }
 
     &Name {
+        margin-bottom: 12px;
+    }
+
+    &Number {
+        border: 1px solid var(--gray-dark);
+        border-radius: 4px;
+        padding: 4px 8px;
+    }
+
+    &Name {
         font-size: 18px;
+    }
+
+    &Tank {
+        margin-top: 12px;
+    }
+
+    &Image {
+        max-width: 256px;
+        width: 100%;
     }
 }

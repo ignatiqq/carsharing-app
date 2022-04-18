@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { useEffect } from "react";
 import DatePicker, {registerLocale} from "react-datepicker";
 import { enUS as en, ru } from "date-fns/locale";
 
@@ -11,7 +11,8 @@ import styles from "./Datepicker.module.scss";
 interface IDatepicker {
     changeDataHandler: (startDate: Date, endDate: Date) => void,
     className?: string,
-    wrapperClassName?: string
+    wrapperClassName?: string,
+    dateTo: number | null
 }
 
 const Datepicker: React.FC<IDatepicker> = ({changeDataHandler, className, wrapperClassName}) => {
@@ -21,11 +22,17 @@ const Datepicker: React.FC<IDatepicker> = ({changeDataHandler, className, wrappe
     const { t, i18n } = useTranslation();
     
 
-    React.useEffect(() => {
+    useEffect(() => {
         setStartDate(getUTCDate(Date.now()));
         registerLocale("ru", ru);
         registerLocale("en", en);
     }, [])
+
+    useEffect(() => {
+        if(endDate) {
+            setEndDate(endDate)
+        }
+    }, [endDate])
 
     const changeStartDate = (date: Date | null) => {
         setStartDate(date);

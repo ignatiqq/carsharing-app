@@ -1,8 +1,10 @@
 import React from 'react';
 import { useAppSelector } from 'store/hooks';
-import { formatDateByLanguage } from 'utils/dateFormatter';
 
+import { formatDateByLanguage } from 'utils/dateFormatter';
+import { carNumberFormatter } from "utils/carNumber";
 import styles from "./Total.module.scss";
+import { useTranslation } from 'react-i18next';
 
 const Total = () => {
 
@@ -11,23 +13,27 @@ const Total = () => {
         avaliableRentDate: order.data.dateFrom
     }))
 
+    const { t } = useTranslation();
+
+    const carNumber = currentCar?.number && carNumberFormatter(currentCar?.number) ? carNumberFormatter(currentCar?.number) : t("Number not recognized");
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapperContent}>
                 <div className={styles.carText}>
                     <div className={styles.carName}>{currentCar && currentCar.name}</div>
-                    <div>{currentCar?.number}</div>
-                    <div>
-                        <span className={styles.carTextBold}>Топливо</span>
+                    <span className={styles.carNumber}>{carNumber}</span>
+                    <div className={styles.carTank}>
+                        <span className={styles.carTextBold}>{t("Fuel")}</span>
                         <span className={styles.carTextLight}> {currentCar?.tank}%</span>
                     </div>
                     <div>
-                        <span className={styles.carTextBold}>Доступна с</span>
+                        <span className={styles.carTextBold}>{t("Available from")}</span>
                         <span className={styles.carTextLight}> {avaliableRentDate && formatDateByLanguage(new Date(avaliableRentDate * 1000), "Pp")}</span>
                     </div>
                 </div>
                 <div>
-                    car
+                    <img className={styles.carImage} src={currentCar?.thumbnail.path} alt={currentCar?.name} />
                 </div>
             </div>
         </div>

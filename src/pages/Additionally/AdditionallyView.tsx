@@ -48,6 +48,7 @@ const AdditionalityView: React.FC<IAdditionalityView> = ({
         setColorOption={setColorOption}
       />
       <RentPicker 
+        dateTo={orderData.dateTo}
         pickDate={pickDate}
       />
       <TariffPicker 

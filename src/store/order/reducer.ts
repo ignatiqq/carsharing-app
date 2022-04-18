@@ -19,7 +19,8 @@ import {
     orderSetDateFrom,
     orderSetDateTo,
     orderSetColor,
-    orderSetRateId
+    orderSetRateId,
+    orderSetPrice
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
 
@@ -81,6 +82,9 @@ const order = createReducer(initialState, (builder) => {
         })
         .addCase(orderSetRateId, (state, action) => {
             state.data.rateId = action.payload
+        })
+        .addCase(orderSetPrice, (state, action) => {
+            state.data.price = action.payload
         })
         .addCase(setCurrentCity, (state, action) => {
             state.data.cityId = {

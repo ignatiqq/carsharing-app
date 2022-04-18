@@ -19,7 +19,8 @@ import {
     ORDER_SET_DATE_FROM,
     ORDER_SET_DATE_TO,
     ORDER_SET_COLOR,
-    ORDER_SET_RATE_ID
+    ORDER_SET_RATE_ID,
+    ORDER_SET_PRICE
 } from "./constants";
 import {IOrderObject, IOrder, IAllCarsData, ICarsCategories, ICarData, IRateOption} from "./types";
 
@@ -30,6 +31,7 @@ export const orderSetDateFrom = createAction<number>(ORDER_SET_DATE_FROM);
 export const orderSetDateTo = createAction<number>(ORDER_SET_DATE_TO);
 export const orderSetColor = createAction<string>(ORDER_SET_COLOR);
 export const orderSetRateId = createAction<IOrderObject>(ORDER_SET_RATE_ID);
+export const orderSetPrice = createAction<number>(ORDER_SET_PRICE);
 export const setOrderData = createAction<IOrder>(SET_ORDER_DATA);
 export const setAdditionallyBooleanOption = createAction<string>(SET_ADDITIONALLY_BOOLEAN_OPTION);
 

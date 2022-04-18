@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 
+import { orderSetPrice } from 'store/order/actions';
 import { additionallyOptions } from 'constants/orderData';
 import styles from "./OrderPrice.module.scss";
 import { orderPriceByRate, orderAdditionallyPrice } from "utils/orderSum";
@@ -9,6 +10,8 @@ import { orderPriceByRate, orderAdditionallyPrice } from "utils/orderSum";
 const OrderPrice = () => {
 
     const { t } = useTranslation();
+
+    const dispatch = useAppDispatch();
 
     const { orderData, currentCar } = useAppSelector(({order}) => ({
         orderData: order.data,
@@ -19,7 +22,9 @@ const OrderPrice = () => {
         if(orderData && currentCar) {
 
             if(orderData.dateFrom && orderData.dateTo && orderData.rateId) {
-                return `${t("Price")} ${orderPriceByRate(orderData.dateTo - orderData.dateFrom, orderData.rateId.id) + orderAdditionallyPrice(orderData, additionallyOptions)} ₽`;
+                const orderPrice = orderPriceByRate(orderData.dateTo - orderData.dateFrom, orderData.rateId.id) + orderAdditionallyPrice(orderData, additionallyOptions);
+                dispatch(orderSetPrice(orderPrice))
+                return `${t("Price")} ${orderPrice} ₽`;
             }
             return `${t("Price")} ${t("From")} ${currentCar.priceMin} ${t("To")} ${currentCar.priceMax} ₽`
 

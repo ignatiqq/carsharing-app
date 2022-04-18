@@ -1,14 +1,16 @@
 import React from 'react';
-
-import { DatePicker } from "components";
-import styles from "./RentPicker.module.scss";
 import { useTranslation } from 'react-i18next';
 
+import { DatePicker } from "components";
+import { formatDateByLanguage } from 'utils/dateFormatter';
+import styles from "./RentPicker.module.scss";
+
 interface IRentPicker {
-    pickDate: (startDate: Date, endDate: Date) => void
+    pickDate: (startDate: Date, endDate: Date) => void,
+    dateTo: number | null
 }
 
-const RentPicker: React.FC<IRentPicker> = React.memo(({ pickDate }) => {
+const RentPicker: React.FC<IRentPicker> = React.memo(({ pickDate, dateTo }) => {
 
     const { t } = useTranslation();
 
@@ -19,6 +21,7 @@ const RentPicker: React.FC<IRentPicker> = React.memo(({ pickDate }) => {
                 className={styles.DatePickerCustomInput}
                 wrapperClassName={styles.DatePickerCustomWrapper}
                 changeDataHandler={pickDate}
+                dateTo={dateTo}
             />  
         </div> 
     )
