@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/carsharing-app/static/css/main.e431d18f.css",
-    "main.js": "/carsharing-app/static/js/main.70877553.js",
+    "main.css": "/carsharing-app/static/css/main.3dbe50f6.css",
+    "main.js": "/carsharing-app/static/js/main.7ad3f1f5.js",
     "static/media/sliderImage4.png": "/carsharing-app/static/media/sliderImage4.102be8088d4cd8dd3682.png",
     "static/media/sliderImage3.png": "/carsharing-app/static/media/sliderImage3.8762cd9bfd58fc56a0b3.png",
     "static/media/sliderImage2.png": "/carsharing-app/static/media/sliderImage2.983a40bbc8d5cfb7e85c.png",
@@ -11,6 +11,7 @@
     "static/media/Roboto-Bold.ttf": "/carsharing-app/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
     "static/media/Roboto-Light.ttf": "/carsharing-app/static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
     "static/media/FlagOfUsa.png": "/carsharing-app/static/media/FlagOfUsa.d38b1cc751898b04eb26.png",
+    "static/media/carHolder.png": "/carsharing-app/static/media/carHolder.a5564337f5e8d113d78c.png",
     "static/media/FlagOfRussia.png": "/carsharing-app/static/media/FlagOfRussia.143e2d2b10c45cd59e9e.png",
     "static/media/TelegramIcon.svg": "/carsharing-app/static/media/TelegramIcon.d702e4a72f9f5ca8baf30a0653e00ab3.svg",
     "static/media/loader.svg": "/carsharing-app/static/media/loader.1552bd60a14877b25f4538fbfa82afb4.svg",
@@ -24,11 +25,11 @@
     "static/media/btnNext.svg": "/carsharing-app/static/media/btnNext.7591c327fb5160f95b31.svg",
     "static/media/btnPrev.svg": "/carsharing-app/static/media/btnPrev.1752ae9160db5265a941.svg",
     "static/media/Arrow.svg": "/carsharing-app/static/media/Arrow.3f54b55d7d55c4a8870e.svg",
-    "main.e431d18f.css.map": "/carsharing-app/static/css/main.e431d18f.css.map",
-    "main.70877553.js.map": "/carsharing-app/static/js/main.70877553.js.map"
+    "main.3dbe50f6.css.map": "/carsharing-app/static/css/main.3dbe50f6.css.map",
+    "main.7ad3f1f5.js.map": "/carsharing-app/static/js/main.7ad3f1f5.js.map"
   },
   "entrypoints": [
-    "static/css/main.e431d18f.css",
-    "static/js/main.70877553.js"
+    "static/css/main.3dbe50f6.css",
+    "static/js/main.7ad3f1f5.js"
   ]
 }
