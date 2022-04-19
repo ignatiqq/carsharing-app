@@ -1,8 +1,9 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {useAppDispatch, useAppSelector} from "store/hooks";
+import { batch } from "react-redux";
 
 import type { IAllCarsData, ICarData, ICarsCategory } from "store/order/types";
-import { orderSetCarId } from "store/order/actions";
+import { orderSetCarId, orderSetColor } from "store/order/actions";
 import {getAllCarsData} from "store/order/actions";
 import ModelView from "./ModelView";
 import { setCurrentCar } from "store/order/actions";
@@ -42,7 +43,10 @@ const Model = () => {
     }, [carsData])
 
     const setCurrentCarModel = useCallback((data: ICarData) => {
-        dispatch(setCurrentCar(data));
+        batch(() => {
+            dispatch(setCurrentCar(data));
+            dispatch(orderSetColor(""));
+        })
     }, [])
 
     const filterCarsByCategoryId = useCallback((categoryId: string) => {

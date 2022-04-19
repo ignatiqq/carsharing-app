@@ -30,7 +30,13 @@ const AppRoutes = () => useRoutes([
             },
             {
                 path: "/order/total",
-                element: <Total />
+                element: <Total />,
+                children: [
+                    {
+                        path: ":orderId",
+                        element: <Total />
+                    }
+                ]
             }
         ]
     }
