@@ -4,6 +4,9 @@ export interface IOrder {
         cars: ICarOption,
         rates: IRateOptions
     },
+    id: null | string,
+    postOrderLoading: boolean,
+    getOrderLoading: boolean,
     stepsPassed: number,
     price: number
 }
@@ -85,7 +88,7 @@ export interface ICarData {
 }
 
 export interface IOrderData {
-        orderStatusId: IOrderObject | null,
+        orderStatusId: string | null,
         cityId: IOrderObject | null,
         pointId: IOrderObject | null,
         carId: IOrderObject | null,

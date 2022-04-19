@@ -5,7 +5,7 @@ function requestGet(url: string) {
 }
 
 function requestPost(url: string, body: any) {
-    return api.post(url, JSON.stringify(body))
+    return api.post(url, body)
 }
 
 export {

@@ -22,7 +22,7 @@ const Total = () => {
             <div className={styles.wrapperContent}>
                 <div className={styles.carText}>
                     <div className={styles.carName}>{currentCar && currentCar.name}</div>
-                    <span className={styles.carNumber}>{carNumber}</span>
+                    <span className={styles.carNumber}>{carNumber.toUpperCase()}</span>
                     <div className={styles.carTank}>
                         <span className={styles.carTextBold}>{t("Fuel")}</span>
                         <span className={styles.carTextLight}> {currentCar?.tank}%</span>

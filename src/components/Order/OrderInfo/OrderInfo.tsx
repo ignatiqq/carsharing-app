@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
+import classNames from 'classnames';
 
 import { getCurrentButtonOptions } from './getCurrentButtonOptions';
-import { setOrderStepsPassed } from "store/order/actions";
+import { sendOrderData, setOrderStepsPassed } from "store/order/actions";
 import { OrderPrice } from "components";
 import { getOrderInfoData, IOrderInfoData } from "utils/getOrderInfo";
 import styles from "./OrderInfo.module.scss";
-import classNames from 'classnames';
 import { Button, ModalStandart, ModalStandartBlank } from 'components';
+import OrderInfoItem from "./OrderInfoItem/OrderInfoItem";
 
 interface IButtonOptions {
     nextPagePathname: string,
@@ -46,6 +47,11 @@ const OrderInfo = () => {
         setOrderModalOpen((prev) => !prev);
     }
 
+    function sendOrderHanlder() {
+        dispatch(sendOrderData(orderData));
+        setOrderModalOpen(false);
+    }
+
     const nextBtnPathname = buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname;
 
     return (
@@ -57,15 +63,11 @@ const OrderInfo = () => {
                         orderInfo && orderInfo.length > 0 ?
                             orderInfo.map(item => 
                                 item.value && (
-                                <div className={styles.orderInfoItemWrapper} key={item.label}>
-                                    <div className={styles.optionName}>
-                                        {t(item.label)}
-                                    </div>
-                                    <div className={styles.optionSeparator} />
-                                    <div className={styles.optionValue}>
-                                        {typeof item.value === "string" ? t(item.value) : item.value}
-                                    </div>
-                                </div>
+                                    <OrderInfoItem 
+                                        key={item.label}
+                                        value={item.value}
+                                        label={item.label}
+                                    />
                             ))
                             :
                             <div>Здесь будут ваши данные о заказе</div>
@@ -103,7 +105,7 @@ const OrderInfo = () => {
             >
                 <ModalStandartBlank 
                     title={t("Confirm order")}
-                    confirmHandler={() => console.log("confirm handler")}
+                    confirmHandler={sendOrderHanlder}
                     cancelHanlder={() => setOrderModalOpen(false)}
                 />
             </ModalStandart>
