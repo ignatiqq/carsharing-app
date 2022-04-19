@@ -15,8 +15,9 @@ const Order = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const { stepsPassed } = useAppSelector(({order}) => ({
-    stepsPassed: order.stepsPassed
+  const { stepsPassed, orderId } = useAppSelector(({order}) => ({
+    stepsPassed: order.stepsPassed,
+    orderId: order.id
   }))
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const Order = () => {
       <Header className={styles.paddingContainer} />
       <div className={classNames(styles.breadcrumbsContainer)}>
         <Breadcrumbs
+          orderId={orderId}
           routes={routes}
           currentRoutePathname={pathname}
           stepsPassed={stepsPassed}

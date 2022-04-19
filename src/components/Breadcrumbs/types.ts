@@ -2,7 +2,8 @@ export interface IBreadcrumbs {
     routes: Array<IRoute>
     currentRoutePathname: string,
     stepsPassed: number,
-    className?: string
+    className?: string,
+    orderId: string | null
 }
 
 export interface IRoute {
