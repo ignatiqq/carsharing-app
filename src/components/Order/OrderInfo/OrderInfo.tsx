@@ -42,7 +42,6 @@ const OrderInfo = () => {
 
     useEffect(() => {
         if(orderId) {
-            console.log(orderId)
             navigate(`/order/total/${orderId}`)
         }
     }, [orderId])
@@ -90,7 +89,7 @@ const OrderInfo = () => {
                 <OrderPrice />
                 <div className={styles.nextBtnWrapper}>
                     {
-                        location.pathname === "/order/total"
+                        location.pathname.includes("/order/total")
                         ?
                         (
                             !orderId ?

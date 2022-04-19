@@ -21,5 +21,9 @@ export const allOrderSteps = [
     {
         pathname: "/order/total",
         step: 3
+    },
+    {
+        pathname: "order/total/:id",
+        step: 4
     }
 ]
