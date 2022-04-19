@@ -24,7 +24,7 @@ const TariffPicker: React.FC<ITariffPicker> = React.memo(({ rates, currentRate, 
           rates.data.map(item => (
             <RadioInput 
               key={item.rateTypeId.id}
-              label={`${t(item.rateTypeId.name)}, ${item.price} / ${item.rateTypeId.unit}`}
+              label={`${t(item.rateTypeId.name)}, ${item.price} ₽/ ${item.rateTypeId.unit}`}
               value={item.rateTypeId.id}
               id={item.rateTypeId.id}
               name="order-tariff"

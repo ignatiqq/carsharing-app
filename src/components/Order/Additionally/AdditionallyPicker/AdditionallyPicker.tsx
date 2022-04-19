@@ -24,7 +24,7 @@ const AdditionallyPicker: React.FC<IAdditionallyPicker> = ({ orderData, setAddit
                     additionallyOptions.map(item => (
                         <CheckboxInput 
                             key={item.label}
-                            label={t(item.label)}
+                            label={`${t(item.label)}, ${item.price}р`}
                             value={item.label}
                             id={item.label}
                             name="additionally-option"
