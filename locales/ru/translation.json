@@ -64,5 +64,6 @@
     "Number not recognized": "Номер не опознан",
     "Confirm": "Подтвердить",
     "Return": "Вернуться",
-    "Confirm order": "Подтвердить заказ"
+    "Confirm order": "Подтвердить заказ",
+    "Cancel": "Отменить"
 }
