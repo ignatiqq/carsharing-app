@@ -49,8 +49,6 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.memo(({
     })
   }
 
-  console.log(orderId)
-
   return (
     <ul className={classNames(styles.ul, className)}>
       {

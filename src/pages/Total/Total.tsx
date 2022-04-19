@@ -8,9 +8,10 @@ import { useTranslation } from 'react-i18next';
 
 const Total = () => {
 
-    const { currentCar, avaliableRentDate } = useAppSelector(({order}) => ({
+    const { currentCar, avaliableRentDate, orderId } = useAppSelector(({order}) => ({
         currentCar: order.options.cars.current,
-        avaliableRentDate: order.data.dateFrom
+        avaliableRentDate: order.data.dateFrom,
+        orderId: order.id
     }))
 
     const { t } = useTranslation();
@@ -21,6 +22,7 @@ const Total = () => {
         <div className={styles.wrapper}>
             <div className={styles.wrapperContent}>
                 <div className={styles.carText}>
+                    <div className={styles.orderConfirmed}>{orderId && "Ваш заказ подтвержден"}</div>
                     <div className={styles.carName}>{currentCar && currentCar.name}</div>
                     <span className={styles.carNumber}>{carNumber.toUpperCase()}</span>
                     <div className={styles.carTank}>
