@@ -25,6 +25,7 @@
     "Wait until all car models are loaded": "Wait until all car models are loaded",
     "Wait until all additionally options loaded": "Wait until all additionally options loaded",
     "Error: Something go wrong, try later": "Error: Something go wrong, try later",
+    "Error: You may have entered the wrong order id, please try again": "Error: You may have entered the wrong order id, please try again",
     "From": "From",
     "To": "To",
     "Choose on map": "Choose on map",
@@ -66,5 +67,8 @@
     "Confirm": "Confirm",
     "Return": "Return",
     "Confirm order": "Confirm order",
-    "Cancel": "Cancel"
+    "Cancel": "Cancel",
+    "Wait until your order data loded": "Wait until your order data loded",
+    "Your order details will be listed here": "Your order details will be listed here",
+    "Order number": "Order number"
 }

@@ -25,6 +25,7 @@
     "Wait until all car models are loaded": "Подождите пока все модели машин загрузятся",
     "Wait until all additionally options loaded": "Подождите пока все дополнительные опции загрузятся",
     "Error: Something go wrong, try later": "Ошибка: Что-то пошло не так, попробуйте позже",
+    "Error: You may have entered the wrong order id, please try again": "Ошибка: Возможно, вы ввели неверный идентификатор заказа, пожалуйста повторите попытку.",
     "From": "От",
     "To": "До",
     "Choose on map": "Выбрать на карте",
@@ -65,5 +66,8 @@
     "Confirm": "Подтвердить",
     "Return": "Вернуться",
     "Confirm order": "Подтвердить заказ",
-    "Cancel": "Отменить"
+    "Cancel": "Отменить",
+    "Wait until your order data loded": "Подождите пока информация о вашем заказу загрузиться",
+    "Your order details will be listed here": "Здесь будут указаны ваши данные о заказе",
+    "Order number": "Заказ номер"
 }
