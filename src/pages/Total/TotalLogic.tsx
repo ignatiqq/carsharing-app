@@ -29,12 +29,12 @@ const TotalLogic = () => {
         if(!requestedData && location && !orderId) {
             dispatch(getOrderDataById(requestedOrderId));
         }
-    }, [requestedData, location,])
+    }, [requestedData, location])
 
     const currentCarProp = (requestedData ? requestedData.carId : currentCar) as ICarData | null
     const avaliableRentDateProp = requestedData?.dateFrom ? requestedData.dateFrom : avaliableRentDate
 
-    if(requestedOrderId && requestedDataError) {
+    if(!orderId && requestedOrderId && requestedDataError) {
         return <div className={styles.orderByIdError}>{t(requestedDataError)}</div>
     }
 
