@@ -39,7 +39,7 @@ const Location = () => {
 
   const selectPointHandler = (item: ICurrentPoint) => {
     dispatch(setCurrentCity(item.cityId))
-    dispatch(orderSetPointId({id: item.id, value: item.address}))
+    dispatch(orderSetPointId({id: item.id, name: item.address}))
   }
 
   return (
@@ -58,7 +58,7 @@ const Location = () => {
           customLabel="address"
           customValue="id"
           options={allPoints && currentCity && getPointsByCityId(allPoints, currentCity.id)}
-          selected={currentPoint ? {...currentPoint, id: currentPoint?.id, address: currentPoint?.value} : null}
+          selected={currentPoint ? {...currentPoint, id: currentPoint?.id, address: currentPoint?.name} : null}
           clickHandler={(selectPointHandler)}
         />
       </div>

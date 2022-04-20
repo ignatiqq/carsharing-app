@@ -108,5 +108,5 @@ export interface IOrderData {
 
 export interface IOrderObject {
     id: string,
-    value: string
+    name: string
 }

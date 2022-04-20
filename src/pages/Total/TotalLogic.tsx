@@ -20,8 +20,8 @@ const TotalLogic = () => {
 
     useEffect(() => {
         if(!requestedData && location) {
-            const requestedOrderId = location.pathname.split("/")[3]
-            dispatch(getOrderDataById(requestedOrderId))
+            const requestedOrderId = location.pathname.split("/")[3];
+            dispatch(getOrderDataById(requestedOrderId));
         }
     }, [requestedData, location])
 

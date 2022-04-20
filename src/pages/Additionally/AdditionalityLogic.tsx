@@ -52,7 +52,7 @@ const Additionality = () => {
     const setRateOption = (rateId: string) => {
         const selectedRate = ratesData!.data.filter(item => item.rateTypeId.id === rateId)[0];
         if(selectedRate) {
-            dispatch(orderSetRateId({id: selectedRate.rateTypeId.id, value: selectedRate.rateTypeId.name}))
+            dispatch(orderSetRateId({id: selectedRate.rateTypeId.id, name: selectedRate.rateTypeId.name}))
         }
     }
 

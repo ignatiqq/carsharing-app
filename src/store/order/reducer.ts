@@ -112,7 +112,7 @@ const order = createReducer(initialState, (builder) => {
         .addCase(setCurrentCity, (state, action) => {
             state.data.cityId = {
                 id: action.payload.id,
-                value: action.payload.name
+                name: action.payload.name
             }
         })
         .addCase(setAllCarsDataLoading, (state, action) => {

@@ -25,7 +25,7 @@ const Model = () => {
         if(currentCar) {
             dispatch(orderSetCarId({
                 id: currentCar.id,
-                value: currentCar.name
+                name: currentCar.name
             }))
         }
     }, [currentCar])

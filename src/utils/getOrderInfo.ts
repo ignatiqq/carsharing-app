@@ -23,11 +23,11 @@ export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
     return [
         {
             label: "Point of issue",
-            value: `${cityId?.value} ${pointId ? pointId.value : ""}`
+            value: `${cityId?.name} ${pointId ? pointId.name : ""}`
         },
         {
             label: "Model",
-            value: carId?.value
+            value: carId?.name
         },
         {
             label: "Color",
@@ -39,7 +39,7 @@ export const getOrderInfoData = (order: IOrderData): Array<IOrderInfoData> => {
         },
         {
             label: "Tariff",
-            value: rateId?.value
+            value: rateId?.name
         },
         {
             label: "isFullTank",
