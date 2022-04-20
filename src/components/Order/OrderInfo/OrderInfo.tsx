@@ -61,10 +61,6 @@ const OrderInfo = () => {
         setOrderModalOpen(false);
     }
 
-    function deleteOrderHandler() {
-
-    }
-
     const nextBtnPathname = buttonOptions && !buttonOptions.disabled ? buttonOptions.nextPagePathname : location.pathname;
 
     return (
@@ -103,7 +99,6 @@ const OrderInfo = () => {
                                 :
                                 orderId &&
                                 <Button
-                                    onClick={deleteOrderHandler}
                                     apperance='primary'
                                     className={classNames(styles.nextBtn)}
                                     gradientFrom="#493013"

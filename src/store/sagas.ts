@@ -5,6 +5,7 @@ import { getPointsWatcher } from "./location/sagas/points/getPoints";
 import { getCarsDataWatcher } from "./order/sagas/cars";
 import { getRatesWatcher } from "./order/sagas/rates";
 import { sendOrderDataToServer } from "./order/sagas/order";
+import { getOrderDataByIdWatcher } from "./order/sagas/order";
 
 export default function* rootSaga() {
     yield all([
@@ -12,6 +13,7 @@ export default function* rootSaga() {
         getPointsWatcher(),
         getCarsDataWatcher(),
         getRatesWatcher(),
-        sendOrderDataToServer()
+        sendOrderDataToServer(),
+        getOrderDataByIdWatcher()
     ])
 }

@@ -7,7 +7,7 @@ import {
     setAllCarsData,
     setAllCarsDataLoading,
     setAllCarsDataRequestError,
-    setOrderData,
+    setOrderDataById,
     setCarsCategoriesData,
     setOrderStepsPassed,
     setCurrentCar,
@@ -22,7 +22,9 @@ import {
     orderSetRateId,
     orderSetPrice,
     setOrderId,
-    sendOrderDataLoading
+    sendOrderDataLoading,
+    getOrderDataLoading,
+    getOrderDataError
 } from "./actions";
 import { setCurrentCity } from "store/location/cities/actions";
 
@@ -57,15 +59,19 @@ const initialState: IOrder = {
     },
     id: null,
     postOrderLoading: false,
-    getOrderLoading: false,
+    getOrder: {
+        data: null,
+        loading: false,
+        error: null
+    },
     stepsPassed: 0,
     price: 0
 };
 
 const order = createReducer(initialState, (builder) => {
     builder
-        .addCase(setOrderData, (state, action) => {
-            state = action.payload
+        .addCase(setOrderDataById, (state, action) => {
+            state.getOrder.data = action.payload
         })
         .addCase(orderSetCityId, (state, action) => {
             state.data.cityId = action.payload
@@ -93,6 +99,12 @@ const order = createReducer(initialState, (builder) => {
         })
         .addCase(sendOrderDataLoading, (state, action) => {
             state.postOrderLoading = action.payload
+        })
+        .addCase(getOrderDataLoading, (state, action) => {
+            state.getOrder.loading = action.payload
+        })
+        .addCase(getOrderDataError, (state, action) => {
+            state.getOrder.error = action.payload
         })
         .addCase(setOrderId, (state, action) => {
             state.id = action.payload

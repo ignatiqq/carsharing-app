@@ -7,9 +7,9 @@ interface IIsStepAvaliable {
 }
 
 export const isStepAvaliable = ({ allOrderSteps, currentStep, requestedStepPathname }: IIsStepAvaliable) => {
-    const requestedStep = allOrderSteps.find(item => requestedStepPathname.includes(item.pathname));
+    const requestedStep = allOrderSteps.find(item => item.pathname === requestedStepPathname);
     if(requestedStep) {
         return requestedStep.step <= currentStep
-    }
-    return false
+    } 
+    return true
 }

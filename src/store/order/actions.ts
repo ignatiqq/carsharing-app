@@ -2,7 +2,7 @@ import { createAction } from "@reduxjs/toolkit";
 import {
     ORDER_SET_CITY_ID,
     ORDER_SET_POINT_ID,
-    SET_ORDER_DATA,
+    SET_ORDER_DATA_BY_ID,
     GET_ALL_CARS_DATA,
     SET_ALL_CARS_DATA_LOADING,
     SET_ALL_CARS_DATA,
@@ -23,9 +23,12 @@ import {
     ORDER_SET_PRICE,
     SEND_ORDER_DATA,
     SEND_ORDER_DATA_LOADING,
-    SET_ORDER_ID
+    SET_ORDER_ID,
+    GET_ORDER_DATA_BY_ID,
+    GET_ORDER_DATA_LOADING,
+    GET_ORDER_DATA_ERROR
 } from "./constants";
-import {IOrderObject, IOrder, IAllCarsData, ICarsCategories, ICarData, IRateOption, IOrderData} from "./types";
+import {IOrderObject, IAllCarsData, ICarsCategories, ICarData, IRateOption, IOrderData} from "./types";
 
 export const orderSetCityId = createAction<IOrderObject | null>(ORDER_SET_CITY_ID);
 export const orderSetPointId = createAction<IOrderObject | null>(ORDER_SET_POINT_ID);
@@ -35,7 +38,7 @@ export const orderSetDateTo = createAction<number>(ORDER_SET_DATE_TO);
 export const orderSetColor = createAction<string>(ORDER_SET_COLOR);
 export const orderSetRateId = createAction<IOrderObject>(ORDER_SET_RATE_ID);
 export const orderSetPrice = createAction<number>(ORDER_SET_PRICE);
-export const setOrderData = createAction<IOrder>(SET_ORDER_DATA);
+export const setOrderDataById = createAction<IOrderData>(SET_ORDER_DATA_BY_ID);
 export const setAdditionallyBooleanOption = createAction<string>(SET_ADDITIONALLY_BOOLEAN_OPTION);
 
 export const getAllCarsData = createAction(GET_ALL_CARS_DATA);
@@ -54,3 +57,6 @@ export const setOrderRatesError = createAction<string>(SET_ORDER_RATES_ERROR);
 export const sendOrderData = createAction<IOrderData>(SEND_ORDER_DATA);
 export const sendOrderDataLoading = createAction<boolean>(SEND_ORDER_DATA_LOADING);
 export const setOrderId = createAction<string>(SET_ORDER_ID);
+export const getOrderDataById = createAction<string>(GET_ORDER_DATA_BY_ID);
+export const getOrderDataLoading = createAction<boolean>(GET_ORDER_DATA_LOADING);
+export const getOrderDataError = createAction<string>(GET_ORDER_DATA_ERROR);

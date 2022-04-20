@@ -5,16 +5,19 @@ import { formatDateByLanguage } from 'utils/dateFormatter';
 import { carNumberFormatter } from "utils/carNumber";
 import styles from "./Total.module.scss";
 import { useTranslation } from 'react-i18next';
+import { ICarData } from 'store/order/types';
 
-const Total = () => {
+interface ITotalView {
+    currentCar: ICarData | null,
+    avaliableRentDate: number | null,
+}
 
-    const { currentCar, avaliableRentDate } = useAppSelector(({order}) => ({
-        currentCar: order.options.cars.current,
-        avaliableRentDate: order.data.dateFrom
-    }))
-
+const Total: React.FC<ITotalView> = ({ 
+    currentCar, 
+    avaliableRentDate, 
+}) => {
     const { t } = useTranslation();
-
+    
     const carNumber = currentCar?.number && carNumberFormatter(currentCar?.number) ? carNumberFormatter(currentCar?.number) : t("Number not recognized");
 
     return (

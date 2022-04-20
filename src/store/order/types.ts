@@ -6,7 +6,11 @@ export interface IOrder {
     },
     id: null | string,
     postOrderLoading: boolean,
-    getOrderLoading: boolean,
+    getOrder: {
+        data: IOrderData | null,
+        loading: boolean,
+        error: string | null
+    }
     stepsPassed: number,
     price: number
 }
