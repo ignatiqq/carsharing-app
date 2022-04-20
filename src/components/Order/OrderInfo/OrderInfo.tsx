@@ -29,16 +29,24 @@ const OrderInfo = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const { orderData, orderId, orderPostLoading } = useAppSelector(({order}) => ({
+    const { orderData, requestedOrderData, orderId, orderPostLoading } = useAppSelector(({order}) => ({
         orderData: order.data,
         orderId: order.id,
-        orderPostLoading: order.postOrderLoading
+        orderPostLoading: order.postOrderLoading,
+        requestedOrderData: order.getOrder.data
     }))
 
     useEffect(() => {
-        setButtonOptions(getCurrentButtonOptions(location.pathname, orderData));
-        setOrderInfo(getOrderInfoData(orderData));
-    }, [location.pathname, orderData])
+        const requestedOrderId = location.pathname.split("/")[3];
+        if(requestedOrderId) {
+            if(requestedOrderData) {
+                setOrderInfo(getOrderInfoData(requestedOrderData))
+            }
+        } else {
+            setButtonOptions(getCurrentButtonOptions(location.pathname, orderData));
+            setOrderInfo(getOrderInfoData(orderData));
+        }
+    }, [location.pathname, orderData, requestedOrderData])
 
     useEffect(() => {
         if(orderId) {
@@ -79,7 +87,7 @@ const OrderInfo = () => {
                                     />
                             ))
                             :
-                            <div>Здесь будут ваши данные о заказе</div>
+                            <div className={styles.orderInfoEmpty}>{t("Your order details will be listed here")}</div>
                     }
                 </div>
                 <OrderPrice />
@@ -88,7 +96,7 @@ const OrderInfo = () => {
                         location.pathname.includes("/order/total")
                         ?
                         (
-                            !orderId ?
+                            !orderId && !location.pathname.split("/")[3] ?
                                 <Button
                                     onClick={openOrderModalHandler}
                                     apperance='primary'
@@ -96,8 +104,8 @@ const OrderInfo = () => {
                                 >
                                     {orderPostLoading ? <Loader /> : t("Order")}
                                 </Button>
-                                :
-                                orderId &&
+                                : 
+                                location.pathname.split("/")[3] &&
                                 <Button
                                     apperance='primary'
                                     className={classNames(styles.nextBtn)}

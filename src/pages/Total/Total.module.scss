@@ -68,3 +68,14 @@
         width: 100%;
     }
 }
+
+.orderByIdError {
+    min-height: 300px;
+    text-align: center;
+    font-weight: 700;
+    color: red;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -67,5 +67,6 @@
     "Return": "Вернуться",
     "Confirm order": "Подтвердить заказ",
     "Cancel": "Отменить",
-    "Wait until your order data loded": "Подождите пока информация о вашем заказу загрузиться"
+    "Wait until your order data loded": "Подождите пока информация о вашем заказу загрузиться",
+    "Your order details will be listed here": "Здесь будут указаны ваши данные о заказе"
 }
