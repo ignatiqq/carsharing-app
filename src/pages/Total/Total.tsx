@@ -6,19 +6,31 @@ import { carNumberFormatter } from "utils/carNumber";
 import styles from "./Total.module.scss";
 import { useTranslation } from 'react-i18next';
 import { ICarData } from 'store/order/types';
+import { Loader } from "components";
 
 interface ITotalView {
+    requestedOrderLoading: boolean,
     currentCar: ICarData | null,
     avaliableRentDate: number | null,
 }
 
 const Total: React.FC<ITotalView> = ({ 
+    requestedOrderLoading,
     currentCar, 
     avaliableRentDate, 
 }) => {
     const { t } = useTranslation();
     
     const carNumber = currentCar?.number && carNumberFormatter(currentCar?.number) ? carNumberFormatter(currentCar?.number) : t("Number not recognized");
+
+    if(requestedOrderLoading) {
+        const description = t("Wait until your order data loded")
+        return (
+            <div className={styles.carsLoading}>
+                <Loader className={styles.loader} description={description} />
+            </div>
+        )
+    }
 
     return (
         <div className={styles.wrapper}>

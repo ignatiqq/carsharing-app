@@ -11,11 +11,11 @@ const TotalLogic = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
 
-    const { requestedData, currentCar, avaliableRentDate, orderData } = useAppSelector(({order}) => ({
+    const { requestedData, currentCar, avaliableRentDate, requestedOrderLoading } = useAppSelector(({order}) => ({
         currentCar: order.options.cars.current,
         avaliableRentDate: order.data.dateFrom,
-        orderData: order.data,
-        requestedData: order.getOrder.data
+        requestedData: order.getOrder.data,
+        requestedOrderLoading: order.getOrder.loading
     }))
 
     useEffect(() => {
@@ -26,12 +26,13 @@ const TotalLogic = () => {
     }, [requestedData, location])
 
     const currentCarProp = (requestedData ? requestedData.carId : currentCar) as ICarData | null
-    const avaliableRentDateProp = requestedData?.dateFrom ? requestedData.dateFrom : orderData.dateFrom
+    const avaliableRentDateProp = requestedData?.dateFrom ? requestedData.dateFrom : avaliableRentDate
 
     return (
         <Total 
             currentCar={currentCarProp} 
             avaliableRentDate={avaliableRentDateProp}
+            requestedOrderLoading={requestedOrderLoading}
         />
     )
 }
