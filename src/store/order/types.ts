@@ -92,6 +92,7 @@ export interface ICarData {
 }
 
 export interface IOrderData {
+        id?: string,
         orderStatusId: string | null,
         cityId: IOrderObject | null,
         pointId: IOrderObject | null,

@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 const Breadcrumbs: React.FC<IBreadcrumbs> = React.memo(({
+  orderId,
   routes, 
   currentRoutePathname, 
   stepsPassed, 
@@ -50,6 +51,9 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.memo(({
   return (
     <ul className={classNames(styles.ul, className)}>
       { 
+        orderId ?
+        <div className={styles.orderNumber}>{t("Order number")}: {orderId}</div>
+        :
         sortedRoutes && 
         sortedRoutes.map((item) => (
           <li className={styles.list} key={item.name} >

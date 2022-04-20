@@ -15,8 +15,10 @@ const Order = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const { stepsPassed } = useAppSelector(({order}) => ({
-    stepsPassed: order.stepsPassed
+  const { stepsPassed, requestedData, currentOrderDataId } = useAppSelector(({order}) => ({
+    stepsPassed: order.stepsPassed,
+    requestedData: order.getOrder.data,
+    currentOrderDataId: order.id
   }))
 
   useEffect(() => {
@@ -27,11 +29,15 @@ const Order = () => {
     }
   }, [pathname])
 
+  const showRequestOrderId = (pathname.split("/")[3] && requestedData && requestedData.id)
+                                    ? requestedData.id : currentOrderDataId
+
   return (
     <section className={styles.section}>
       <Header className={styles.paddingContainer} />
       <div className={classNames(styles.breadcrumbsContainer)}>
         <Breadcrumbs
+          orderId={showRequestOrderId}
           routes={routes}
           currentRoutePathname={pathname}
           stepsPassed={stepsPassed}
