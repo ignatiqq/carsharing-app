@@ -26,7 +26,7 @@ const TotalLogic = () => {
     const requestedOrderId = location.pathname.split("/")[3];
 
     useEffect(() => {
-        if(!requestedData && location && !orderId) {
+        if(!requestedData && requestedOrderId && !orderId) {
             dispatch(getOrderDataById(requestedOrderId));
         }
     }, [requestedData, location])
