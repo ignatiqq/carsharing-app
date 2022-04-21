@@ -6,17 +6,24 @@ import { orderSetPrice } from 'store/order/actions';
 import { additionallyOptions } from 'constants/orderData';
 import styles from "./OrderPrice.module.scss";
 import { orderPriceByRate, orderAdditionallyPrice } from "utils/orderSum";
+import { useLocation } from 'react-router-dom';
 
 const OrderPrice = () => {
 
     const { t } = useTranslation();
 
     const dispatch = useAppDispatch();
+    const location = useLocation();
 
-    const { orderData, currentCar } = useAppSelector(({order}) => ({
+    const { orderData, currentCar, requestedOrderData } = useAppSelector(({order}) => ({
         orderData: order.data,
-        currentCar: order.options.cars.current
+        currentCar: order.options.cars.current,
+        requestedOrderData: order.getOrder.data
     }))
+
+    const isRequestedOrder = location.pathname.split("/")[3];
+
+    const priceLayout = (orderPrice: number) => `${t("Price")} ${orderPrice ? orderPrice : 0} ₽`;
 
     const totalPrice = useMemo(() => {
         if(orderData && currentCar) {
@@ -33,7 +40,7 @@ const OrderPrice = () => {
 
     return (
         <div className={styles.priceWrapper}>
-           {totalPrice}
+           {isRequestedOrder && requestedOrderData?.price ? priceLayout(requestedOrderData?.price) : totalPrice}
         </div>
     )
 }
