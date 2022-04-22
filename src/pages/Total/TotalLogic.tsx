@@ -14,13 +14,22 @@ const TotalLogic = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
 
-    const { requestedData, requestedDataError, currentCar, avaliableRentDate, requestedOrderLoading, orderId } = useAppSelector(({order}) => ({
+    const { 
+        requestedData, 
+        requestedDataError, 
+        currentCar, 
+        avaliableRentDate, 
+        requestedOrderLoading, 
+        orderId,
+        orderFullTank
+    } = useAppSelector(({order}) => ({
         currentCar: order.options.cars.current,
         avaliableRentDate: order.data.dateFrom,
         requestedData: order.getOrder.data,
         requestedDataError: order.getOrder.error,
         requestedOrderLoading: order.getOrder.loading,
-        orderId: order.id
+        orderId: order.id,
+        orderFullTank: order.data.isFullTank
     }))
 
     const requestedOrderId = location.pathname.split("/")[3];
@@ -33,6 +42,7 @@ const TotalLogic = () => {
 
     const currentCarProp = (requestedData ? requestedData.carId : currentCar) as ICarData | null
     const avaliableRentDateProp = requestedData?.dateFrom ? requestedData.dateFrom : avaliableRentDate
+    const isFullTank = requestedData?.isFullTank ? requestedData.isFullTank : orderFullTank
 
     if(!orderId && requestedOrderId && requestedDataError) {
         return <div className={styles.orderByIdError}>{t(requestedDataError)}</div>
@@ -40,9 +50,10 @@ const TotalLogic = () => {
 
     return (
         <Total 
-            currentCar={currentCarProp} 
+            currentCar={currentCarProp}
             avaliableRentDate={avaliableRentDateProp}
             requestedOrderLoading={requestedOrderLoading}
+            isFullTank={isFullTank}
         />
     )
 }
