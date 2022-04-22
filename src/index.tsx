@@ -10,7 +10,7 @@ import "./i18n";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename='/carsharing-app'>
+    <Router>
       <Suspense fallback="Loading...">
         <Provider store={store}>
           <App />
