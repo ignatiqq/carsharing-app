@@ -38,6 +38,8 @@
 .paddingContainer {
   padding-left: 64px;
   padding-right: 64px;
+  max-width: 1800px;
+  margin: 0px auto;
 
   @media screen and (max-width: 720px) {
     & {
