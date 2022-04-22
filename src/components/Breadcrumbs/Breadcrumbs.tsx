@@ -7,7 +7,13 @@ import { ReactComponent as Arrow } from "assets/icons/Arrow.svg";
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
-const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, stepsPassed, className}) => {
+const Breadcrumbs: React.FC<IBreadcrumbs> = React.memo(({
+  orderId,
+  routes, 
+  currentRoutePathname, 
+  stepsPassed, 
+  className
+}) => {
 
   const [sortedRoutes, setSortedRoutes] = React.useState<Array<IRoute> | null>(null);
   const [selectedRoute, setSelectedRoute] = React.useState<string | null>(null);
@@ -44,17 +50,21 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
 
   return (
     <ul className={classNames(styles.ul, className)}>
-      {
+      { 
+        orderId ?
+        <div className={styles.orderNumber}>{t("Order number")}: {orderId}</div>
+        :
         sortedRoutes && 
         sortedRoutes.map((item) => (
           <li className={styles.list} key={item.name} >
             {
-              item.index > stepsPassed + 1 ? (
+              item.index > stepsPassed ? (
                 <span className={styles.span}>{t(item.name)}</span>
               )
               :
               <Link className={breadcrumbLinkStyle(item)} 
-              to={item.pathname}>
+                to={item.pathname}
+              >
                 {t(item.name)}
               </Link>
             }
@@ -63,7 +73,6 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({routes, currentRoutePathname, step
       }
     </ul>
   )
-
-}
+})
 
 export default Breadcrumbs;

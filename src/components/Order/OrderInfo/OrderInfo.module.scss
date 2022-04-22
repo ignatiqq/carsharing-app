@@ -1,20 +1,48 @@
 .wrapper {
-  min-width: 380px;
+  min-width: auto;
   border-left: 2px solid #eeeeee;
   padding: 30px 0px 0px 30px;
 
+  @media(min-width: 410px) {
+    min-width: 380px;
+  }
+
   @media screen and (max-width: 1090px) {
     & {
-      border-top: 2px solid #eeeeee;
       border-left: none;
       padding: 30px 0px 20px 0px;
     }
+  }
+  padding: 30px 15px 20px 15px;
+}
+
+.position {
+  background: #fff;
+  border-top: 2px solid #eeeeee;
+  padding: 30px 15px 20px 15px;
+}
+
+@media (min-width: 640px) {
+  .position {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1090px) {
+  .position {
+    position:sticky;
+    top: 50px;
+    width: auto;
+    transform: none;
+    min-width: 350px;
+    border-top: none;
   }
 }
 
 .optionsWrapper {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: self-end;
   margin-bottom: 30px;
 }
@@ -27,28 +55,6 @@
   margin-bottom: 25px;
 }
 
-.optionName {
-  color: var(--primary-black);
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.optionSeparator {
-  color: var(--gray-dark);
-  width: 40%;
-  text-align: center;
-  border: none;
-  border-bottom: 2px dotted var(--gray-dark);
-  margin: 0px 11px;
-}
-
-.optionValue {
-  text-align: right;
-  color: var(--gray-dark);
-  font-weight: 300;
-  font-size: 14px;
-}
-
 .price { 
   font-weight: 500;
 
@@ -57,15 +63,25 @@
   }
 }
 
+.orderInfoEmpty {
+  width: 100%;
+  font-weight: 700;
+  margin: 20px 0px;
+  text-align: center;
+}
 
 .nextBtn {
   width: 100%;
   padding: 13px 0px;
-  width: 287px;
   border-radius: 8px;
   text-align: center;
   font-weight: 500;
   background: linear-gradient(90deg, #0EC261 0%, #039F67) 100%;
+
+  &Disabled {
+    pointer-events: none;
+    background: var(--gray-light);
+  }
 
   &Wrapper {
     display: flex;
@@ -81,9 +97,3 @@
   }
 }
 
-.orderInfoItemWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}

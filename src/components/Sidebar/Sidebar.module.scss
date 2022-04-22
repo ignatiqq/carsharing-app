@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   z-index: 20;
   transition: all 0.3s ease;
@@ -11,16 +11,43 @@
 
 .sidebar {
   position: absolute;
-  height: 100%;
   display: flex;
   justify-content: center;
   min-width: 65px;
+
+  &Opened {
+    height: 100%;
+    z-index: 200;
+  }
+
+  @media (min-width: 640px) {
+    & {
+      height: 100%;
+    }
+  }
+}
+
+.asideWrapper {
+  z-index: 1000;
 
   @media (min-width: 640px) {
     & {
       position: relative;
       background: #111518;
     }
+  }
+}
+
+@media (min-width: 640px) {
+  .sidebar {
+    background: #111518;
+    position: fixed;
+  }
+  .overlay {
+    display: block;
+  }
+  .asideWrapper {
+    min-width: 65px;
   }
 }
 
@@ -35,10 +62,12 @@
 
 .buttonMenu {
   z-index: 9999;
-  
+
   @media (min-width: 640px) {
     & {
       display: block;
+      position: relative;
+
     }
   }
 }

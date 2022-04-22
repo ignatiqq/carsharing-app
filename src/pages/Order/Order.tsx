@@ -1,29 +1,46 @@
 import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import { useAppSelector } from 'store/hooks';
 
+import { allOrderSteps } from 'constants/allOrderSteps';
+import { isStepAvaliable } from 'utils/isStepAvaliable';
 import { Header, Breadcrumbs, OrderInfo } from 'components';
 import { routes } from 'routes/order';
 import styles from "./Order.module.scss";
-import { useAppSelector } from 'store/hooks';
 
 
 const Order = () => {
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
-  const { order } = useAppSelector(({order}) => ({
-    order: order
+  const { stepsPassed, requestedData, currentOrderDataId } = useAppSelector(({order}) => ({
+    stepsPassed: order.stepsPassed,
+    requestedData: order.getOrder.data,
+    currentOrderDataId: order.id
   }))
+
+  useEffect(() => {
+    const isRequestedStepAvaliable = isStepAvaliable({allOrderSteps, currentStep: stepsPassed, requestedStepPathname: pathname});
+    if(!isRequestedStepAvaliable) {
+      const avaliableStep = allOrderSteps.find(item => item.step === stepsPassed);
+        navigate(avaliableStep!.pathname)
+    }
+  }, [pathname])
+
+  const showRequestOrderId = (pathname.split("/")[3] && requestedData && requestedData.id)
+                                    ? requestedData.id : currentOrderDataId
 
   return (
     <section className={styles.section}>
       <Header className={styles.paddingContainer} />
       <div className={classNames(styles.breadcrumbsContainer)}>
-        <Breadcrumbs 
-          routes={routes} 
-          currentRoutePathname={pathname} 
-          stepsPassed={0} 
+        <Breadcrumbs
+          orderId={showRequestOrderId}
+          routes={routes}
+          currentRoutePathname={pathname}
+          stepsPassed={stepsPassed}
           className={styles.paddingContainer}
         />
       </div>

@@ -14,7 +14,7 @@ const Header: React.FC<IHeader> = ({ className }) => {
 
   return (
     <header className={classNames(styles.header, className)}>
-        <Link to="/" className={styles.logo}>Need for Speed</Link>
+        <Link to="/" className={styles.logo}>Need for Drive</Link>
         <CitySelectorLogic />
     </header>
   )

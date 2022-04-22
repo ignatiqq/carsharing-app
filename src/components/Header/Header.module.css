@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px 15px;
+  margin: 0 auto;
+  position: sticky;
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    align-items: end;
+  }
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-green);
+}

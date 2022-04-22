@@ -1,13 +1,15 @@
 import { takeLatest, call, put } from "redux-saga/effects"
+import { AxiosResponse } from "axios";
 
+import { FailedRequest } from "constants/errors";
 import type { IGetPointsResponse } from "./types";
 import { setPoints, setPointsRequestError, getPoints } from "../../points/actions";
-import { AxiosResponse } from "axios";
 import { requestGet } from "api/requests";
 
 const getPointsRequest = () => {
     return requestGet("db/point")
 }
+
 
 function *getAllPoints() {
     try {
@@ -16,7 +18,7 @@ function *getAllPoints() {
         if(response && response.data) {
             yield put(setPoints(response.data.data));
         } else {
-            throw new Error("Request failed try later"); 
+            throw new Error(FailedRequest);
         }
 
     } catch (error: any) {

@@ -14,7 +14,7 @@
 }
 
 .current {
-  color: var(--primary-green);
+  color: var(--primary-green) !important;
 }
 
 .passed {
@@ -25,6 +25,11 @@
   display: flex;
   flex-wrap: wrap;
 
+}
+
+.orderNumber {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .list {

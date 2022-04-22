@@ -69,7 +69,7 @@ const Select: React.FC<ISelect> = (
     setSelectDropdownOpened(false);
   }
 
-  const inputValue = selectDropdownOpened ? optionSearch : selected && selected[optionLabel];
+  const inputValue = selectDropdownOpened ? optionSearch : selected ? selected[optionLabel] : optionSearch;
 
   return (
     <div className={styles.wrapper}>

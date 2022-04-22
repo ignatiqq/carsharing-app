@@ -14,13 +14,21 @@ const Sidebar = () => {
 
   useEffect(() => {
     const keyHandler = (e: KeyboardEvent) => {
-      if(sidebarOpen && e.key === "Escape"){
+      if (sidebarOpen && e.key === "Escape") {
         setSidebarOpen(false)
       }
     }
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   }, [])
+
+  useEffect(() => {
+    if(sidebarOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  }, [sidebarOpen])
 
   const sidebarOpenHanlder = () => {
       if(!sidebarOpen) {
@@ -31,11 +39,13 @@ const Sidebar = () => {
   }
 
   return (
-    <aside>
+    <aside className={styles.asideWrapper}>
     <SidebarNav setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
      {sidebarOpen && <div className={styles.overlay} />}
-      <div className={styles.sidebar}>
-          <div className={styles.wrapper}>
+      <div className={classNames(styles.sidebar, {
+        [styles.sidebarOpened]: sidebarOpen
+      })}>
+          <div className={classNames(styles.wrapper)}>
             <Button onClick={sidebarOpenHanlder} className={styles.buttonMenu}>
               {
                 sidebarOpen 

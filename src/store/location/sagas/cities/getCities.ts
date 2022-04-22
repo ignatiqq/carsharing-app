@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import type { AxiosResponse } from "axios";
 
+import { FailedRequest } from "constants/errors";
 import { setAllCitiesLoading, setAllCities, setAllCitiesLoadingError, getAllCities } from "../../cities/actions";
 import { requestGet } from "api/requests";
 
@@ -17,7 +18,7 @@ export function *getCities() {
         if(response && response.data) {
             yield put(setAllCities(response.data.data));
         } else {
-            throw new Error("Request failed try later"); 
+            throw new Error(FailedRequest);
         }
 
         yield put(setAllCitiesLoading(false));

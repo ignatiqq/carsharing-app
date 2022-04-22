@@ -1,0 +1,27 @@
+.DatePicker {
+
+    &CustomInput {
+        border: none;
+        border-bottom: 1px solid var(--gray-dark);
+        background: transparent;
+        padding: 2px 10px;
+        font-size: 14px;
+        width: 100%;
+        outline: none;
+        width: 224px;
+    }
+
+    &CustomWrapper {
+        display: flex;
+        align-items: flex-end;
+        max-width: 267px;
+    }
+
+    &Name {
+        margin-bottom: 16px;
+    }
+}
+
+.wrapper {
+    margin-bottom: 32px;
+}
