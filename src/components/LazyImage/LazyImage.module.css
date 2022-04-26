@@ -1,0 +1,14 @@
+.lazyImage {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -250px 100px -120px #ccc inset;
+    animation: background 3s infinite alternate;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+@keyframes background {
+    50% {
+        background: #fff;
+        box-shadow: 0 -200px 100px -100px #eee inset;
+    }
+}

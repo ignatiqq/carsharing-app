@@ -1,0 +1,34 @@
+.orderInfoItemWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+  
+.option {
+
+    &Name {
+        color: var(--primary-black);
+        font-size: 14px;
+        font-weight: 300;
+        max-width: 100px;
+    }
+
+    &Separator {
+        color: var(--gray-dark);
+        width: 40%;
+        text-align: center;
+        border: none;
+        border-bottom: 2px dotted var(--gray-dark);
+        margin: 0px 11px;
+    }
+
+    &Value {
+        text-align: right;
+        color: var(--gray-dark);
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+}

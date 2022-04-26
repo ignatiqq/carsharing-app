@@ -1,0 +1,81 @@
+.wrapper {
+    margin: 25px 0px;
+    padding-right: 15px;
+
+    &Content {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        max-width: 800px;
+
+        @media(min-width: 460px) {
+            flex-direction: row;
+        }
+    }
+}
+
+.carsLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 20px 10px;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+}
+
+.car {
+
+    &Text {
+        * {
+            margin: 8px 0px;
+        }
+
+        &Bold {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        &Light {
+            font-weight: 300;
+            font-size: 14px;
+        }
+    }
+
+    &Name {
+        margin-bottom: 12px;
+    }
+
+    &Number {
+        border: 1px solid var(--gray-dark);
+        border-radius: 4px;
+        padding: 4px 8px;
+    }
+
+    &Name {
+        font-size: 18px;
+    }
+
+    &Tank {
+        margin-top: 12px;
+    }
+
+    &Image {
+        max-width: 256px;
+        width: 100%;
+    }
+}
+
+.orderByIdError {
+    min-height: 300px;
+    text-align: center;
+    font-weight: 700;
+    color: red;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

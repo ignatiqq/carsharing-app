@@ -1,0 +1,19 @@
+.wrapper {
+    margin-bottom: 32px;
+}
+
+.tariff {
+
+    &Text {
+        margin-bottom: 16px;
+    }
+
+    &Wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &CustomRadio  {
+        margin-bottom: 8px;
+    }
+}

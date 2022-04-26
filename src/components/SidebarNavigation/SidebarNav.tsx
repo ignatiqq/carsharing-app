@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 import classNames from 'classnames';
 
-import { ReactComponent as TelegramIcon } from "assets/images/TelegramIcon.svg";
-import { ReactComponent as InstagramIcon } from "assets/images/InstagramIcon.svg";
-import { ReactComponent as FacebookIcon } from "assets/images/FacebookIcon.svg";
+import { ReactComponent as TelegramIcon } from "assets/icons/TelegramIcon.svg";
 import { pagesLink } from './links';
-import styles from "./SidebarNav.module.css";
+import styles from "./SidebarNav.module.scss";
+import { useTranslation } from 'react-i18next';
 
 interface ISidebarNav {
   sidebarOpen: boolean,
@@ -15,6 +14,8 @@ interface ISidebarNav {
 }
 
 const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen, setSidebarOpen}) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={classNames(styles.wrapper, {
@@ -30,7 +31,7 @@ const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen, setSidebarOpen}) => {
                 onClick={() => setSidebarOpen(false)}
                 className={styles.link}
                 to={item.path}>
-                {item.name}
+                {t(`${item.name}`)}
               </Link>
             )</li>
             ))
@@ -40,16 +41,6 @@ const SidebarNav: React.FC<ISidebarNav> = ({sidebarOpen, setSidebarOpen}) => {
           <li>
             <Link to="/">
               <TelegramIcon className={styles.socialsLink} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <InstagramIcon className={styles.socialsLink} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <FacebookIcon className={styles.socialsLink} />
             </Link>
           </li>
         </ul>

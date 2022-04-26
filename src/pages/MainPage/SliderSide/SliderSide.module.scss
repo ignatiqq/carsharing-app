@@ -1,0 +1,12 @@
+.wrapper {
+  flex-basis: 50%;
+  overflow: hidden;
+  display: none;
+
+  @media (min-width: 1024px) {
+    & {
+      display: block;
+    }
+  }
+  
+}

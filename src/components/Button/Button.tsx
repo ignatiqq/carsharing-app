@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import classNames from "classnames"
 
-import styles from "./Button.module.css";
+import styles from "./Button.module.scss";
 
 interface IButton {
     apperance?: "primary" | "default"
@@ -30,12 +30,14 @@ const Button: React.FC<IButton> = (
     }
     ) => {
 
+    const buttonBackground = apperance === "primary" && !disabled ? `linear-gradient(90deg, ${gradientFrom} 0%, ${gradientTo}) 100%` : ""
+
     return (
         <button
             onClick={onClick}
             type={type}
             disabled={loading || disabled}
-            style={{background: apperance === "primary" ? `linear-gradient(90deg, ${gradientFrom} 0%, ${gradientTo}) 100%` : "none"}}
+            style={{background: buttonBackground}}
             className={classNames(styles.btn, className, {
                 [styles.btnDisabled]: disabled || loading,
             })}

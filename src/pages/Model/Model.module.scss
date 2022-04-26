@@ -1,0 +1,43 @@
+.carsLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 20px 10px;
+}
+
+.wrapper {
+    margin: 25px 0px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+}
+
+.carCardWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    max-height: 60vh;
+    overflow-x: auto;
+
+    @media(min-width: 640px) {
+        margin-top: 48px;
+    }
+}
+
+.radioInput {
+    margin-right: 10px;
+}
+
+.error {
+    color: red;
+    font-weight: 700;
+    margin: 20px 0px;
+    text-align: center;
+}

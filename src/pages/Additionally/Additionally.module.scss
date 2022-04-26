@@ -1,0 +1,21 @@
+.wrapper {
+    margin: 25px 0px;
+
+    @media(min-width: 1090px) {
+        height: 100%;
+    }
+}
+
+.loader {
+    margin-top: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.additionallyLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 20px 10px;
+}

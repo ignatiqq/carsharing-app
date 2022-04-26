@@ -1,22 +1,22 @@
 export const pagesLink = [
     {
         id: 1,
-        name: "Парковка",
+        name: "Parking",
         path: "/"
     },
     {
         id: 2,
-        name: "Страховка",
+        name: "Insurance",
         path: "/"
     },
     {
         id: 3,
-        name: "Бензин",
+        name: "Petrol",
         path: "/"
     },
     {
         id: 4,
-        name: "Обслуживание",
+        name: "Service",
         path: "/"
     },
 ]

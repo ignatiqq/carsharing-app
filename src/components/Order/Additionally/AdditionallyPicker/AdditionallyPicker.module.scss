@@ -1,0 +1,19 @@
+.wrapper {
+    margin-bottom: 32px;
+}
+
+.additionally {
+
+    &Text {
+        margin-bottom: 16px;
+    }
+
+    &Wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &Checkbox {
+        margin-bottom: 7px;
+    }
+}

@@ -1,45 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Button } from "components";
+import { Button, Header } from "components";
 import Footer from "./Footer/Footer";
 
-import marker from "assets/images/marker.svg";
-import styles from "./InfoSide.module.css";
+import styles from "./InfoSide.module.scss";
+import { useTranslation } from 'react-i18next';
 
 
 const InfoSide: React.FC = () => {
 
+  const { t } = useTranslation();
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <div className={styles.headerWrapper}>
-          <div className={styles.headerText}>Need For Drive</div>
-          <div className={styles.cityBlockWrapper}>
-            <img src={marker} alt="marker" />
-            <span className={styles.cityBlockText}>Ульяновск</span>
-          </div>
-        </div>
-      </div>
+      <Header className={styles.header} />
       <div>
         <div>
           <div className={styles.infoTextWrapper}>
             <div className={styles.infoTitleWrapper}>
-              <h1 className={styles.infoTitleText}>Каршеринг</h1>
+              <h1 className={styles.infoTitleText}>{t("Carsharing")}</h1>
               <h2 className={styles.infoTitleCompany}>
                 Need for drive
               </h2>
             </div>
             <p className={styles.infoParagraph}>
-              Поминутная аренда авто твоего города
+              {t("Per-minute car rental in your city")}
             </p>
           </div>
         </div>
-        <Button
-          className={styles.bookButton}
-          apperance="primary"
-          >
-          Забронировать
-        </Button>
+        <Link to="/order/location">
+          <Button
+            className={styles.bookButton}
+            apperance="primary"
+            >
+            {t("Reserve")}
+          </Button>
+        </Link>
       </div>
       <Footer />
     </div>
