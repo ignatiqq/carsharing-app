@@ -28,7 +28,7 @@ const CarCard: React.FC<ICarCard> = React.memo(({ currentCarId, onClick, car }) 
                     <LazyImage
                         imageHolderSrc={carHolder}
                         className={styles.carImage}
-                        width={280}
+                        width={256}
                         height={127}
                         image={car.thumbnail.path}
                         alt={car.name}

@@ -1,15 +1,19 @@
 .wrapper {
-    max-width: 468px;
+    max-width: 368px;
     width: 100%;
     border: 1px solid var(--gray-light);
     transition: all .3s ease;
     cursor: pointer;
-    min-height: 300px;
     max-height: 350px;
     padding: 16px;
     z-index: 10;
     display: flex;
     overflow: hidden;
+
+    @media(min-width: 1470px) {
+        max-width: 430px;
+        min-height: 300px;
+    }
 }
 
 .wrapperActive {

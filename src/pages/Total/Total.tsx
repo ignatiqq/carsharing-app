@@ -12,12 +12,14 @@ interface ITotalView {
     requestedOrderLoading: boolean,
     currentCar: ICarData | null,
     avaliableRentDate: number | null,
+    isFullTank: boolean
 }
 
 const Total: React.FC<ITotalView> = ({ 
     requestedOrderLoading,
     currentCar, 
     avaliableRentDate, 
+    isFullTank
 }) => {
     const { t } = useTranslation();
     
@@ -40,7 +42,7 @@ const Total: React.FC<ITotalView> = ({
                     <span className={styles.carNumber}>{carNumber.toUpperCase()}</span>
                     <div className={styles.carTank}>
                         <span className={styles.carTextBold}>{t("Fuel")}</span>
-                        <span className={styles.carTextLight}> {currentCar?.tank}%</span>
+                        <span className={styles.carTextLight}> {isFullTank ? "100" : currentCar?.tank}%</span>
                     </div>
                     <div>
                         <span className={styles.carTextBold}>{t("Available from")}</span>
